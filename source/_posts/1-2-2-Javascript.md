@@ -1,7 +1,8 @@
 ---
 title: 1-2-2_Javascript
 date: 2018-05-28 18:50:04
-tags:
+tags: 
+    - Javascript
 ---
 
 # Javascript
