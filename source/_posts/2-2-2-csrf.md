@@ -1,6 +1,7 @@
 ---
 title: 2-2-2_csrf
 date: 2018-05-28 18:56:23
+categories: WebSafe
 tags:
     - CSRF
 ---
