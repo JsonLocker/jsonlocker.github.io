@@ -1,7 +1,7 @@
 ---
 title: sql_options
 date: 2018-06-14 17:47:55
-categories: MySQL
+categories: mysql
 tags:
     - mysql
 ---
