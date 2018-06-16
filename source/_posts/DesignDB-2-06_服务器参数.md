@@ -17,7 +17,7 @@ MySQL获取配置信息路径
 - 配置文件（长期用的配置建议写入这里）
     - 用命令查询配置文件
     - mysqld --help ---verbose | grep -A 1 'Default options' 
-    - `/etc/my.conf/mysql/my.conf/home/mysql/my.conf/~/.my.conf
+    - /etc/my.conf/mysql/my.conf/home/mysql/my.conf/~/.my.conf
 
 - 参数作用域
     - 全局参数
@@ -35,24 +35,26 @@ set golbal interactive_timeout=3600;
 ### 内存参数配置
 
 #### 需要搞清楚以下问题:
+
 - 确认可以使用内存的上限
 - 确认给每个连接使用的内存
-
->* sort_buffer_size 每个线程排序缓存区的大小
->* join_buffer_size 每个线程所使用的连接缓冲区的尺寸
->* read_buffer_size 需要是4k的倍数
->* read_rnd_buffer_size 
+```
+sort_buffer_size        每个线程排序缓存区的大小
+join_buffer_size        每个线程所使用的连接缓冲区的尺寸
+read_buffer_size        需要是4k的倍数
+read_rnd_buffer_size 
+```
 
 以上如果配置过大都可能造成mysql内存溢出导致服务器崩溃
 
 
 #### 确定需要为操作系统保留多少内存
 #### 为缓冲池分配内存
-    - innodb_buffer_pool_size
-        - 配置方案: 总内存－(每个线程所需内存*连接数) - 系统保留内存
-        - 手册建议: 服务器内存的75%以上
-    - key_buffer_size ( myisam 表所需缓存池)
-        - 配置方案: select sum(index_length) from information_schema.tables where engine='myisam'
+- innodb_buffer_pool_size
+    - 配置方案: 总内存－(每个线程所需内存*连接数) - 系统保留内存
+    - 手册建议: 服务器内存的75%以上
+- key_buffer_size ( myisam 表所需缓存池)
+    - 配置方案: select sum(index_length) from information_schema.tables where engine='myisam'
 
 ### I/O参数配置
 原理是事务日志先记录在缓冲日志，然后再写进磁盘
