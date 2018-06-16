@@ -27,6 +27,9 @@ index_widgets:
 archive_type: 'monthly'
 show_count: false
 
+#font
+use_font_lato: false
+
 # Miscellaneous
 google_analytics:
 gauges_analytics:
