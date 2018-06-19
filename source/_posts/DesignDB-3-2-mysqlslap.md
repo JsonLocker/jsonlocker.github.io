@@ -18,21 +18,21 @@ tags:
 
 ### 常用参数
 
->* --auto-generate-sql 由系统自动生成SQL脚本进行测试
->* --auto-generate-sql-add-autoincrement 在生成的表中增加增ID
->* --auto-generate-sql-load-type 指定测试中使用的查询类型
->* --auto-generate-sql-write-number 指定初始化数据时生成的数据量,默认是100行
->* --concurrency 指定并发线程的数量
->* --engine 指定测试表的存储引擎,可用逗号分割多个存储引擎,和no-drop互斥
->* --no-drop 完成1次测试后不清理测试数据
->* --iterations 指定测试运行次数,和no-drop互斥
->* --number-of-queries 指定每个线程执行的查询数量
->* --debug-info 指定输出额外的内存和CPU统计信息
->* --number-int-cols 指定测试表中包含int类型列的数量
->* --number-char-cols 指定测试表中包含varchar类型列的数量
->* --create-schema 指定用于执行测试的数据库名字
->* --query 用于指定自定义SQL的脚本
->* --only-print 并不运行测试脚本,而是把生成脚本打印出来
+- --auto-generate-sql 由系统自动生成SQL脚本进行测试
+- --auto-generate-sql-add-autoincrement 在生成的表中增加增ID
+- --auto-generate-sql-load-type 指定测试中使用的查询类型
+- --auto-generate-sql-write-number 指定初始化数据时生成的数据量,默认是100行
+- --concurrency 指定并发线程的数量
+- --engine 指定测试表的存储引擎,可用逗号分割多个存储引擎,和no-drop互斥
+- --no-drop 完成1次测试后不清理测试数据
+- --iterations 指定测试运行次数,和no-drop互斥
+- --number-of-queries 指定每个线程执行的查询数量
+- --debug-info 指定输出额外的内存和CPU统计信息
+- --number-int-cols 指定测试表中包含int类型列的数量
+- --number-char-cols 指定测试表中包含varchar类型列的数量
+- --create-schema 指定用于执行测试的数据库名字
+- --query 用于指定自定义SQL的脚本
+- --only-print 并不运行测试脚本,而是把生成脚本打印出来
 
 指定并发数量1 50 100 200的测试,
 完成3次，
