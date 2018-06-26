@@ -92,10 +92,8 @@ select match(title,body) against ('database') from article \G;
 ```
 
 #### 1.4 唯一索引
-当表的某列被指定为唯一约束unique时,则此列为唯一索引
-
+- 某列被指定为唯一约束unique时
 - 允许为NULL且允许多个null
-- 不能为个''
 
 
 ```sql
