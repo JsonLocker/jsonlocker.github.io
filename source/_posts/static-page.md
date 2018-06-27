@@ -214,4 +214,22 @@ RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME}!-f
 # 配置伪静态
 RewriteRule ^/detail/([0-9]*).html$/detail.php?id=$1
 ```
+#### 6.2 Nginx的伪静态配置
 
+
+
+```
+# vhost.conf
+
+location ~\.php{
+    if (!-e $request_filename){
+        rewrite ^/detail/([0-9]*).html$  /detail.php?id=$1 last;
+        break;
+    }
+}
+```
+
+reload nginx
+```
+service nginx restart
+```
