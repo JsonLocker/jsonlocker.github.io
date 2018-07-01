@@ -69,3 +69,4 @@ collaborate (see also: git help workflows)
 push
 hexo d 
 git push hexo hexo
+mac git push origin hexo
