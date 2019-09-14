@@ -178,7 +178,3 @@ rm -f ${PID1}
 
 [client](https://github.com/shadowsocks)
 
-[page](https://medium.com/@invisprints/shadowsocks-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA-bd5e0b73c4d7)
-
-
-
