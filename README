@@ -66,7 +66,14 @@ collaborate (see also: git help workflows)
 
 
 =================================
-push
+1. 把项目git拉到当前目录下的blog目录
+git clone https://github.com/JsonLocker/jsonlocker.github.io.git blog
+
+hexo new title catelog
+hexo clean  
+hexo g
+
+2. 推送
 hexo d 
 git push hexo hexo
 mac git push origin hexo
