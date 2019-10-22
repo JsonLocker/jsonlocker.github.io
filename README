@@ -75,5 +75,5 @@ hexo g
 
 2. 推送
 hexo d 
-git push hexo hexo
+git push origin hexo
 mac git push origin hexo
