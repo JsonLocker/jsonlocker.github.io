@@ -10,6 +10,9 @@ tags:
 
 ##  1. 安装yii2 高级模板
 
+好久没用yii2高级模板了,今天安装下发现和以往不同的地方是注册会要求邮箱验证,后面才发现已经默认集成了
+mailer组件.这里稍微做个备注.
+
 #### 1 . 用composer 安装模板
 
 ```
@@ -146,7 +149,7 @@ server {
 
 #### 1. 配置common参数
 
-<strong>不用试了QQ授权码是我随手敲的</strong>
+这里主要是配置mailer，因为默认mailer不能发送邮件，造成前台注册无法验证
 
 ```php
 # vim common/config/main-local.php
@@ -177,7 +180,7 @@ return [
             ],
             'messageConfig' => [
                 'charset' => 'UTF-8',
-                'from' => ['slq17@qq.com'=>'系统邮件'],
+		'from' => [Yii::$app->params['adminEmail'] => '系统邮件']
             ],
         ],
     ],
@@ -187,15 +190,12 @@ return [
 
 #### 2. 设置发送邮箱
 
-记得把frontend和backend里面的email清空了,使之保持一致
+记得把frontend和backend里面的email清空了,只用common的config里的配置
 
 ```php
 # vim common/config/param.php
 return [
-    'adminEmail' => 'slq17@example.com',
-    'supportEmail' => 'slq17@example.com',
-    'senderEmail' => 'slq17@example.com',
-    'senderName' => 'slq17@qq.com',
+    'adminEmail' => 'slq17@qq.com',
     'user.passwordResetTokenExpire' => 3600,
 ];
 
@@ -254,13 +254,4 @@ return [
     }
 
 ```
-
-
-
-
-
-
-
-
-
-
+到此advanced模板包括邮件配置完成.
