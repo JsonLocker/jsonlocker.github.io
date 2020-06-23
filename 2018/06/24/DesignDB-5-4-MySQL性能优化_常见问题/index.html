@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>DesignDB-5-4_MySQL多线程从库配置及常见问题 | Jsonlocker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="影响主从延迟的因素 主库写入二进制日志的时间  控制主库的事务大小,分割大事务   二进制日志的传输时间 使用混合格式MIXED日志格 设置set binlog_row_image=minimal;   默认从库只有1个SQL线程,主上并发的修改在从上变成串行 使用5.7版本以后的多线程复制    配置多线程复制 前提: 完成主从复制的配置  在从服务器上停止链路复制  stop slave` 设">
+<meta name="keywords" content="mysql,designdb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DesignDB-5-4_MySQL多线程从库配置及常见问题">
+<meta property="og:url" content="https://jsonlocker.github.io/2018/06/24/DesignDB-5-4-MySQL性能优化_常见问题/index.html">
+<meta property="og:site_name" content="Jsonlocker">
+<meta property="og:description" content="影响主从延迟的因素 主库写入二进制日志的时间  控制主库的事务大小,分割大事务   二进制日志的传输时间 使用混合格式MIXED日志格 设置set binlog_row_image=minimal;   默认从库只有1个SQL线程,主上并发的修改在从上变成串行 使用5.7版本以后的多线程复制    配置多线程复制 前提: 完成主从复制的配置  在从服务器上停止链路复制  stop slave` 设">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-23T09:27:48.141Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DesignDB-5-4_MySQL多线程从库配置及常见问题">
+<meta name="twitter:description" content="影响主从延迟的因素 主库写入二进制日志的时间  控制主库的事务大小,分割大事务   二进制日志的传输时间 使用混合格式MIXED日志格 设置set binlog_row_image=minimal;   默认从库只有1个SQL线程,主上并发的修改在从上变成串行 使用5.7版本以后的多线程复制    配置多线程复制 前提: 完成主从复制的配置  在从服务器上停止链路复制  stop slave` 设">
+  
+    <link rel="alternate" href="/atom.xml" title="Jsonlocker" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jsonlocker</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jsonlocker.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-DesignDB-5-4-MySQL性能优化_常见问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/24/DesignDB-5-4-MySQL性能优化_常见问题/" class="article-date">
+  <time datetime="2018-06-24T01:40:06.000Z" itemprop="datePublished">2018-06-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DesignDB-5-4_MySQL多线程从库配置及常见问题
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h3 id="影响主从延迟的因素"><a href="#影响主从延迟的因素" class="headerlink" title="影响主从延迟的因素"></a>影响主从延迟的因素</h3><ul>
+<li>主库写入二进制日志的时间 <ul>
+<li>控制主库的事务大小,分割大事务</li>
+</ul>
+</li>
+<li>二进制日志的传输时间<ul>
+<li>使用混合格式MIXED日志格</li>
+<li>设置set binlog_row_image=minimal;</li>
+</ul>
+</li>
+<li>默认从库只有1个SQL线程,主上并发的修改在从上变成串行<ul>
+<li>使用5.7版本以后的多线程复制</li>
+</ul>
+</li>
+</ul>
+<p><strong>配置多线程复制</strong></p>
+<p>前提: 完成主从复制的配置</p>
+<ol>
+<li>在从服务器上停止链路复制  stop slave`</li>
+<li>设置链路并发为逻辑时钟的方式 `set global slave_parallel_type=’logical_clock’; </li>
+<li>设置复制线程数量,也就是并发线程数 <code>set global slave_parallel_workers=4</code>;</li>
+<li>启动复制 <code>start slave</code></li>
+</ol>
+<p>MySQL中进行从库并发配置操作:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从库中查看sql线程</span></span><br><span class="line">&gt; show processlist;</span><br><span class="line"><span class="comment"># 停止线程</span></span><br><span class="line">&gt; stop slave;</span><br><span class="line"><span class="comment"># 查看状态</span></span><br><span class="line">&gt; show slaves status\G;</span><br><span class="line"><span class="comment"># 查看现在并发配置,默认是database</span></span><br><span class="line">&gt; show variables like 'slave_parallel_type';</span><br><span class="line"><span class="comment"># 设置并发方式</span></span><br><span class="line">&gt; set global slave_parallel_type='logical_clock';</span><br><span class="line"><span class="comment"># 查看当前并发线程数量,默认是0</span></span><br><span class="line">&gt; show variables like 'salve_parallel_workers';</span><br><span class="line"><span class="comment"># 修改为4线程</span></span><br><span class="line">&gt; set global slave_parallel_workers=4;</span><br><span class="line"><span class="comment"># 启动复制</span></span><br><span class="line">&gt; start slave;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看状态</span></span><br><span class="line">&gt; show slave status\G;</span><br><span class="line"><span class="comment"># 查看IO线程</span></span><br><span class="line">&gt; show processlist\G;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ol>
+<li>由于数据损坏或丢失引起的主从复制错误<ul>
+<li>一般由于主库或从库意外down机引起<ol>
+<li>跳过二进制日志事件</li>
+<li>注入空事务方式先恢复中断的复制链路</li>
+<li>用其他方式来比对主从服务器的数据</li>
+</ol>
+</li>
+<li>主库上的二进制日志损坏<ol>
+<li>在从库中用change_master命令来重新指定</li>
+<li>对丢失对数据进行修复</li>
+<li>对主从数据库的数据进行检验</li>
+</ol>
+</li>
+<li>备库的中继日志的损坏<ol>
+<li>在从库中用change_master命令来重新在损坏位置进行读取主库二进制日志</li>
+</ol>
+</li>
+<li>在从库进行了数据修改,造成主从复制错误<ol>
+<li>需要在从库上设置 <code>read_only</code>参数,<strong>这个非常重要!!!!!!!</strong>       </li>
+</ol>
+</li>
+<li>存在不唯一的server_id或者server_uuid,<ul>
+<li>多从服务器使用同一个server_uuid的问题</li>
+<li>server_uuid是记录在数据目录中的auto.conf中,很难背发现</li>
+</ul>
+</li>
+<li>从服务器上最大允许包<code>max_allow_packet</code>设置不一致,引发主从复制错误</li>
+</ul>
+</li>
+</ol>
+<h3 id="MySQL无法解决的问题"><a href="#MySQL无法解决的问题" class="headerlink" title="MySQL无法解决的问题"></a>MySQL无法解决的问题</h3><ol>
+<li>无法分担主数据库的写负载<ul>
+<li>通过分库分表来处理</li>
+</ul>
+</li>
+<li>自动进行故障转移和主从切换</li>
+<li>提供读写分离的功能</li>
+</ol>
+
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="影响主从延迟的因素"><a href="#影响主从延迟的因素" class="headerlink" title="影响主从延迟的因素"></a>影响主从延迟的因素</h3><ul>
+<li>主库写入二进制日志的时间 <ul>
+<li>控制主库的事务大小,分割大事务</li>
+</ul>
+</li>
+<li>二进制日志的传输时间<ul>
+<li>使用混合格式MIXED日志格</li>
+<li>设置set binlog_row_image=minimal;</li>
+</ul>
+</li>
+<li>默认从库只有1个SQL线程,主上并发的修改在从上变成串行<ul>
+<li>使用5.7版本以后的多线程复制</li>
+</ul>
+</li>
+</ul>
+<p><strong>配置多线程复制</strong></p>
+<p>前提: 完成主从复制的配置</p>
+<ol>
+<li>在从服务器上停止链路复制  stop slave`</li>
+<li>设置链路并发为逻辑时钟的方式 `set global slave_parallel_type=’logical_clock’; </li>
+<li>设置复制线程数量,也就是并发线程数 <code>set global slave_parallel_workers=4</code>;</li>
+<li>启动复制 <code>start slave</code></li>
+</ol>
+<p>MySQL中进行从库并发配置操作:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从库中查看sql线程</span></span><br><span class="line">&gt; show processlist;</span><br><span class="line"><span class="comment"># 停止线程</span></span><br><span class="line">&gt; stop slave;</span><br><span class="line"><span class="comment"># 查看状态</span></span><br><span class="line">&gt; show slaves status\G;</span><br><span class="line"><span class="comment"># 查看现在并发配置,默认是database</span></span><br><span class="line">&gt; show variables like 'slave_parallel_type';</span><br><span class="line"><span class="comment"># 设置并发方式</span></span><br><span class="line">&gt; set global slave_parallel_type='logical_clock';</span><br><span class="line"><span class="comment"># 查看当前并发线程数量,默认是0</span></span><br><span class="line">&gt; show variables like 'salve_parallel_workers';</span><br><span class="line"><span class="comment"># 修改为4线程</span></span><br><span class="line">&gt; set global slave_parallel_workers=4;</span><br><span class="line"><span class="comment"># 启动复制</span></span><br><span class="line">&gt; start slave;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看状态</span></span><br><span class="line">&gt; show slave status\G;</span><br><span class="line"><span class="comment"># 查看IO线程</span></span><br><span class="line">&gt; show processlist\G;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ol>
+<li>由于数据损坏或丢失引起的主从复制错误<ul>
+<li>一般由于主库或从库意外down机引起<ol>
+<li>跳过二进制日志事件</li>
+<li>注入空事务方式先恢复中断的复制链路</li>
+<li>用其他方式来比对主从服务器的数据</li>
+</ol>
+</li>
+<li>主库上的二进制日志损坏<ol>
+<li>在从库中用change_master命令来重新指定</li>
+<li>对丢失对数据进行修复</li>
+<li>对主从数据库的数据进行检验</li>
+</ol>
+</li>
+<li>备库的中继日志的损坏<ol>
+<li>在从库中用change_master命令来重新在损坏位置进行读取主库二进制日志</li>
+</ol>
+</li>
+<li>在从库进行了数据修改,造成主从复制错误<ol>
+<li>需要在从库上设置 <code>read_only</code>参数,<strong>这个非常重要!!!!!!!</strong>       </li>
+</ol>
+</li>
+<li>存在不唯一的server_id或者server_uuid,<ul>
+<li>多从服务器使用同一个server_uuid的问题</li>
+<li>server_uuid是记录在数据目录中的auto.conf中,很难背发现</li>
+</ul>
+</li>
+<li>从服务器上最大允许包<code>max_allow_packet</code>设置不一致,引发主从复制错误</li>
+</ul>
+</li>
+</ol>
+<h3 id="MySQL无法解决的问题"><a href="#MySQL无法解决的问题" class="headerlink" title="MySQL无法解决的问题"></a>MySQL无法解决的问题</h3><ol>
+<li>无法分担主数据库的写负载<ul>
+<li>通过分库分表来处理</li>
+</ul>
+</li>
+<li>自动进行故障转移和主从切换</li>
+<li>提供读写分离的功能</li>
+</ol>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2018/06/24/DesignDB-5-4-MySQL性能优化_常见问题/" data-id="ckbrqi2tj000n68uschq3s8qd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/designdb/">designdb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/24/DesignDB-5-5-MySQL高可用架构介绍/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DesignDB-5-5_MySQL高可用架构介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/24/DesignDB-5-3-常见主从拓扑/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DesignDB-5-3_常见主从拓扑</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WebSafe/">WebSafe</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/lnmp/">lnmp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/software/">software</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/yii2/">yii2</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSRF/" style="font-size: 10px;">CSRF</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/PHP/" style="font-size: 12px;">PHP</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SQL/" style="font-size: 12px;">SQL</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/advanced/" style="font-size: 10px;">advanced</a> <a href="/tags/asset/" style="font-size: 10px;">asset</a> <a href="/tags/btree索引/" style="font-size: 10px;">btree索引</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/complie/" style="font-size: 12px;">complie</a> <a href="/tags/components/" style="font-size: 10px;">components</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/cpu/" style="font-size: 10px;">cpu</a> <a href="/tags/designDB/" style="font-size: 14px;">designDB</a> <a href="/tags/designdb/" style="font-size: 20px;">designdb</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/encrypt/" style="font-size: 10px;">encrypt</a> <a href="/tags/engine/" style="font-size: 10px;">engine</a> <a href="/tags/final类和方法/" style="font-size: 10px;">final类和方法</a> <a href="/tags/hash索引/" style="font-size: 10px;">hash索引</a> <a href="/tags/http-proxy/" style="font-size: 10px;">http proxy</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/index/" style="font-size: 10px;">index</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/lnmp/" style="font-size: 16px;">lnmp</a> <a href="/tags/locating/" style="font-size: 10px;">locating</a> <a href="/tags/mailer/" style="font-size: 10px;">mailer</a> <a href="/tags/mindManger/" style="font-size: 10px;">mindManger</a> <a href="/tags/mysql/" style="font-size: 18px;">mysql</a> <a href="/tags/mysql-二进制/" style="font-size: 10px;">mysql 二进制</a> <a href="/tags/mysql-复制/" style="font-size: 10px;">mysql 复制</a> <a href="/tags/mysqlslap/" style="font-size: 10px;">mysqlslap</a> <a href="/tags/mysql优化/" style="font-size: 10px;">mysql优化</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/optimizer/" style="font-size: 10px;">optimizer</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/php7/" style="font-size: 10px;">php7</a> <a href="/tags/predis/" style="font-size: 10px;">predis</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/self-parent/" style="font-size: 10px;">self & parent</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/shadowsocks-libev/" style="font-size: 10px;">shadowsocks-libev</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/sysbench/" style="font-size: 10px;">sysbench</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/tinyproxy/" style="font-size: 10px;">tinyproxy</a> <a href="/tags/turtle/" style="font-size: 10px;">turtle</a> <a href="/tags/v2ray/" style="font-size: 10px;">v2ray</a> <a href="/tags/vmess/" style="font-size: 10px;">vmess</a> <a href="/tags/web-components/" style="font-size: 10px;">web components</a> <a href="/tags/yii2/" style="font-size: 12px;">yii2</a> <a href="/tags/主从拓扑/" style="font-size: 10px;">主从拓扑</a> <a href="/tags/二进制复制/" style="font-size: 10px;">二进制复制</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/反范式化/" style="font-size: 10px;">反范式化</a> <a href="/tags/基准测试/" style="font-size: 14px;">基准测试</a> <a href="/tags/安装演示数据库/" style="font-size: 10px;">安装演示数据库</a> <a href="/tags/定期备份/" style="font-size: 10px;">定期备份</a> <a href="/tags/封装性/" style="font-size: 10px;">封装性</a> <a href="/tags/常见安全问题/" style="font-size: 10px;">常见安全问题</a> <a href="/tags/抽象类/" style="font-size: 10px;">抽象类</a> <a href="/tags/接口/" style="font-size: 10px;">接口</a> <a href="/tags/物理设计/" style="font-size: 10px;">物理设计</a> <a href="/tags/画图/" style="font-size: 10px;">画图</a> <a href="/tags/硬件影响/" style="font-size: 10px;">硬件影响</a> <a href="/tags/磁盘配置/" style="font-size: 10px;">磁盘配置</a> <a href="/tags/类常量/" style="font-size: 10px;">类常量</a> <a href="/tags/索引优化/" style="font-size: 10px;">索引优化</a> <a href="/tags/继承性/" style="font-size: 10px;">继承性</a> <a href="/tags/自动加载/" style="font-size: 10px;">自动加载</a> <a href="/tags/范式化/" style="font-size: 10px;">范式化</a> <a href="/tags/逻辑设计/" style="font-size: 10px;">逻辑设计</a> <a href="/tags/静态属性和方法/" style="font-size: 10px;">静态属性和方法</a> <a href="/tags/面向对象/" style="font-size: 14px;">面向对象</a> <a href="/tags/高可用架构/" style="font-size: 10px;">高可用架构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/23/SEO/">SEO</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/06/v2ray/">v2ray</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/16/composer境内镜像/">composer境内镜像</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/15/ssr的obfs混淆免流/">ssr的obfs混淆免流</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/23/mindManager/">mindManager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jsonlocker<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/mouse.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+if (typeof jQuery == 'undefined') {
+document.write(unescape("%3Cscript src='/js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+}
+// ]]>
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

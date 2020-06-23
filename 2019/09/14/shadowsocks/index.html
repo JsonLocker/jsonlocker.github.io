@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>shadowsocks | Jsonlocker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="目前 shadowsocks 中还在不断更新的只有 shadowsocks-libev，本文主要介绍这个。 shadowsocks-libevubuntu 的安装很简单，一条命令即可，不过貌似对 Ubuntu 版本有要求sudo apt install shadowsocks-libev安装的可能不是最新版，最新版请手动编译 CentOS Install按官网说明安装软件，建议采用手动方法，原因一">
+<meta name="keywords" content="shadowsocks,shadowsocks-libev">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shadowsocks">
+<meta property="og:url" content="https://jsonlocker.github.io/2019/09/14/shadowsocks/index.html">
+<meta property="og:site_name" content="Jsonlocker">
+<meta property="og:description" content="目前 shadowsocks 中还在不断更新的只有 shadowsocks-libev，本文主要介绍这个。 shadowsocks-libevubuntu 的安装很简单，一条命令即可，不过貌似对 Ubuntu 版本有要求sudo apt install shadowsocks-libev安装的可能不是最新版，最新版请手动编译 CentOS Install按官网说明安装软件，建议采用手动方法，原因一">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-23T09:27:48.147Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shadowsocks">
+<meta name="twitter:description" content="目前 shadowsocks 中还在不断更新的只有 shadowsocks-libev，本文主要介绍这个。 shadowsocks-libevubuntu 的安装很简单，一条命令即可，不过貌似对 Ubuntu 版本有要求sudo apt install shadowsocks-libev安装的可能不是最新版，最新版请手动编译 CentOS Install按官网说明安装软件，建议采用手动方法，原因一">
+  
+    <link rel="alternate" href="/atom.xml" title="Jsonlocker" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jsonlocker</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jsonlocker.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-shadowsocks" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/14/shadowsocks/" class="article-date">
+  <time datetime="2019-09-14T09:06:07.000Z" itemprop="datePublished">2019-09-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      shadowsocks
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <p>目前 shadowsocks 中还在不断更新的只有 shadowsocks-libev，本文主要介绍这个。</p>
+<h3 id="shadowsocks-libev"><a href="#shadowsocks-libev" class="headerlink" title="shadowsocks-libev"></a>shadowsocks-libev</h3><p>ubuntu 的安装很简单，一条命令即可，不过貌似对 Ubuntu 版本有要求<br>sudo apt install shadowsocks-libev<br>安装的可能不是最新版，最新版请手动编译</p>
+<h3 id="CentOS-Install"><a href="#CentOS-Install" class="headerlink" title="CentOS Install"></a>CentOS Install</h3><p>按官网说明安装软件，建议采用手动方法，原因一是能保证用的是最新版，二是出了问题容易上网搜索解决。<br><a href="https://github.com/shadowsocks/shadowsocks-libev" target="_blank" rel="noopener">website</a></p>
+<p>按下面进行无脑操作。。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release -y</span><br><span class="line">yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto c-ares-devel libev-devel libsodium-devel mbedtls-devel -y</span><br><span class="line"></span><br><span class="line">git clone https://github.com/shadowsocks/shadowsocks-libev.git</span><br><span class="line">cd shadowsocks-libev</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line"></span><br><span class="line">./autogen.sh &amp;&amp; ./configure &amp;&amp; make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<p>接下来需要将配置文件拷贝到常用路径<br>添加配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp ./rpm/SOURCES/etc/init.d/shadowsocks-libev /etc/init.d/shadowsocks-libev</span><br><span class="line">cp ./debian/config.json /etc/shadowsocks-libev/config.json</span><br><span class="line">chmod +x /etc/init.d/shadowsocks-libev</span><br></pre></td></tr></table></figure>
+
+<h3 id="Single-User"><a href="#Single-User" class="headerlink" title="Single User"></a>Single User</h3><p>编辑 <code>vim /etc/shadowsocks-libev/config.json</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:[&quot;[::0]&quot;,&quot;0.0.0.0&quot;],</span><br><span class="line">    &quot;server_port&quot;:8388,</span><br><span class="line">    &quot;local_port&quot;:1080,</span><br><span class="line">    &quot;password&quot;:&quot;barfoo!&quot;,</span><br><span class="line">    &quot;timeout&quot;:60,</span><br><span class="line">    &quot;method&quot;:&quot;chacha20-ietf-poly1305&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该配置同时支持 Ipv6 和 Ipv4，并采用 ss3.0 支持的 AEAD 加密方式。<br>编辑 <code>/etc/init.d/shadowsocks-libev</code> 修复一些历史bug</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// old</span><br><span class="line">DAEMON=/usr/bin/ss-server</span><br><span class="line"></span><br><span class="line">// new </span><br><span class="line">DAEMON=/usr/local/bin/ss-server</span><br></pre></td></tr></table></figure>
+
+<p>修改权限并重启软件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 /etc/init.d/shadowsocks-libev</span><br><span class="line">/etc/init.d/shadowsocks-libev start</span><br></pre></td></tr></table></figure>
+
+<h3 id="multi-user"><a href="#multi-user" class="headerlink" title="multi user"></a>multi user</h3><p>多用户配置有多种方法，官方推荐通过给每个用户一个配置文件，启动多个ss-server实现。<br>还有种方法如下，通过启动ss-manager实现<br>多用户配置文件与单用户不同，我们配置文件目录创建一个<code>ss_manager.json</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;: [&quot;[::0]&quot;,&quot;0.0.0.0&quot;],</span><br><span class="line">    &quot;local_port&quot;: 1080, # 本地端口，自行设定</span><br><span class="line">    &quot;timeout&quot;: 600, # 超时毫秒数</span><br><span class="line">    &quot;method&quot;: &quot;chacha20-ietf-poly1305&quot;,</span><br><span class="line">    &quot;port_password&quot;: &#123;</span><br><span class="line">        &quot;8388&quot;: &quot;barfoo1&quot;, # 端口号与密码</span><br><span class="line">        &quot;8389&quot;: &quot;barfoo2&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --add shadowsocks</span><br><span class="line">service shadowsocks start</span><br></pre></td></tr></table></figure>
+
+<p>若是针对多用户情况，需要手写开机启动脚本，方法如下：<br>应在<code>/usr/lib/systemd/system</code>下新建一个.service文件，例如 <code>ssmanager.service</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=shadowsocks manager # 服务的描述</span><br><span class="line">After=network.target # 该服务跟在哪个服务后启动</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking # 启动时的进程行为，forking是以fork形式从父进程创建子进程，子进程创建后父进程退出</span><br><span class="line">ExecStart=/usr/local/bin/ss-manager --manager-address /var/run/shadowsocks-manager.sock -c /etc/shadowsocks/ss_manager.json # 启动服务时执行的命令</span><br><span class="line">PrivateTmp=true # 使用私有临时文件目录</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target # 附挂在multi-user.target下</span><br></pre></td></tr></table></figure>
+
+<p>所有配置文件与脚本都设置完毕，使用systemctl开启服务。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 更改.service文件后，都要重载守护进程更新systemctl</span><br><span class="line">systemctl daemon-reload</span><br><span class="line"># 启动服务</span><br><span class="line">systemctl start ssmanager.service</span><br><span class="line"># 查看服务状态，若为绿色active(running)则说明服务成功启动</span><br><span class="line">systemctl status ssmanager.service</span><br><span class="line"># 设置服务开机自启动</span><br><span class="line">systemctl enable ssmanager.service</span><br><span class="line"># 还可使用systemctl restart ssmanager.service重启服务，使用systemctl stop ssmanager.service停止服务</span><br></pre></td></tr></table></figure>
+
+<h3 id="开启防火墙白名单"><a href="#开启防火墙白名单" class="headerlink" title="开启防火墙白名单"></a>开启防火墙白名单</h3><p>很多人按照教程的配置完后，发现并不能使用，原因是端口被防火墙关闭了。<br>输入如下代码开启防火墙端口白名单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/firewalld/zones/public.xml</span><br></pre></td></tr></table></figure>
+
+<p>在文件中适当位置添加下面代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;port protocol=&quot;tcp&quot; port=&quot;[server port]&quot;/&gt;</span><br><span class="line">&lt;port protocol=&quot;udp&quot; port=&quot;[server port]&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>[server port]</code> 填你的端口号。<br>重启防火墙</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --complete-reload</span><br></pre></td></tr></table></figure>
+
+<h3 id="开启多进程"><a href="#开启多进程" class="headerlink" title="开启多进程"></a>开启多进程</h3><p>shadowsocks-libev 一个进程只能开启一个端口，因此我们要开启多个进程，对应每个进程使用一份相应的配置文件，从而达到多用户使用的目的<br>配置完多份配置文件后w在 /etc/init.d/shadowsocks 相应位置添加如下代码，一下代码仅供参考，读者可根据实际需求修改，这些代码的意思都很简单。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 配置文件位置</span><br><span class="line">CONF1=/etc/shadowsocks-libev/config1.json</span><br><span class="line"></span><br><span class="line"># 检测配置文件是否存在</span><br><span class="line">if [ ! -f $CONF1 ] ; then</span><br><span class="line">    echo &quot;The configuration file1 cannot be found!&quot;</span><br><span class="line">    exit 0</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># 定位到 pid 文件</span><br><span class="line">PID1=/var/run/$NAME/pid1</span><br><span class="line"></span><br><span class="line"># 开启进程</span><br><span class="line">daemon $DAEMON -c $CONF1 -f $PID1</span><br><span class="line"></span><br><span class="line"># 杀死进程</span><br><span class="line">killproc -p $&#123;PID1&#125;</span><br><span class="line"></span><br><span class="line"># 移除 pid 文件</span><br><span class="line">rm -f $&#123;PID1&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在原来的脚本里有跟上面代码极其相似的地方（数字1没有），把上面的6段代码插入到原来脚本中对应相似的代码后面即可。</p>
+<p><a href="https://github.com/shadowsocks" target="_blank" rel="noopener">client</a></p>
+
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <p>目前 shadowsocks 中还在不断更新的只有 shadowsocks-libev，本文主要介绍这个。</p>
+<h3 id="shadowsocks-libev"><a href="#shadowsocks-libev" class="headerlink" title="shadowsocks-libev"></a>shadowsocks-libev</h3><p>ubuntu 的安装很简单，一条命令即可，不过貌似对 Ubuntu 版本有要求<br>sudo apt install shadowsocks-libev<br>安装的可能不是最新版，最新版请手动编译</p>
+<h3 id="CentOS-Install"><a href="#CentOS-Install" class="headerlink" title="CentOS Install"></a>CentOS Install</h3><p>按官网说明安装软件，建议采用手动方法，原因一是能保证用的是最新版，二是出了问题容易上网搜索解决。<br><a href="https://github.com/shadowsocks/shadowsocks-libev" target="_blank" rel="noopener">website</a></p>
+<p>按下面进行无脑操作。。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release -y</span><br><span class="line">yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto c-ares-devel libev-devel libsodium-devel mbedtls-devel -y</span><br><span class="line"></span><br><span class="line">git clone https://github.com/shadowsocks/shadowsocks-libev.git</span><br><span class="line">cd shadowsocks-libev</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line"></span><br><span class="line">./autogen.sh &amp;&amp; ./configure &amp;&amp; make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<p>接下来需要将配置文件拷贝到常用路径<br>添加配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp ./rpm/SOURCES/etc/init.d/shadowsocks-libev /etc/init.d/shadowsocks-libev</span><br><span class="line">cp ./debian/config.json /etc/shadowsocks-libev/config.json</span><br><span class="line">chmod +x /etc/init.d/shadowsocks-libev</span><br></pre></td></tr></table></figure>
+
+<h3 id="Single-User"><a href="#Single-User" class="headerlink" title="Single User"></a>Single User</h3><p>编辑 <code>vim /etc/shadowsocks-libev/config.json</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:[&quot;[::0]&quot;,&quot;0.0.0.0&quot;],</span><br><span class="line">    &quot;server_port&quot;:8388,</span><br><span class="line">    &quot;local_port&quot;:1080,</span><br><span class="line">    &quot;password&quot;:&quot;barfoo!&quot;,</span><br><span class="line">    &quot;timeout&quot;:60,</span><br><span class="line">    &quot;method&quot;:&quot;chacha20-ietf-poly1305&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该配置同时支持 Ipv6 和 Ipv4，并采用 ss3.0 支持的 AEAD 加密方式。<br>编辑 <code>/etc/init.d/shadowsocks-libev</code> 修复一些历史bug</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// old</span><br><span class="line">DAEMON=/usr/bin/ss-server</span><br><span class="line"></span><br><span class="line">// new </span><br><span class="line">DAEMON=/usr/local/bin/ss-server</span><br></pre></td></tr></table></figure>
+
+<p>修改权限并重启软件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 /etc/init.d/shadowsocks-libev</span><br><span class="line">/etc/init.d/shadowsocks-libev start</span><br></pre></td></tr></table></figure>
+
+<h3 id="multi-user"><a href="#multi-user" class="headerlink" title="multi user"></a>multi user</h3><p>多用户配置有多种方法，官方推荐通过给每个用户一个配置文件，启动多个ss-server实现。<br>还有种方法如下，通过启动ss-manager实现<br>多用户配置文件与单用户不同，我们配置文件目录创建一个<code>ss_manager.json</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;: [&quot;[::0]&quot;,&quot;0.0.0.0&quot;],</span><br><span class="line">    &quot;local_port&quot;: 1080, # 本地端口，自行设定</span><br><span class="line">    &quot;timeout&quot;: 600, # 超时毫秒数</span><br><span class="line">    &quot;method&quot;: &quot;chacha20-ietf-poly1305&quot;,</span><br><span class="line">    &quot;port_password&quot;: &#123;</span><br><span class="line">        &quot;8388&quot;: &quot;barfoo1&quot;, # 端口号与密码</span><br><span class="line">        &quot;8389&quot;: &quot;barfoo2&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --add shadowsocks</span><br><span class="line">service shadowsocks start</span><br></pre></td></tr></table></figure>
+
+<p>若是针对多用户情况，需要手写开机启动脚本，方法如下：<br>应在<code>/usr/lib/systemd/system</code>下新建一个.service文件，例如 <code>ssmanager.service</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=shadowsocks manager # 服务的描述</span><br><span class="line">After=network.target # 该服务跟在哪个服务后启动</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking # 启动时的进程行为，forking是以fork形式从父进程创建子进程，子进程创建后父进程退出</span><br><span class="line">ExecStart=/usr/local/bin/ss-manager --manager-address /var/run/shadowsocks-manager.sock -c /etc/shadowsocks/ss_manager.json # 启动服务时执行的命令</span><br><span class="line">PrivateTmp=true # 使用私有临时文件目录</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target # 附挂在multi-user.target下</span><br></pre></td></tr></table></figure>
+
+<p>所有配置文件与脚本都设置完毕，使用systemctl开启服务。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 更改.service文件后，都要重载守护进程更新systemctl</span><br><span class="line">systemctl daemon-reload</span><br><span class="line"># 启动服务</span><br><span class="line">systemctl start ssmanager.service</span><br><span class="line"># 查看服务状态，若为绿色active(running)则说明服务成功启动</span><br><span class="line">systemctl status ssmanager.service</span><br><span class="line"># 设置服务开机自启动</span><br><span class="line">systemctl enable ssmanager.service</span><br><span class="line"># 还可使用systemctl restart ssmanager.service重启服务，使用systemctl stop ssmanager.service停止服务</span><br></pre></td></tr></table></figure>
+
+<h3 id="开启防火墙白名单"><a href="#开启防火墙白名单" class="headerlink" title="开启防火墙白名单"></a>开启防火墙白名单</h3><p>很多人按照教程的配置完后，发现并不能使用，原因是端口被防火墙关闭了。<br>输入如下代码开启防火墙端口白名单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/firewalld/zones/public.xml</span><br></pre></td></tr></table></figure>
+
+<p>在文件中适当位置添加下面代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;port protocol=&quot;tcp&quot; port=&quot;[server port]&quot;/&gt;</span><br><span class="line">&lt;port protocol=&quot;udp&quot; port=&quot;[server port]&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>[server port]</code> 填你的端口号。<br>重启防火墙</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --complete-reload</span><br></pre></td></tr></table></figure>
+
+<h3 id="开启多进程"><a href="#开启多进程" class="headerlink" title="开启多进程"></a>开启多进程</h3><p>shadowsocks-libev 一个进程只能开启一个端口，因此我们要开启多个进程，对应每个进程使用一份相应的配置文件，从而达到多用户使用的目的<br>配置完多份配置文件后w在 /etc/init.d/shadowsocks 相应位置添加如下代码，一下代码仅供参考，读者可根据实际需求修改，这些代码的意思都很简单。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 配置文件位置</span><br><span class="line">CONF1=/etc/shadowsocks-libev/config1.json</span><br><span class="line"></span><br><span class="line"># 检测配置文件是否存在</span><br><span class="line">if [ ! -f $CONF1 ] ; then</span><br><span class="line">    echo &quot;The configuration file1 cannot be found!&quot;</span><br><span class="line">    exit 0</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># 定位到 pid 文件</span><br><span class="line">PID1=/var/run/$NAME/pid1</span><br><span class="line"></span><br><span class="line"># 开启进程</span><br><span class="line">daemon $DAEMON -c $CONF1 -f $PID1</span><br><span class="line"></span><br><span class="line"># 杀死进程</span><br><span class="line">killproc -p $&#123;PID1&#125;</span><br><span class="line"></span><br><span class="line"># 移除 pid 文件</span><br><span class="line">rm -f $&#123;PID1&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在原来的脚本里有跟上面代码极其相似的地方（数字1没有），把上面的6段代码插入到原来脚本中对应相似的代码后面即可。</p>
+<p><a href="https://github.com/shadowsocks" target="_blank" rel="noopener">client</a></p>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2019/09/14/shadowsocks/" data-id="ckbrqi2u0001b68usropfo34b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowsocks/">shadowsocks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shadowsocks-libev/">shadowsocks-libev</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/17/IP定位/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          IP定位
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/10/docker/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">docker</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WebSafe/">WebSafe</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/lnmp/">lnmp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/software/">software</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/yii2/">yii2</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSRF/" style="font-size: 10px;">CSRF</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/PHP/" style="font-size: 12px;">PHP</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SQL/" style="font-size: 12px;">SQL</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/advanced/" style="font-size: 10px;">advanced</a> <a href="/tags/asset/" style="font-size: 10px;">asset</a> <a href="/tags/btree索引/" style="font-size: 10px;">btree索引</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/complie/" style="font-size: 12px;">complie</a> <a href="/tags/components/" style="font-size: 10px;">components</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/cpu/" style="font-size: 10px;">cpu</a> <a href="/tags/designDB/" style="font-size: 14px;">designDB</a> <a href="/tags/designdb/" style="font-size: 20px;">designdb</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/encrypt/" style="font-size: 10px;">encrypt</a> <a href="/tags/engine/" style="font-size: 10px;">engine</a> <a href="/tags/final类和方法/" style="font-size: 10px;">final类和方法</a> <a href="/tags/hash索引/" style="font-size: 10px;">hash索引</a> <a href="/tags/http-proxy/" style="font-size: 10px;">http proxy</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/index/" style="font-size: 10px;">index</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/lnmp/" style="font-size: 16px;">lnmp</a> <a href="/tags/locating/" style="font-size: 10px;">locating</a> <a href="/tags/mailer/" style="font-size: 10px;">mailer</a> <a href="/tags/mindManger/" style="font-size: 10px;">mindManger</a> <a href="/tags/mysql/" style="font-size: 18px;">mysql</a> <a href="/tags/mysql-二进制/" style="font-size: 10px;">mysql 二进制</a> <a href="/tags/mysql-复制/" style="font-size: 10px;">mysql 复制</a> <a href="/tags/mysqlslap/" style="font-size: 10px;">mysqlslap</a> <a href="/tags/mysql优化/" style="font-size: 10px;">mysql优化</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/optimizer/" style="font-size: 10px;">optimizer</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/php7/" style="font-size: 10px;">php7</a> <a href="/tags/predis/" style="font-size: 10px;">predis</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/self-parent/" style="font-size: 10px;">self & parent</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/shadowsocks-libev/" style="font-size: 10px;">shadowsocks-libev</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/sysbench/" style="font-size: 10px;">sysbench</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/tinyproxy/" style="font-size: 10px;">tinyproxy</a> <a href="/tags/turtle/" style="font-size: 10px;">turtle</a> <a href="/tags/v2ray/" style="font-size: 10px;">v2ray</a> <a href="/tags/vmess/" style="font-size: 10px;">vmess</a> <a href="/tags/web-components/" style="font-size: 10px;">web components</a> <a href="/tags/yii2/" style="font-size: 12px;">yii2</a> <a href="/tags/主从拓扑/" style="font-size: 10px;">主从拓扑</a> <a href="/tags/二进制复制/" style="font-size: 10px;">二进制复制</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/反范式化/" style="font-size: 10px;">反范式化</a> <a href="/tags/基准测试/" style="font-size: 14px;">基准测试</a> <a href="/tags/安装演示数据库/" style="font-size: 10px;">安装演示数据库</a> <a href="/tags/定期备份/" style="font-size: 10px;">定期备份</a> <a href="/tags/封装性/" style="font-size: 10px;">封装性</a> <a href="/tags/常见安全问题/" style="font-size: 10px;">常见安全问题</a> <a href="/tags/抽象类/" style="font-size: 10px;">抽象类</a> <a href="/tags/接口/" style="font-size: 10px;">接口</a> <a href="/tags/物理设计/" style="font-size: 10px;">物理设计</a> <a href="/tags/画图/" style="font-size: 10px;">画图</a> <a href="/tags/硬件影响/" style="font-size: 10px;">硬件影响</a> <a href="/tags/磁盘配置/" style="font-size: 10px;">磁盘配置</a> <a href="/tags/类常量/" style="font-size: 10px;">类常量</a> <a href="/tags/索引优化/" style="font-size: 10px;">索引优化</a> <a href="/tags/继承性/" style="font-size: 10px;">继承性</a> <a href="/tags/自动加载/" style="font-size: 10px;">自动加载</a> <a href="/tags/范式化/" style="font-size: 10px;">范式化</a> <a href="/tags/逻辑设计/" style="font-size: 10px;">逻辑设计</a> <a href="/tags/静态属性和方法/" style="font-size: 10px;">静态属性和方法</a> <a href="/tags/面向对象/" style="font-size: 14px;">面向对象</a> <a href="/tags/高可用架构/" style="font-size: 10px;">高可用架构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/23/SEO/">SEO</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/06/v2ray/">v2ray</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/16/composer境内镜像/">composer境内镜像</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/15/ssr的obfs混淆免流/">ssr的obfs混淆免流</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/23/mindManager/">mindManager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jsonlocker<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/mouse.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+if (typeof jQuery == 'undefined') {
+document.write(unescape("%3Cscript src='/js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+}
+// ]]>
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

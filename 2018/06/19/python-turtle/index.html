@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>python-turtle | Jsonlocker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[TOC]  海龟绘图(Turtle Graphics),turtle库是python的内部库,使用导入即可 import turtle 先说明一下turtle绘图的基础知识:  1.画布(canvas)画布就是turtle为我们展开用于绘图区域, 我们可以设置它的大小和初始位置   1.1 设置画布大小 reensize(canvwidth=None, canvheight=None, bg=N">
+<meta name="keywords" content="python,turtle,画图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-turtle">
+<meta property="og:url" content="https://jsonlocker.github.io/2018/06/19/python-turtle/index.html">
+<meta property="og:site_name" content="Jsonlocker">
+<meta property="og:description" content="[TOC]  海龟绘图(Turtle Graphics),turtle库是python的内部库,使用导入即可 import turtle 先说明一下turtle绘图的基础知识:  1.画布(canvas)画布就是turtle为我们展开用于绘图区域, 我们可以设置它的大小和初始位置   1.1 设置画布大小 reensize(canvwidth=None, canvheight=None, bg=N">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1182370/201709/1182370-20170902065255655-264716312.png">
+<meta property="og:updated_time" content="2020-06-23T09:27:48.147Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python-turtle">
+<meta name="twitter:description" content="[TOC]  海龟绘图(Turtle Graphics),turtle库是python的内部库,使用导入即可 import turtle 先说明一下turtle绘图的基础知识:  1.画布(canvas)画布就是turtle为我们展开用于绘图区域, 我们可以设置它的大小和初始位置   1.1 设置画布大小 reensize(canvwidth=None, canvheight=None, bg=N">
+<meta name="twitter:image" content="https://images2017.cnblogs.com/blog/1182370/201709/1182370-20170902065255655-264716312.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Jsonlocker" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jsonlocker</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jsonlocker.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python-turtle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/19/python-turtle/" class="article-date">
+  <time datetime="2018-06-19T02:48:21.000Z" itemprop="datePublished">2018-06-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python-turtle
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <p>[TOC]</p>
+<p><img src="https://images2017.cnblogs.com/blog/1182370/201709/1182370-20170902065255655-264716312.png" alt="images"></p>
+<p>海龟绘图(Turtle Graphics),turtle库是python的内部库,使用导入即可 import turtle</p>
+<p>先说明一下turtle绘图的基础知识:</p>
+<blockquote>
+<h2 id="1-画布-canvas"><a href="#1-画布-canvas" class="headerlink" title="1.画布(canvas)"></a>1.画布(canvas)</h2><p>画布就是turtle为我们展开用于绘图区域, 我们可以设置它的大小和初始位置</p>
+</blockquote>
+<blockquote>
+<h3 id="1-1-设置画布大小"><a href="#1-1-设置画布大小" class="headerlink" title="1.1 设置画布大小"></a>1.1 设置画布大小</h3></blockquote>
+<p>reensize(canvwidth=None, canvheight=None, bg=None)</p>
+<p>参数分别为画布的宽(单位像素), 高, 背景颜色</p>
+<p>如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">turtle.screensize(<span class="number">800</span>, <span class="number">600</span>, <span class="string">"green"</span>)</span><br><span class="line">turtle.screensize() <span class="comment">#返回默认大小(400, 300)</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h2 id="2-画笔"><a href="#2-画笔" class="headerlink" title="2. 画笔"></a>2. 画笔</h2></blockquote>
+<blockquote>
+<h3 id="2-1-画笔的状态"><a href="#2-1-画笔的状态" class="headerlink" title="2.1 画笔的状态"></a>2.1 画笔的状态</h3></blockquote>
+<p>在画布上,默认有一个坐标原点为画布中心的坐标轴, 坐标原点上有一只面朝x轴正方向小乌龟. 这里我们描述小乌龟时使用了两个词语:<code>坐标原点</code>(位置),面朝<code>x轴正方向(方向)</code>, turtle绘图中, 就是使用位置方向描述小乌龟(画笔)的状态</p>
+<blockquote>
+<h3 id="2-2-画笔的属性"><a href="#2-2-画笔的属性" class="headerlink" title="2.2 画笔的属性"></a>2.2 画笔的属性</h3></blockquote>
+<p>画笔(画笔的属性，颜色、画线的宽度)</p>
+<ul>
+<li>turtle.pensize()：设置画笔的宽度；</li>
+<li>turtle.pencolor(); 没有参数传入,返回当前画笔颜色,传入参数设置画笔颜色,可以是字符串如”green”, “red”,也可以是RGB 3元组,</li>
+<li>turtle.speed(speed): 设置画笔移动速度,画笔绘制的速度范围[0,10]整数, 数字越大越快</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>pencolor(<span class="string">'brown'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup = (<span class="number">0.2</span>, <span class="number">0.8</span>, <span class="number">0.55</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pencolor(tup)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pencolor()</span><br><span class="line"><span class="string">'#33cc8c'</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h3 id="2-3-绘图命令"><a href="#2-3-绘图命令" class="headerlink" title="2.3 绘图命令"></a>2.3 绘图命令</h3></blockquote>
+<p>操纵海龟绘图有着许多的命令,这些命令可以划分为3种:一种为运动命令，一种为画笔控制命令,还有一种是全局控制命令</p>
+<p><strong>(1)画笔运动命令:</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>turtle.forward(distance)</td>
+<td>向当前画笔方向移动distance像素长</td>
+</tr>
+<tr>
+<td>turtle.backward(distance)</td>
+<td>向当前画笔相反方向移动distance像素长度</td>
+</tr>
+<tr>
+<td>turtle.right(degree)</td>
+<td>顺时针移动degree°</td>
+</tr>
+<tr>
+<td>turtle.left(degree)</td>
+<td>逆时针移动degree°</td>
+</tr>
+<tr>
+<td>turtle.pendown()</td>
+<td>移动时绘制图形,缺省时也为绘制</td>
+</tr>
+<tr>
+<td>turtle.goto(x,y)</td>
+<td>将画笔移动到坐标为x,y的位置</td>
+</tr>
+<tr>
+<td>turtle.penup()</td>
+<td>移动时不绘制图形,提起笔，用于另起一个地方绘制时用</td>
+</tr>
+<tr>
+<td>turtle.speed(speed)</td>
+<td>画笔绘制的速度范围[0,10]整数</td>
+</tr>
+<tr>
+<td>turtle.circle()</td>
+<td>画圆,半径为正(负),表示圆心在画笔的左边(右边)画圆</td>
+</tr>
+</tbody></table>
+<p><strong>(2)画笔控制命令:</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>turtle.pensize(width)</td>
+<td>绘制图形时的宽度</td>
+</tr>
+<tr>
+<td>turtle.pencolor()</td>
+<td>画笔颜色</td>
+</tr>
+<tr>
+<td>turtle.fillcolor(colorstring)</td>
+<td>绘制图形的填充颜色</td>
+</tr>
+<tr>
+<td>turtle.color(color1, color2)</td>
+<td>同时设置pencolor=color1, fillcolor=color2</td>
+</tr>
+<tr>
+<td>turtle.filling()</td>
+<td>返回当前是否在填充状态</td>
+</tr>
+<tr>
+<td>turtle.begin_fill()</td>
+<td>准备开始填充图形</td>
+</tr>
+<tr>
+<td>turtle.end_fill()</td>
+<td>填充完成；</td>
+</tr>
+<tr>
+<td>turtle.hideturtle()</td>
+<td>隐藏箭头显示；</td>
+</tr>
+<tr>
+<td>turtle.showturtle()</td>
+<td>与hideturtle()函数对应</td>
+</tr>
+</tbody></table>
+<p><strong>(3) 全局控制命令</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>turtle.clear()</td>
+<td>清空turtle窗口，但是turtle的位置和状态不会改变</td>
+</tr>
+<tr>
+<td>turtle.reset()</td>
+<td>清空窗口，重置turtle状态为起始状态</td>
+</tr>
+<tr>
+<td>turtle.undo()</td>
+<td>撤销上一个turtle动作</td>
+</tr>
+<tr>
+<td>turtle.isvisible()</td>
+<td>返回当前turtle是否可见</td>
+</tr>
+<tr>
+<td>stamp()</td>
+<td>复制当前图形</td>
+</tr>
+<tr>
+<td>turtle.write(s[,font=(“font-name”,font_size,”font_type”)])</td>
+<td>写文本，s为文本内容，font是字体的参数，里面分别为字体名称，大小和类型；font为可选项, font的参数也是可选项</td>
+</tr>
+</tbody></table>
+<blockquote>
+<h2 id="3-命令详解"><a href="#3-命令详解" class="headerlink" title="3. 命令详解"></a>3. 命令详解</h2></blockquote>
+<blockquote>
+<h3 id="3-1-turtle-circle-radius-extent-None-steps-None"><a href="#3-1-turtle-circle-radius-extent-None-steps-None" class="headerlink" title="3.1 turtle.circle(radius, extent=None, steps=None)"></a>3.1 turtle.circle(radius, extent=None, steps=None)</h3><p>描述: 以给定半径画圆<br>参数:<br>radius(半径); 半径为正(负),表示圆心在画笔的左边(右边)画圆<br>extent(弧度) (optional);<br>steps (optional) (做半径为radius的圆的内切正多边形,多边形边数为steps)</p>
+</blockquote>
+<p>举例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">circle(<span class="number">50</span>) <span class="comment"># 整圆;</span></span><br><span class="line">circle(<span class="number">50</span>,steps=<span class="number">3</span>) <span class="comment"># 三角形;</span></span><br><span class="line">circle(<span class="number">120</span>, <span class="number">180</span>) <span class="comment"># 半圆</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h2 id="4-绘图举例"><a href="#4-绘图举例" class="headerlink" title="4. 绘图举例"></a>4. 绘图举例</h2></blockquote>
+<blockquote>
+<h3 id="4-1-太阳花"><a href="#4-1-太阳花" class="headerlink" title="4.1 太阳花"></a>4.1 太阳花</h3></blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle <span class="keyword">as</span> t</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">t.color(<span class="string">"red"</span>, <span class="string">"yellow"</span>)</span><br><span class="line">t.speed(<span class="number">10</span>)</span><br><span class="line">t.begin_fill()</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">50</span>):</span><br><span class="line">    t.forward(<span class="number">200</span>)</span><br><span class="line">    t.left(<span class="number">170</span>)</span><br><span class="line">end_fill()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h3 id="4-2-绘制小蟒蛇"><a href="#4-2-绘制小蟒蛇" class="headerlink" title="4.2 绘制小蟒蛇"></a>4.2 绘制小蟒蛇</h3></blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">drawSnake</span><span class="params">(rad, angle, len, neckrad)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(len):</span><br><span class="line">        turtle.circle(rad, angle)</span><br><span class="line">        turtle.circle(-rad, angle)</span><br><span class="line">    turtle.circle(rad, angle/<span class="number">2</span>)</span><br><span class="line">    turtle.forward(rad/<span class="number">2</span>)  <span class="comment"># 直线前进</span></span><br><span class="line">    turtle.circle(neckrad, <span class="number">180</span>)</span><br><span class="line">    turtle.forward(rad/<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">   turtle.setup(<span class="number">1500</span>, <span class="number">1400</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">   turtle.pensize(<span class="number">30</span>)  <span class="comment"># 画笔尺寸</span></span><br><span class="line">   turtle.pencolor(<span class="string">"green"</span>)</span><br><span class="line">   turtle.seth(<span class="number">-40</span>)    <span class="comment"># 前进的方向</span></span><br><span class="line">   drawSnake(<span class="number">70</span>, <span class="number">80</span>, <span class="number">2</span>, <span class="number">15</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h3 id="4-3-绘制五角星"><a href="#4-3-绘制五角星" class="headerlink" title="4.3 绘制五角星"></a>4.3 绘制五角星</h3></blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">turtle.pensize(<span class="number">5</span>)</span><br><span class="line">turtle.pencolor(<span class="string">"yellow"</span>)</span><br><span class="line">turtle.fillcolor(<span class="string">"red"</span>)</span><br><span class="line"></span><br><span class="line">turtle.begin_fill()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    turtle.forward(<span class="number">200</span>)</span><br><span class="line">    turtle.right(<span class="number">144</span>)</span><br><span class="line">turtle.end_fill()</span><br><span class="line">time.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">turtle.penup()</span><br><span class="line">turtle.goto(<span class="number">-150</span>,<span class="number">-120</span>)</span><br><span class="line">turtle.color(<span class="string">"violet"</span>)</span><br><span class="line">turtle.write(<span class="string">"Done"</span>, font=(<span class="string">'Arial'</span>, <span class="number">40</span>, <span class="string">'normal'</span>))</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<p><img src="https://images2017.cnblogs.com/blog/1182370/201709/1182370-20170902065255655-264716312.png" alt="images"></p>
+<p>海龟绘图(Turtle Graphics),turtle库是python的内部库,使用导入即可 import turtle</p>
+<p>先说明一下turtle绘图的基础知识:</p>
+<blockquote>
+<h2 id="1-画布-canvas"><a href="#1-画布-canvas" class="headerlink" title="1.画布(canvas)"></a>1.画布(canvas)</h2><p>画布就是turtle为我们展开用于绘图区域, 我们可以设置它的大小和初始位置</p>
+</blockquote>
+<blockquote>
+<h3 id="1-1-设置画布大小"><a href="#1-1-设置画布大小" class="headerlink" title="1.1 设置画布大小"></a>1.1 设置画布大小</h3></blockquote>
+<p>reensize(canvwidth=None, canvheight=None, bg=None)</p>
+<p>参数分别为画布的宽(单位像素), 高, 背景颜色</p>
+<p>如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">turtle.screensize(<span class="number">800</span>, <span class="number">600</span>, <span class="string">"green"</span>)</span><br><span class="line">turtle.screensize() <span class="comment">#返回默认大小(400, 300)</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h2 id="2-画笔"><a href="#2-画笔" class="headerlink" title="2. 画笔"></a>2. 画笔</h2></blockquote>
+<blockquote>
+<h3 id="2-1-画笔的状态"><a href="#2-1-画笔的状态" class="headerlink" title="2.1 画笔的状态"></a>2.1 画笔的状态</h3></blockquote>
+<p>在画布上,默认有一个坐标原点为画布中心的坐标轴, 坐标原点上有一只面朝x轴正方向小乌龟. 这里我们描述小乌龟时使用了两个词语:<code>坐标原点</code>(位置),面朝<code>x轴正方向(方向)</code>, turtle绘图中, 就是使用位置方向描述小乌龟(画笔)的状态</p>
+<blockquote>
+<h3 id="2-2-画笔的属性"><a href="#2-2-画笔的属性" class="headerlink" title="2.2 画笔的属性"></a>2.2 画笔的属性</h3></blockquote>
+<p>画笔(画笔的属性，颜色、画线的宽度)</p>
+<ul>
+<li>turtle.pensize()：设置画笔的宽度；</li>
+<li>turtle.pencolor(); 没有参数传入,返回当前画笔颜色,传入参数设置画笔颜色,可以是字符串如”green”, “red”,也可以是RGB 3元组,</li>
+<li>turtle.speed(speed): 设置画笔移动速度,画笔绘制的速度范围[0,10]整数, 数字越大越快</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>pencolor(<span class="string">'brown'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup = (<span class="number">0.2</span>, <span class="number">0.8</span>, <span class="number">0.55</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pencolor(tup)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pencolor()</span><br><span class="line"><span class="string">'#33cc8c'</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h3 id="2-3-绘图命令"><a href="#2-3-绘图命令" class="headerlink" title="2.3 绘图命令"></a>2.3 绘图命令</h3></blockquote>
+<p>操纵海龟绘图有着许多的命令,这些命令可以划分为3种:一种为运动命令，一种为画笔控制命令,还有一种是全局控制命令</p>
+<p><strong>(1)画笔运动命令:</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>turtle.forward(distance)</td>
+<td>向当前画笔方向移动distance像素长</td>
+</tr>
+<tr>
+<td>turtle.backward(distance)</td>
+<td>向当前画笔相反方向移动distance像素长度</td>
+</tr>
+<tr>
+<td>turtle.right(degree)</td>
+<td>顺时针移动degree°</td>
+</tr>
+<tr>
+<td>turtle.left(degree)</td>
+<td>逆时针移动degree°</td>
+</tr>
+<tr>
+<td>turtle.pendown()</td>
+<td>移动时绘制图形,缺省时也为绘制</td>
+</tr>
+<tr>
+<td>turtle.goto(x,y)</td>
+<td>将画笔移动到坐标为x,y的位置</td>
+</tr>
+<tr>
+<td>turtle.penup()</td>
+<td>移动时不绘制图形,提起笔，用于另起一个地方绘制时用</td>
+</tr>
+<tr>
+<td>turtle.speed(speed)</td>
+<td>画笔绘制的速度范围[0,10]整数</td>
+</tr>
+<tr>
+<td>turtle.circle()</td>
+<td>画圆,半径为正(负),表示圆心在画笔的左边(右边)画圆</td>
+</tr>
+</tbody></table>
+<p><strong>(2)画笔控制命令:</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>turtle.pensize(width)</td>
+<td>绘制图形时的宽度</td>
+</tr>
+<tr>
+<td>turtle.pencolor()</td>
+<td>画笔颜色</td>
+</tr>
+<tr>
+<td>turtle.fillcolor(colorstring)</td>
+<td>绘制图形的填充颜色</td>
+</tr>
+<tr>
+<td>turtle.color(color1, color2)</td>
+<td>同时设置pencolor=color1, fillcolor=color2</td>
+</tr>
+<tr>
+<td>turtle.filling()</td>
+<td>返回当前是否在填充状态</td>
+</tr>
+<tr>
+<td>turtle.begin_fill()</td>
+<td>准备开始填充图形</td>
+</tr>
+<tr>
+<td>turtle.end_fill()</td>
+<td>填充完成；</td>
+</tr>
+<tr>
+<td>turtle.hideturtle()</td>
+<td>隐藏箭头显示；</td>
+</tr>
+<tr>
+<td>turtle.showturtle()</td>
+<td>与hideturtle()函数对应</td>
+</tr>
+</tbody></table>
+<p><strong>(3) 全局控制命令</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>turtle.clear()</td>
+<td>清空turtle窗口，但是turtle的位置和状态不会改变</td>
+</tr>
+<tr>
+<td>turtle.reset()</td>
+<td>清空窗口，重置turtle状态为起始状态</td>
+</tr>
+<tr>
+<td>turtle.undo()</td>
+<td>撤销上一个turtle动作</td>
+</tr>
+<tr>
+<td>turtle.isvisible()</td>
+<td>返回当前turtle是否可见</td>
+</tr>
+<tr>
+<td>stamp()</td>
+<td>复制当前图形</td>
+</tr>
+<tr>
+<td>turtle.write(s[,font=(“font-name”,font_size,”font_type”)])</td>
+<td>写文本，s为文本内容，font是字体的参数，里面分别为字体名称，大小和类型；font为可选项, font的参数也是可选项</td>
+</tr>
+</tbody></table>
+<blockquote>
+<h2 id="3-命令详解"><a href="#3-命令详解" class="headerlink" title="3. 命令详解"></a>3. 命令详解</h2></blockquote>
+<blockquote>
+<h3 id="3-1-turtle-circle-radius-extent-None-steps-None"><a href="#3-1-turtle-circle-radius-extent-None-steps-None" class="headerlink" title="3.1 turtle.circle(radius, extent=None, steps=None)"></a>3.1 turtle.circle(radius, extent=None, steps=None)</h3><p>描述: 以给定半径画圆<br>参数:<br>radius(半径); 半径为正(负),表示圆心在画笔的左边(右边)画圆<br>extent(弧度) (optional);<br>steps (optional) (做半径为radius的圆的内切正多边形,多边形边数为steps)</p>
+</blockquote>
+<p>举例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">circle(<span class="number">50</span>) <span class="comment"># 整圆;</span></span><br><span class="line">circle(<span class="number">50</span>,steps=<span class="number">3</span>) <span class="comment"># 三角形;</span></span><br><span class="line">circle(<span class="number">120</span>, <span class="number">180</span>) <span class="comment"># 半圆</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h2 id="4-绘图举例"><a href="#4-绘图举例" class="headerlink" title="4. 绘图举例"></a>4. 绘图举例</h2></blockquote>
+<blockquote>
+<h3 id="4-1-太阳花"><a href="#4-1-太阳花" class="headerlink" title="4.1 太阳花"></a>4.1 太阳花</h3></blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle <span class="keyword">as</span> t</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">t.color(<span class="string">"red"</span>, <span class="string">"yellow"</span>)</span><br><span class="line">t.speed(<span class="number">10</span>)</span><br><span class="line">t.begin_fill()</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">50</span>):</span><br><span class="line">    t.forward(<span class="number">200</span>)</span><br><span class="line">    t.left(<span class="number">170</span>)</span><br><span class="line">end_fill()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h3 id="4-2-绘制小蟒蛇"><a href="#4-2-绘制小蟒蛇" class="headerlink" title="4.2 绘制小蟒蛇"></a>4.2 绘制小蟒蛇</h3></blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">drawSnake</span><span class="params">(rad, angle, len, neckrad)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(len):</span><br><span class="line">        turtle.circle(rad, angle)</span><br><span class="line">        turtle.circle(-rad, angle)</span><br><span class="line">    turtle.circle(rad, angle/<span class="number">2</span>)</span><br><span class="line">    turtle.forward(rad/<span class="number">2</span>)  <span class="comment"># 直线前进</span></span><br><span class="line">    turtle.circle(neckrad, <span class="number">180</span>)</span><br><span class="line">    turtle.forward(rad/<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">   turtle.setup(<span class="number">1500</span>, <span class="number">1400</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">   turtle.pensize(<span class="number">30</span>)  <span class="comment"># 画笔尺寸</span></span><br><span class="line">   turtle.pencolor(<span class="string">"green"</span>)</span><br><span class="line">   turtle.seth(<span class="number">-40</span>)    <span class="comment"># 前进的方向</span></span><br><span class="line">   drawSnake(<span class="number">70</span>, <span class="number">80</span>, <span class="number">2</span>, <span class="number">15</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h3 id="4-3-绘制五角星"><a href="#4-3-绘制五角星" class="headerlink" title="4.3 绘制五角星"></a>4.3 绘制五角星</h3></blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">turtle.pensize(<span class="number">5</span>)</span><br><span class="line">turtle.pencolor(<span class="string">"yellow"</span>)</span><br><span class="line">turtle.fillcolor(<span class="string">"red"</span>)</span><br><span class="line"></span><br><span class="line">turtle.begin_fill()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    turtle.forward(<span class="number">200</span>)</span><br><span class="line">    turtle.right(<span class="number">144</span>)</span><br><span class="line">turtle.end_fill()</span><br><span class="line">time.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">turtle.penup()</span><br><span class="line">turtle.goto(<span class="number">-150</span>,<span class="number">-120</span>)</span><br><span class="line">turtle.color(<span class="string">"violet"</span>)</span><br><span class="line">turtle.write(<span class="string">"Done"</span>, font=(<span class="string">'Arial'</span>, <span class="number">40</span>, <span class="string">'normal'</span>))</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2018/06/19/python-turtle/" data-id="ckbrqi2ty001868usp5ylt8ot" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/turtle/">turtle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/画图/">画图</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/24/DesignDB-5-3-常见主从拓扑/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DesignDB-5-3_常见主从拓扑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/17/DesignDB-5-2-日志复制操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DesignDB-5-2_日志复制操作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WebSafe/">WebSafe</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/lnmp/">lnmp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/software/">software</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/yii2/">yii2</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSRF/" style="font-size: 10px;">CSRF</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/PHP/" style="font-size: 12px;">PHP</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SQL/" style="font-size: 12px;">SQL</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/advanced/" style="font-size: 10px;">advanced</a> <a href="/tags/asset/" style="font-size: 10px;">asset</a> <a href="/tags/btree索引/" style="font-size: 10px;">btree索引</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/complie/" style="font-size: 12px;">complie</a> <a href="/tags/components/" style="font-size: 10px;">components</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/cpu/" style="font-size: 10px;">cpu</a> <a href="/tags/designDB/" style="font-size: 14px;">designDB</a> <a href="/tags/designdb/" style="font-size: 20px;">designdb</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/encrypt/" style="font-size: 10px;">encrypt</a> <a href="/tags/engine/" style="font-size: 10px;">engine</a> <a href="/tags/final类和方法/" style="font-size: 10px;">final类和方法</a> <a href="/tags/hash索引/" style="font-size: 10px;">hash索引</a> <a href="/tags/http-proxy/" style="font-size: 10px;">http proxy</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/index/" style="font-size: 10px;">index</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/lnmp/" style="font-size: 16px;">lnmp</a> <a href="/tags/locating/" style="font-size: 10px;">locating</a> <a href="/tags/mailer/" style="font-size: 10px;">mailer</a> <a href="/tags/mindManger/" style="font-size: 10px;">mindManger</a> <a href="/tags/mysql/" style="font-size: 18px;">mysql</a> <a href="/tags/mysql-二进制/" style="font-size: 10px;">mysql 二进制</a> <a href="/tags/mysql-复制/" style="font-size: 10px;">mysql 复制</a> <a href="/tags/mysqlslap/" style="font-size: 10px;">mysqlslap</a> <a href="/tags/mysql优化/" style="font-size: 10px;">mysql优化</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/optimizer/" style="font-size: 10px;">optimizer</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/php7/" style="font-size: 10px;">php7</a> <a href="/tags/predis/" style="font-size: 10px;">predis</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/self-parent/" style="font-size: 10px;">self & parent</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/shadowsocks-libev/" style="font-size: 10px;">shadowsocks-libev</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/sysbench/" style="font-size: 10px;">sysbench</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/tinyproxy/" style="font-size: 10px;">tinyproxy</a> <a href="/tags/turtle/" style="font-size: 10px;">turtle</a> <a href="/tags/v2ray/" style="font-size: 10px;">v2ray</a> <a href="/tags/vmess/" style="font-size: 10px;">vmess</a> <a href="/tags/web-components/" style="font-size: 10px;">web components</a> <a href="/tags/yii2/" style="font-size: 12px;">yii2</a> <a href="/tags/主从拓扑/" style="font-size: 10px;">主从拓扑</a> <a href="/tags/二进制复制/" style="font-size: 10px;">二进制复制</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/反范式化/" style="font-size: 10px;">反范式化</a> <a href="/tags/基准测试/" style="font-size: 14px;">基准测试</a> <a href="/tags/安装演示数据库/" style="font-size: 10px;">安装演示数据库</a> <a href="/tags/定期备份/" style="font-size: 10px;">定期备份</a> <a href="/tags/封装性/" style="font-size: 10px;">封装性</a> <a href="/tags/常见安全问题/" style="font-size: 10px;">常见安全问题</a> <a href="/tags/抽象类/" style="font-size: 10px;">抽象类</a> <a href="/tags/接口/" style="font-size: 10px;">接口</a> <a href="/tags/物理设计/" style="font-size: 10px;">物理设计</a> <a href="/tags/画图/" style="font-size: 10px;">画图</a> <a href="/tags/硬件影响/" style="font-size: 10px;">硬件影响</a> <a href="/tags/磁盘配置/" style="font-size: 10px;">磁盘配置</a> <a href="/tags/类常量/" style="font-size: 10px;">类常量</a> <a href="/tags/索引优化/" style="font-size: 10px;">索引优化</a> <a href="/tags/继承性/" style="font-size: 10px;">继承性</a> <a href="/tags/自动加载/" style="font-size: 10px;">自动加载</a> <a href="/tags/范式化/" style="font-size: 10px;">范式化</a> <a href="/tags/逻辑设计/" style="font-size: 10px;">逻辑设计</a> <a href="/tags/静态属性和方法/" style="font-size: 10px;">静态属性和方法</a> <a href="/tags/面向对象/" style="font-size: 14px;">面向对象</a> <a href="/tags/高可用架构/" style="font-size: 10px;">高可用架构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/23/SEO/">SEO</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/06/v2ray/">v2ray</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/16/composer境内镜像/">composer境内镜像</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/15/ssr的obfs混淆免流/">ssr的obfs混淆免流</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/23/mindManager/">mindManager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jsonlocker<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/mouse.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+if (typeof jQuery == 'undefined') {
+document.write(unescape("%3Cscript src='/js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+}
+// ]]>
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

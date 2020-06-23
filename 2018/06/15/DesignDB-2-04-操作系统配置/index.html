@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>DesignDB-2-04_操作系统配置 | Jsonlocker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MySQL适合的操作系统 Windows 注意大小写,window大小写不敏感   Linux FreeBS Solaris  CentOS系统参数优化内核相关参数(/etc/sysctl.conf)可以下内容直接写入文件 网络参数123456789101112131415161718192021#决定每个端口监听队列的长度net.core.somaxconn=65535#允许发送到对列数据包的数">
+<meta name="keywords" content="designdb,OS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DesignDB-2-04_操作系统配置">
+<meta property="og:url" content="https://jsonlocker.github.io/2018/06/15/DesignDB-2-04-操作系统配置/index.html">
+<meta property="og:site_name" content="Jsonlocker">
+<meta property="og:description" content="MySQL适合的操作系统 Windows 注意大小写,window大小写不敏感   Linux FreeBS Solaris  CentOS系统参数优化内核相关参数(/etc/sysctl.conf)可以下内容直接写入文件 网络参数123456789101112131415161718192021#决定每个端口监听队列的长度net.core.somaxconn=65535#允许发送到对列数据包的数">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-23T09:27:48.137Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DesignDB-2-04_操作系统配置">
+<meta name="twitter:description" content="MySQL适合的操作系统 Windows 注意大小写,window大小写不敏感   Linux FreeBS Solaris  CentOS系统参数优化内核相关参数(/etc/sysctl.conf)可以下内容直接写入文件 网络参数123456789101112131415161718192021#决定每个端口监听队列的长度net.core.somaxconn=65535#允许发送到对列数据包的数">
+  
+    <link rel="alternate" href="/atom.xml" title="Jsonlocker" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jsonlocker</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jsonlocker.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-DesignDB-2-04-操作系统配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/15/DesignDB-2-04-操作系统配置/" class="article-date">
+  <time datetime="2018-06-15T09:25:31.000Z" itemprop="datePublished">2018-06-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DesignDB-2-04_操作系统配置
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="MySQL适合的操作系统"><a href="#MySQL适合的操作系统" class="headerlink" title="MySQL适合的操作系统"></a>MySQL适合的操作系统</h2><ul>
+<li>Windows<ul>
+<li>注意大小写,window大小写不敏感</li>
+</ul>
+</li>
+<li>Linux</li>
+<li>FreeBS</li>
+<li>Solaris</li>
+</ul>
+<h2 id="CentOS系统参数优化"><a href="#CentOS系统参数优化" class="headerlink" title="CentOS系统参数优化"></a>CentOS系统参数优化</h2><h3 id="内核相关参数-etc-sysctl-conf"><a href="#内核相关参数-etc-sysctl-conf" class="headerlink" title="内核相关参数(/etc/sysctl.conf)"></a>内核相关参数(/etc/sysctl.conf)</h3><p>可以下内容直接写入文件</p>
+<h4 id="网络参数"><a href="#网络参数" class="headerlink" title="网络参数"></a><strong>网络参数</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#决定每个端口监听队列的长度</span><br><span class="line">net.core.somaxconn=65535</span><br><span class="line">#允许发送到对列数据包的数目</span><br><span class="line">net.core.netdev_max_backlog=65535</span><br><span class="line">net.ipv4.tcp_max_syn_backlog=65535</span><br><span class="line"></span><br><span class="line"># 加快tcp连接的内存回收</span><br><span class="line">net.ipv4.tcp_fin_timeout=10</span><br><span class="line">net.ipv4.tcp_tw_reuse=1</span><br><span class="line">net.ipv4.tcp_tw_recycle=1</span><br><span class="line"></span><br><span class="line"># tcp连接缓冲区大小值和最大值</span><br><span class="line">net.core.wmem_default = 87380</span><br><span class="line">net.core.wmem_max = 16777216</span><br><span class="line">net.core.rmem_default = 87380</span><br><span class="line">net.core.rmem_max = 16777216</span><br><span class="line"></span><br><span class="line"># 减少实效链接占用tcp资源</span><br><span class="line">net.ipv4.tcp_keepalive_time = 120</span><br><span class="line">net.ipv4.tcp_keepalive_intvl = 30</span><br><span class="line">net.ipv4.tcp_keepalive_probes = 3</span><br></pre></td></tr></table></figure>
+
+<h4 id="内存参数-etc-sysctl-conf"><a href="#内存参数-etc-sysctl-conf" class="headerlink" title="内存参数(/etc/sysctl.conf)"></a><strong>内存参数</strong>(/etc/sysctl.conf)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Linux内核参数最重要的参数之一,用于定义单个共享内存段的最大值</span><br><span class="line"># 需要设置足够大,以便能容纳下整个InnoDB缓冲池的大小</span><br><span class="line"># 建议取物理内存的一半,最大可为物理内存值－1byte，下面是取4个G的大小</span><br><span class="line">kernel.shmmax = 4294967295</span><br><span class="line"></span><br><span class="line"># 对于内存不足时,对性能产生比较明显影响</span><br><span class="line"># 除非虚拟系统完全占满了,否则不要使用交换区</span><br><span class="line">vm.swappiness = 0</span><br></pre></td></tr></table></figure>
+
+<h4 id="资源限制-etc-security-limit-conf"><a href="#资源限制-etc-security-limit-conf" class="headerlink" title="资源限制(/etc/security/limit.conf)"></a><strong>资源限制</strong>(/etc/security/limit.conf)</h4><p>limit.conf是Linux PAM 是插入式认证模块的配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 打开文件数量</span><br><span class="line"># * 对所有用户有效</span><br><span class="line"># soft对当前系统有效</span><br><span class="line"># 表示系统所能设定的最大值 </span><br><span class="line"># 所限制打开文件的最大数量</span><br><span class="line"># 限制的数值</span><br><span class="line"># 需要重启系统生效</span><br><span class="line">* soft nofile 65535</span><br><span class="line">* hard nofile 65535</span><br></pre></td></tr></table></figure>
+
+<h4 id="磁盘调度策略-sys-block-devname-queue-scheduler"><a href="#磁盘调度策略-sys-block-devname-queue-scheduler" class="headerlink" title="磁盘调度策略(/sys/block/devname/queue/scheduler)"></a><strong>磁盘调度策略</strong>(/sys/block/devname/queue/scheduler)</h4><p>使用下面的命令进行查看当前磁盘的调度策略</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/block/sda/queue/scheduler</span><br><span class="line">noop anticipatory deadline [cfq]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把调度策略改成deadline</span></span><br><span class="line"><span class="built_in">echo</span> deadline &gt; /sys/block/sda/queue/scheduler</span><br></pre></td></tr></table></figure>
+
+<p>noop(电梯式调度策略)<br>当一个新请求到来,将请求合并到最久的请求之后，以此来保证请求同一介质。</p>
+<p>NOOP倾向饿死读而利于写,因此NOOP对<strong>闪存设备.RAM</strong>以及<strong>嵌入式系统</strong>是最好的选择.</p>
+<p>deadline(截止时间调度策略)<br>确保一个截至时间内服务请求，这个截至时间可调整，默认读期限短于写期限，这样可以避免写操作因为不能读取而饿死的现象。<br>deadline对于<strong>数据库类</strong>是最好的选择.</p>
+<p>anticipatory(预料I/O调度策略)<br>和deadline类似,在最后一次读操作后要等待6s,再进行其他I/O请求调度。适合<strong>写入较多</strong>的环境,比如文件服务器,它对数据库环境表现很差</p>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p>内存交换区</p>
+<p>在安装Linux系统时候会有个特殊的磁盘分区，叫系统交换分区<br>用<code>free-m</code>命令查看可以看到 swap 就是交换分区<br>当系统没有足够内存时就会将虚拟内存写到磁盘交换区中进行内存交换<br>mysql优化上说是希望可以禁用，</p>
+<p>禁用的负面作用</p>
+<ul>
+<li>降低操作系统性能</li>
+<li>容易造成内存溢出，崩溃或者都被系统kill掉</li>
+</ul>
+<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><p>Windows<br>    - FAT<br>    - NTFS*<br>Linux<br>    - EXT3<br>    - EXT4<br>    - XFS*</p>
+<p>EXT3/4 系统的文件挂载参数(/etc/fstab)</p>
+<p>data = writeback | ordered | journal</p>
+<ul>
+<li>writeback (最快)</li>
+<li>ordered(慢,安全)</li>
+<li>journal(没必要，最慢)</li>
+</ul>
+<h1 id="禁止纪录访问文件的时间和读取目录的时间"><a href="#禁止纪录访问文件的时间和读取目录的时间" class="headerlink" title="禁止纪录访问文件的时间和读取目录的时间"></a>禁止纪录访问文件的时间和读取目录的时间</h1><h1 id="节省写操作"><a href="#节省写操作" class="headerlink" title="节省写操作"></a>节省写操作</h1><p>noatime,nodiratime </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 完整的配置</span><br><span class="line">/dev/sda1/ext4 noatime,nodiratime,data=writeback 1 1</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="MySQL适合的操作系统"><a href="#MySQL适合的操作系统" class="headerlink" title="MySQL适合的操作系统"></a>MySQL适合的操作系统</h2><ul>
+<li>Windows<ul>
+<li>注意大小写,window大小写不敏感</li>
+</ul>
+</li>
+<li>Linux</li>
+<li>FreeBS</li>
+<li>Solaris</li>
+</ul>
+<h2 id="CentOS系统参数优化"><a href="#CentOS系统参数优化" class="headerlink" title="CentOS系统参数优化"></a>CentOS系统参数优化</h2><h3 id="内核相关参数-etc-sysctl-conf"><a href="#内核相关参数-etc-sysctl-conf" class="headerlink" title="内核相关参数(/etc/sysctl.conf)"></a>内核相关参数(/etc/sysctl.conf)</h3><p>可以下内容直接写入文件</p>
+<h4 id="网络参数"><a href="#网络参数" class="headerlink" title="网络参数"></a><strong>网络参数</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#决定每个端口监听队列的长度</span><br><span class="line">net.core.somaxconn=65535</span><br><span class="line">#允许发送到对列数据包的数目</span><br><span class="line">net.core.netdev_max_backlog=65535</span><br><span class="line">net.ipv4.tcp_max_syn_backlog=65535</span><br><span class="line"></span><br><span class="line"># 加快tcp连接的内存回收</span><br><span class="line">net.ipv4.tcp_fin_timeout=10</span><br><span class="line">net.ipv4.tcp_tw_reuse=1</span><br><span class="line">net.ipv4.tcp_tw_recycle=1</span><br><span class="line"></span><br><span class="line"># tcp连接缓冲区大小值和最大值</span><br><span class="line">net.core.wmem_default = 87380</span><br><span class="line">net.core.wmem_max = 16777216</span><br><span class="line">net.core.rmem_default = 87380</span><br><span class="line">net.core.rmem_max = 16777216</span><br><span class="line"></span><br><span class="line"># 减少实效链接占用tcp资源</span><br><span class="line">net.ipv4.tcp_keepalive_time = 120</span><br><span class="line">net.ipv4.tcp_keepalive_intvl = 30</span><br><span class="line">net.ipv4.tcp_keepalive_probes = 3</span><br></pre></td></tr></table></figure>
+
+<h4 id="内存参数-etc-sysctl-conf"><a href="#内存参数-etc-sysctl-conf" class="headerlink" title="内存参数(/etc/sysctl.conf)"></a><strong>内存参数</strong>(/etc/sysctl.conf)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Linux内核参数最重要的参数之一,用于定义单个共享内存段的最大值</span><br><span class="line"># 需要设置足够大,以便能容纳下整个InnoDB缓冲池的大小</span><br><span class="line"># 建议取物理内存的一半,最大可为物理内存值－1byte，下面是取4个G的大小</span><br><span class="line">kernel.shmmax = 4294967295</span><br><span class="line"></span><br><span class="line"># 对于内存不足时,对性能产生比较明显影响</span><br><span class="line"># 除非虚拟系统完全占满了,否则不要使用交换区</span><br><span class="line">vm.swappiness = 0</span><br></pre></td></tr></table></figure>
+
+<h4 id="资源限制-etc-security-limit-conf"><a href="#资源限制-etc-security-limit-conf" class="headerlink" title="资源限制(/etc/security/limit.conf)"></a><strong>资源限制</strong>(/etc/security/limit.conf)</h4><p>limit.conf是Linux PAM 是插入式认证模块的配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 打开文件数量</span><br><span class="line"># * 对所有用户有效</span><br><span class="line"># soft对当前系统有效</span><br><span class="line"># 表示系统所能设定的最大值 </span><br><span class="line"># 所限制打开文件的最大数量</span><br><span class="line"># 限制的数值</span><br><span class="line"># 需要重启系统生效</span><br><span class="line">* soft nofile 65535</span><br><span class="line">* hard nofile 65535</span><br></pre></td></tr></table></figure>
+
+<h4 id="磁盘调度策略-sys-block-devname-queue-scheduler"><a href="#磁盘调度策略-sys-block-devname-queue-scheduler" class="headerlink" title="磁盘调度策略(/sys/block/devname/queue/scheduler)"></a><strong>磁盘调度策略</strong>(/sys/block/devname/queue/scheduler)</h4><p>使用下面的命令进行查看当前磁盘的调度策略</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/block/sda/queue/scheduler</span><br><span class="line">noop anticipatory deadline [cfq]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把调度策略改成deadline</span></span><br><span class="line"><span class="built_in">echo</span> deadline &gt; /sys/block/sda/queue/scheduler</span><br></pre></td></tr></table></figure>
+
+<p>noop(电梯式调度策略)<br>当一个新请求到来,将请求合并到最久的请求之后，以此来保证请求同一介质。</p>
+<p>NOOP倾向饿死读而利于写,因此NOOP对<strong>闪存设备.RAM</strong>以及<strong>嵌入式系统</strong>是最好的选择.</p>
+<p>deadline(截止时间调度策略)<br>确保一个截至时间内服务请求，这个截至时间可调整，默认读期限短于写期限，这样可以避免写操作因为不能读取而饿死的现象。<br>deadline对于<strong>数据库类</strong>是最好的选择.</p>
+<p>anticipatory(预料I/O调度策略)<br>和deadline类似,在最后一次读操作后要等待6s,再进行其他I/O请求调度。适合<strong>写入较多</strong>的环境,比如文件服务器,它对数据库环境表现很差</p>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p>内存交换区</p>
+<p>在安装Linux系统时候会有个特殊的磁盘分区，叫系统交换分区<br>用<code>free-m</code>命令查看可以看到 swap 就是交换分区<br>当系统没有足够内存时就会将虚拟内存写到磁盘交换区中进行内存交换<br>mysql优化上说是希望可以禁用，</p>
+<p>禁用的负面作用</p>
+<ul>
+<li>降低操作系统性能</li>
+<li>容易造成内存溢出，崩溃或者都被系统kill掉</li>
+</ul>
+<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><p>Windows<br>    - FAT<br>    - NTFS*<br>Linux<br>    - EXT3<br>    - EXT4<br>    - XFS*</p>
+<p>EXT3/4 系统的文件挂载参数(/etc/fstab)</p>
+<p>data = writeback | ordered | journal</p>
+<ul>
+<li>writeback (最快)</li>
+<li>ordered(慢,安全)</li>
+<li>journal(没必要，最慢)</li>
+</ul>
+<h1 id="禁止纪录访问文件的时间和读取目录的时间"><a href="#禁止纪录访问文件的时间和读取目录的时间" class="headerlink" title="禁止纪录访问文件的时间和读取目录的时间"></a>禁止纪录访问文件的时间和读取目录的时间</h1><h1 id="节省写操作"><a href="#节省写操作" class="headerlink" title="节省写操作"></a>节省写操作</h1><p>noatime,nodiratime </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 完整的配置</span><br><span class="line">/dev/sda1/ext4 noatime,nodiratime,data=writeback 1 1</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2018/06/15/DesignDB-2-04-操作系统配置/" data-id="ckbrqi2tb000c68uss3sxdrck" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OS/">OS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/designdb/">designdb</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/15/DesignDB-2-05-存储引擎/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DesignDB-2-05_存储引擎
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/15/DesignDB-2-03-磁盘的配置选择/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DesignDB-2-03_磁盘的配置选择</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WebSafe/">WebSafe</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/lnmp/">lnmp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/software/">software</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/yii2/">yii2</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSRF/" style="font-size: 10px;">CSRF</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/PHP/" style="font-size: 12px;">PHP</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SQL/" style="font-size: 12px;">SQL</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/advanced/" style="font-size: 10px;">advanced</a> <a href="/tags/asset/" style="font-size: 10px;">asset</a> <a href="/tags/btree索引/" style="font-size: 10px;">btree索引</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/complie/" style="font-size: 12px;">complie</a> <a href="/tags/components/" style="font-size: 10px;">components</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/cpu/" style="font-size: 10px;">cpu</a> <a href="/tags/designDB/" style="font-size: 14px;">designDB</a> <a href="/tags/designdb/" style="font-size: 20px;">designdb</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/encrypt/" style="font-size: 10px;">encrypt</a> <a href="/tags/engine/" style="font-size: 10px;">engine</a> <a href="/tags/final类和方法/" style="font-size: 10px;">final类和方法</a> <a href="/tags/hash索引/" style="font-size: 10px;">hash索引</a> <a href="/tags/http-proxy/" style="font-size: 10px;">http proxy</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/index/" style="font-size: 10px;">index</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/lnmp/" style="font-size: 16px;">lnmp</a> <a href="/tags/locating/" style="font-size: 10px;">locating</a> <a href="/tags/mailer/" style="font-size: 10px;">mailer</a> <a href="/tags/mindManger/" style="font-size: 10px;">mindManger</a> <a href="/tags/mysql/" style="font-size: 18px;">mysql</a> <a href="/tags/mysql-二进制/" style="font-size: 10px;">mysql 二进制</a> <a href="/tags/mysql-复制/" style="font-size: 10px;">mysql 复制</a> <a href="/tags/mysqlslap/" style="font-size: 10px;">mysqlslap</a> <a href="/tags/mysql优化/" style="font-size: 10px;">mysql优化</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/optimizer/" style="font-size: 10px;">optimizer</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/php7/" style="font-size: 10px;">php7</a> <a href="/tags/predis/" style="font-size: 10px;">predis</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/self-parent/" style="font-size: 10px;">self & parent</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/shadowsocks-libev/" style="font-size: 10px;">shadowsocks-libev</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/sysbench/" style="font-size: 10px;">sysbench</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/tinyproxy/" style="font-size: 10px;">tinyproxy</a> <a href="/tags/turtle/" style="font-size: 10px;">turtle</a> <a href="/tags/v2ray/" style="font-size: 10px;">v2ray</a> <a href="/tags/vmess/" style="font-size: 10px;">vmess</a> <a href="/tags/web-components/" style="font-size: 10px;">web components</a> <a href="/tags/yii2/" style="font-size: 12px;">yii2</a> <a href="/tags/主从拓扑/" style="font-size: 10px;">主从拓扑</a> <a href="/tags/二进制复制/" style="font-size: 10px;">二进制复制</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/反范式化/" style="font-size: 10px;">反范式化</a> <a href="/tags/基准测试/" style="font-size: 14px;">基准测试</a> <a href="/tags/安装演示数据库/" style="font-size: 10px;">安装演示数据库</a> <a href="/tags/定期备份/" style="font-size: 10px;">定期备份</a> <a href="/tags/封装性/" style="font-size: 10px;">封装性</a> <a href="/tags/常见安全问题/" style="font-size: 10px;">常见安全问题</a> <a href="/tags/抽象类/" style="font-size: 10px;">抽象类</a> <a href="/tags/接口/" style="font-size: 10px;">接口</a> <a href="/tags/物理设计/" style="font-size: 10px;">物理设计</a> <a href="/tags/画图/" style="font-size: 10px;">画图</a> <a href="/tags/硬件影响/" style="font-size: 10px;">硬件影响</a> <a href="/tags/磁盘配置/" style="font-size: 10px;">磁盘配置</a> <a href="/tags/类常量/" style="font-size: 10px;">类常量</a> <a href="/tags/索引优化/" style="font-size: 10px;">索引优化</a> <a href="/tags/继承性/" style="font-size: 10px;">继承性</a> <a href="/tags/自动加载/" style="font-size: 10px;">自动加载</a> <a href="/tags/范式化/" style="font-size: 10px;">范式化</a> <a href="/tags/逻辑设计/" style="font-size: 10px;">逻辑设计</a> <a href="/tags/静态属性和方法/" style="font-size: 10px;">静态属性和方法</a> <a href="/tags/面向对象/" style="font-size: 14px;">面向对象</a> <a href="/tags/高可用架构/" style="font-size: 10px;">高可用架构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/23/SEO/">SEO</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/06/v2ray/">v2ray</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/16/composer境内镜像/">composer境内镜像</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/15/ssr的obfs混淆免流/">ssr的obfs混淆免流</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/23/mindManager/">mindManager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jsonlocker<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/mouse.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+if (typeof jQuery == 'undefined') {
+document.write(unescape("%3Cscript src='/js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+}
+// ]]>
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

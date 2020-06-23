@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>DesignDB-2-05_存储引擎 | Jsonlocker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MyISAM 存储引擎 是mysql5.5之前的默认存储引擎。  文件: 由MYD和MYI 2种文件构成  特性:   并发性和锁级别   表损坏修复  check table tablename 检查表 repair table tablename 恢复表  123create table myisam ( id int, c1 varchar(20))engine=myisam charset">
+<meta name="keywords" content="designdb,engine">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DesignDB-2-05_存储引擎">
+<meta property="og:url" content="https://jsonlocker.github.io/2018/06/15/DesignDB-2-05-存储引擎/index.html">
+<meta property="og:site_name" content="Jsonlocker">
+<meta property="og:description" content="MyISAM 存储引擎 是mysql5.5之前的默认存储引擎。  文件: 由MYD和MYI 2种文件构成  特性:   并发性和锁级别   表损坏修复  check table tablename 检查表 repair table tablename 恢复表  123create table myisam ( id int, c1 varchar(20))engine=myisam charset">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-23T09:27:48.138Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DesignDB-2-05_存储引擎">
+<meta name="twitter:description" content="MyISAM 存储引擎 是mysql5.5之前的默认存储引擎。  文件: 由MYD和MYI 2种文件构成  特性:   并发性和锁级别   表损坏修复  check table tablename 检查表 repair table tablename 恢复表  123create table myisam ( id int, c1 varchar(20))engine=myisam charset">
+  
+    <link rel="alternate" href="/atom.xml" title="Jsonlocker" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jsonlocker</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jsonlocker.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-DesignDB-2-05-存储引擎" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/15/DesignDB-2-05-存储引擎/" class="article-date">
+  <time datetime="2018-06-15T09:26:52.000Z" itemprop="datePublished">2018-06-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DesignDB-2-05_存储引擎
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h3 id="MyISAM-存储引擎"><a href="#MyISAM-存储引擎" class="headerlink" title="MyISAM 存储引擎"></a>MyISAM 存储引擎</h3><ul>
+<li><p>是mysql5.5之前的默认存储引擎。</p>
+</li>
+<li><p>文件: 由MYD和MYI 2种文件构成</p>
+</li>
+<li><p>特性: </p>
+<ul>
+<li><p>并发性和锁级别 </p>
+</li>
+<li><p>表损坏修复</p>
+<ul>
+<li>check table tablename 检查表</li>
+<li>repair table tablename 恢复表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create table myisam ( id int, c1 varchar(20))engine=myisam charset=utf8;</span><br><span class="line">check table myisam;</span><br><span class="line">repair table myisam;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>支持全文索引</p>
+</li>
+<li><p>支持数据压缩 (myisampack),压缩后只能进行读操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># myisampack -b -f myIsam.MYI</span><br><span class="line">#ls -lh  myisam*</span><br><span class="line"></span><br><span class="line">myIsam.MYI 压缩后新文件</span><br><span class="line">myIsam.OLD 原文件</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>限制</li>
+</ul>
+</li>
+<li><p>默认的版本&lt; MYSQL5.0 的默认表大小4G</p>
+<ul>
+<li>修改MAX_Rows 和AVG_ROW_LENGTH 后可以存储大表</li>
+<li>大于MySQL5.0版本默认支持256TB，不用修正</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- 支持场景
+    - 非事务型应用,一般不涉及财务的业务都可以支持.
+    - 只读类应用,因为支持压缩后无法写入,报表类比较适合
+    - 空间类应用.</code></pre><h3 id="InnoDB-存储引擎"><a href="#InnoDB-存储引擎" class="headerlink" title="InnoDB 存储引擎"></a>InnoDB 存储引擎</h3><ul>
+<li>在MYSQL5.5后版本变成默认存储引擎</li>
+<li>InnoDB使用表空间进行数据存储<ul>
+<li>配置参数 innodb_file_per_table 进行表存储空间配置<ul>
+<li>ON: 独立表空间, 存储tablename.ibd</li>
+<li>OFF: 系统表空间,ibdataX</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">＃ 查看存储状态</span><br><span class="line">show variables like &apos;innodb_file_per_table&apos;</span><br><span class="line"></span><br><span class="line"># 关闭当前状态</span><br><span class="line">set global innodb_file_per_table = off;</span><br></pre></td></tr></table></figure>
+
+<p>==强烈建议用独立表空间进行存储===</p>
+<p>把系统表空间转独立表空间步骤</p>
+<ol>
+<li>mysqldump导出所有数据库表数据</li>
+<li>停止mysql服务,修改参数，并删除InnoDB相关文件</li>
+<li>重启MySQL服务,重建Innodb系统表空间</li>
+<li>重新导入数据</li>
+</ol>
+<h4 id="InnoDB-特性"><a href="#InnoDB-特性" class="headerlink" title="InnoDB 特性"></a>InnoDB 特性</h4><ol>
+<li>是一种事务性的存储引擎</li>
+<li>完成支持事务的ACID特性</li>
+<li>Redo log(实现事务持久性) 和Undo Log(未提交事务回滚和多版本控制)<pre><code>- show variables like &apos;innodb_log_files_in_group&apos;;
+- show variables like &apos;innodb_log_buffer_size&apos;;</code></pre></li>
+<li>区别于MyiSAm的表级锁,innodb属于行级所.可支持更大的并发</li>
+<li>行级锁是由存储引擎层实现的.</li>
+</ol>
+<h3 id="额外知识"><a href="#额外知识" class="headerlink" title="额外知识"></a>额外知识</h3><h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><ul>
+<li>锁主要是管理共享资源的并发访问</li>
+<li>用于实现事务的隔离性</li>
+<li>锁类型<ul>
+<li>共享锁(也称读锁)</li>
+<li>独占锁(也称写锁)</li>
+</ul>
+</li>
+<li>锁的粒度<ul>
+<li>表级锁 </li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">begin;</span><br><span class="line">insert into into user value (2,&apos;aaa&apos;),(3,&apos;bbb&apos;);</span><br><span class="line"></span><br><span class="line"># 上面会锁定,实现行级锁,其他用户无法写入，直到执行完毕开始回滚</span><br><span class="line">rollback;</span><br></pre></td></tr></table></figure>
+
+<pre><code>- 实现表级锁</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lock table user write;</span><br><span class="line"></span><br><span class="line"># 上面实现表级锁,其他链接用户无法读取直到下面解锁操作</span><br><span class="line">unlock tables;</span><br></pre></td></tr></table></figure>
+
+<h3 id="阻塞和死锁"><a href="#阻塞和死锁" class="headerlink" title="阻塞和死锁"></a>阻塞和死锁</h3><ul>
+<li>阻塞是为了事务可以并发和正常运行。</li>
+<li>死锁可以由系统自动处理</li>
+</ul>
+<p>innodb 状态监测</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show engine innodb status</span><br></pre></td></tr></table></figure>
+
+<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><p>一般建议都适用InnoDB，适用于大多数的OLTP应用。</p>
+<p>MySQL5.7之后已经支持全文索引和空间函数！！</p>
+<h4 id="如何选择存储引擎"><a href="#如何选择存储引擎" class="headerlink" title="如何选择存储引擎"></a>如何选择存储引擎</h4><p>==建议InnoDB,不要混合使用存储引擎==</p>
+<ul>
+<li>事务</li>
+<li>备份</li>
+<li>崩溃恢复</li>
+<li>存储引擎的特有特性</li>
+</ul>
+
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MyISAM-存储引擎"><a href="#MyISAM-存储引擎" class="headerlink" title="MyISAM 存储引擎"></a>MyISAM 存储引擎</h3><ul>
+<li><p>是mysql5.5之前的默认存储引擎。</p>
+</li>
+<li><p>文件: 由MYD和MYI 2种文件构成</p>
+</li>
+<li><p>特性: </p>
+<ul>
+<li><p>并发性和锁级别 </p>
+</li>
+<li><p>表损坏修复</p>
+<ul>
+<li>check table tablename 检查表</li>
+<li>repair table tablename 恢复表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create table myisam ( id int, c1 varchar(20))engine=myisam charset=utf8;</span><br><span class="line">check table myisam;</span><br><span class="line">repair table myisam;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>支持全文索引</p>
+</li>
+<li><p>支持数据压缩 (myisampack),压缩后只能进行读操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># myisampack -b -f myIsam.MYI</span><br><span class="line">#ls -lh  myisam*</span><br><span class="line"></span><br><span class="line">myIsam.MYI 压缩后新文件</span><br><span class="line">myIsam.OLD 原文件</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>限制</li>
+</ul>
+</li>
+<li><p>默认的版本&lt; MYSQL5.0 的默认表大小4G</p>
+<ul>
+<li>修改MAX_Rows 和AVG_ROW_LENGTH 后可以存储大表</li>
+<li>大于MySQL5.0版本默认支持256TB，不用修正</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- 支持场景
+    - 非事务型应用,一般不涉及财务的业务都可以支持.
+    - 只读类应用,因为支持压缩后无法写入,报表类比较适合
+    - 空间类应用.</code></pre><h3 id="InnoDB-存储引擎"><a href="#InnoDB-存储引擎" class="headerlink" title="InnoDB 存储引擎"></a>InnoDB 存储引擎</h3><ul>
+<li>在MYSQL5.5后版本变成默认存储引擎</li>
+<li>InnoDB使用表空间进行数据存储<ul>
+<li>配置参数 innodb_file_per_table 进行表存储空间配置<ul>
+<li>ON: 独立表空间, 存储tablename.ibd</li>
+<li>OFF: 系统表空间,ibdataX</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">＃ 查看存储状态</span><br><span class="line">show variables like &apos;innodb_file_per_table&apos;</span><br><span class="line"></span><br><span class="line"># 关闭当前状态</span><br><span class="line">set global innodb_file_per_table = off;</span><br></pre></td></tr></table></figure>
+
+<p>==强烈建议用独立表空间进行存储===</p>
+<p>把系统表空间转独立表空间步骤</p>
+<ol>
+<li>mysqldump导出所有数据库表数据</li>
+<li>停止mysql服务,修改参数，并删除InnoDB相关文件</li>
+<li>重启MySQL服务,重建Innodb系统表空间</li>
+<li>重新导入数据</li>
+</ol>
+<h4 id="InnoDB-特性"><a href="#InnoDB-特性" class="headerlink" title="InnoDB 特性"></a>InnoDB 特性</h4><ol>
+<li>是一种事务性的存储引擎</li>
+<li>完成支持事务的ACID特性</li>
+<li>Redo log(实现事务持久性) 和Undo Log(未提交事务回滚和多版本控制)<pre><code>- show variables like &apos;innodb_log_files_in_group&apos;;
+- show variables like &apos;innodb_log_buffer_size&apos;;</code></pre></li>
+<li>区别于MyiSAm的表级锁,innodb属于行级所.可支持更大的并发</li>
+<li>行级锁是由存储引擎层实现的.</li>
+</ol>
+<h3 id="额外知识"><a href="#额外知识" class="headerlink" title="额外知识"></a>额外知识</h3><h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><ul>
+<li>锁主要是管理共享资源的并发访问</li>
+<li>用于实现事务的隔离性</li>
+<li>锁类型<ul>
+<li>共享锁(也称读锁)</li>
+<li>独占锁(也称写锁)</li>
+</ul>
+</li>
+<li>锁的粒度<ul>
+<li>表级锁 </li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">begin;</span><br><span class="line">insert into into user value (2,&apos;aaa&apos;),(3,&apos;bbb&apos;);</span><br><span class="line"></span><br><span class="line"># 上面会锁定,实现行级锁,其他用户无法写入，直到执行完毕开始回滚</span><br><span class="line">rollback;</span><br></pre></td></tr></table></figure>
+
+<pre><code>- 实现表级锁</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lock table user write;</span><br><span class="line"></span><br><span class="line"># 上面实现表级锁,其他链接用户无法读取直到下面解锁操作</span><br><span class="line">unlock tables;</span><br></pre></td></tr></table></figure>
+
+<h3 id="阻塞和死锁"><a href="#阻塞和死锁" class="headerlink" title="阻塞和死锁"></a>阻塞和死锁</h3><ul>
+<li>阻塞是为了事务可以并发和正常运行。</li>
+<li>死锁可以由系统自动处理</li>
+</ul>
+<p>innodb 状态监测</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show engine innodb status</span><br></pre></td></tr></table></figure>
+
+<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><p>一般建议都适用InnoDB，适用于大多数的OLTP应用。</p>
+<p>MySQL5.7之后已经支持全文索引和空间函数！！</p>
+<h4 id="如何选择存储引擎"><a href="#如何选择存储引擎" class="headerlink" title="如何选择存储引擎"></a>如何选择存储引擎</h4><p>==建议InnoDB,不要混合使用存储引擎==</p>
+<ul>
+<li>事务</li>
+<li>备份</li>
+<li>崩溃恢复</li>
+<li>存储引擎的特有特性</li>
+</ul>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2018/06/15/DesignDB-2-05-存储引擎/" data-id="ckbrqi2t7000a68us1h7b0w0o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/designdb/">designdb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/engine/">engine</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/15/DesignDB-2-06_服务器参数/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DesignDB-2-06_服务器参数
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/15/DesignDB-2-04-操作系统配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DesignDB-2-04_操作系统配置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WebSafe/">WebSafe</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/lnmp/">lnmp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/software/">software</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/yii2/">yii2</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSRF/" style="font-size: 10px;">CSRF</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/PHP/" style="font-size: 12px;">PHP</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SQL/" style="font-size: 12px;">SQL</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/advanced/" style="font-size: 10px;">advanced</a> <a href="/tags/asset/" style="font-size: 10px;">asset</a> <a href="/tags/btree索引/" style="font-size: 10px;">btree索引</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/complie/" style="font-size: 12px;">complie</a> <a href="/tags/components/" style="font-size: 10px;">components</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/cpu/" style="font-size: 10px;">cpu</a> <a href="/tags/designDB/" style="font-size: 14px;">designDB</a> <a href="/tags/designdb/" style="font-size: 20px;">designdb</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/encrypt/" style="font-size: 10px;">encrypt</a> <a href="/tags/engine/" style="font-size: 10px;">engine</a> <a href="/tags/final类和方法/" style="font-size: 10px;">final类和方法</a> <a href="/tags/hash索引/" style="font-size: 10px;">hash索引</a> <a href="/tags/http-proxy/" style="font-size: 10px;">http proxy</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/index/" style="font-size: 10px;">index</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/javascript/" style="font-size: 12px;">javascript</a> <a href="/tags/lnmp/" style="font-size: 16px;">lnmp</a> <a href="/tags/locating/" style="font-size: 10px;">locating</a> <a href="/tags/mailer/" style="font-size: 10px;">mailer</a> <a href="/tags/mindManger/" style="font-size: 10px;">mindManger</a> <a href="/tags/mysql/" style="font-size: 18px;">mysql</a> <a href="/tags/mysql-二进制/" style="font-size: 10px;">mysql 二进制</a> <a href="/tags/mysql-复制/" style="font-size: 10px;">mysql 复制</a> <a href="/tags/mysqlslap/" style="font-size: 10px;">mysqlslap</a> <a href="/tags/mysql优化/" style="font-size: 10px;">mysql优化</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/optimizer/" style="font-size: 10px;">optimizer</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/php7/" style="font-size: 10px;">php7</a> <a href="/tags/predis/" style="font-size: 10px;">predis</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/self-parent/" style="font-size: 10px;">self & parent</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/shadowsocks-libev/" style="font-size: 10px;">shadowsocks-libev</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/sysbench/" style="font-size: 10px;">sysbench</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/tinyproxy/" style="font-size: 10px;">tinyproxy</a> <a href="/tags/turtle/" style="font-size: 10px;">turtle</a> <a href="/tags/v2ray/" style="font-size: 10px;">v2ray</a> <a href="/tags/vmess/" style="font-size: 10px;">vmess</a> <a href="/tags/web-components/" style="font-size: 10px;">web components</a> <a href="/tags/yii2/" style="font-size: 12px;">yii2</a> <a href="/tags/主从拓扑/" style="font-size: 10px;">主从拓扑</a> <a href="/tags/二进制复制/" style="font-size: 10px;">二进制复制</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/反范式化/" style="font-size: 10px;">反范式化</a> <a href="/tags/基准测试/" style="font-size: 14px;">基准测试</a> <a href="/tags/安装演示数据库/" style="font-size: 10px;">安装演示数据库</a> <a href="/tags/定期备份/" style="font-size: 10px;">定期备份</a> <a href="/tags/封装性/" style="font-size: 10px;">封装性</a> <a href="/tags/常见安全问题/" style="font-size: 10px;">常见安全问题</a> <a href="/tags/抽象类/" style="font-size: 10px;">抽象类</a> <a href="/tags/接口/" style="font-size: 10px;">接口</a> <a href="/tags/物理设计/" style="font-size: 10px;">物理设计</a> <a href="/tags/画图/" style="font-size: 10px;">画图</a> <a href="/tags/硬件影响/" style="font-size: 10px;">硬件影响</a> <a href="/tags/磁盘配置/" style="font-size: 10px;">磁盘配置</a> <a href="/tags/类常量/" style="font-size: 10px;">类常量</a> <a href="/tags/索引优化/" style="font-size: 10px;">索引优化</a> <a href="/tags/继承性/" style="font-size: 10px;">继承性</a> <a href="/tags/自动加载/" style="font-size: 10px;">自动加载</a> <a href="/tags/范式化/" style="font-size: 10px;">范式化</a> <a href="/tags/逻辑设计/" style="font-size: 10px;">逻辑设计</a> <a href="/tags/静态属性和方法/" style="font-size: 10px;">静态属性和方法</a> <a href="/tags/面向对象/" style="font-size: 14px;">面向对象</a> <a href="/tags/高可用架构/" style="font-size: 10px;">高可用架构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/23/SEO/">SEO</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/06/v2ray/">v2ray</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/16/composer境内镜像/">composer境内镜像</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/15/ssr的obfs混淆免流/">ssr的obfs混淆免流</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/23/mindManager/">mindManager</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jsonlocker<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/mouse.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+if (typeof jQuery == 'undefined') {
+document.write(unescape("%3Cscript src='/js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+}
+// ]]>
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
