@@ -79,6 +79,6 @@ theme: landscape
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  # repo: https://github.com/JsonLocker/jsonlocker.github.io.git
-  repo: https://jsonlocker:angle0891@github.com/jsonlocker/JsonLocker.github.io.git
+  repo: https://github.com/JsonLocker/jsonlocker.github.io.git
+  # repo: https://jsonlocker:angle0891@github.com/jsonlocker/JsonLocker.github.io.git
   branch: master
