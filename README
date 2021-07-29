@@ -66,16 +66,44 @@ collaborate (see also: git help workflows)
 
 
 =================================
+
 1. 把项目git拉到当前目录下的blog目录
+```
 git clone https://github.com/JsonLocker/jsonlocker.github.io.git blog
+cd blog
+npm install
+```
 
+# 正常执行操作
+```
+hexo clean
 hexo new title catelog
-hexo clean  
 hexo g
+```
+2. 配置ssh
 
-2. 推送文章到master分支,备份文件到hexo分支
+ssh配置
+
+```
+cd ~/.ssh
+ssh-keygen -t rsa -C "jsonlocker@gmail.com"
+
+```
+复制 `id_rsa.pub`  到github_ssh_key
+
+测试
+
+```
+ssh -T git@github.com
+
+# 返回 
+Hi JsonLocker! You've successfully authenticated, but GitHub does not provide shell access.
+
+```
+ 
+3. 推送文章到master分支,备份文件到hexo分支
+
 - hexo文章推送到静态页面
-   i`hexo d`  
+   `hexo d`  
 - 推送文件到git分支
    `git push origin hexo`
-
