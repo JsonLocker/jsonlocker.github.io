@@ -1,7 +1,7 @@
 ------
 title: yii2 curd
 date: 2018-06-14 22:13:52
-categories: yii2 curl
+categories: yii2
 tags:
     - yii2
     - curd
