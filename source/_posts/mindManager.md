@@ -2,9 +2,10 @@
 title: mindManager
 date: 2019-10-23 09:17:48
 categories:
-	- software
+	- other
 tags:
 	- mindManger
+    - software
 ---
 
 ### MindManger

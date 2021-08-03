@@ -1,9 +1,10 @@
 --------
 title: install php7.2
 date: 2018-06-14 10:39:49
-categories: lnmp
+categories: linux
 tags:
     - php7
+    - linux
     - lnmp
     - complie
 --------

@@ -1,9 +1,10 @@
 ---
 title: install_mysql
 date: 2018-06-14 13:51:29
-category: lnmp
+category: linux
 tags:
     - mysql
+    - linux
     - lnmp
 ---
 

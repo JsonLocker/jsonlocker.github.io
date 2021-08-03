@@ -1,7 +1,7 @@
 ---
 title: SEO
 date: 2020-06-23 17:31:15
-categories: Others
+categories: other
 tags:
     - SEO
 ---

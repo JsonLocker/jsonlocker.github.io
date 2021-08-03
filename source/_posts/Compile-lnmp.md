@@ -1,9 +1,10 @@
 ---
 title: Compile_lnmp
 date: 2018-06-28 15:51:28
-categories: Linux
+categories: linux
 tags:
     - mysql
+    - linux
     - compile
     - lnmp
 ---

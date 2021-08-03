@@ -2,7 +2,7 @@
 title: ssr的obfs混淆免流
 date: 2019-11-15 15:52:41
 categories:
-	- Linux
+	- linux
 tags:
 	- ssr
 ---

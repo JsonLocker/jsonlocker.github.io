@@ -1,9 +1,10 @@
 ------
 title: lnmp
 date: 2018-06-14 10:39:11
-categories: lnmp
+categories: linux 
 tags:
     - lnmp
+    - linux
     - complie
 ------
 

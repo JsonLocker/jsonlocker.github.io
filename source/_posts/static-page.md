@@ -1,10 +1,11 @@
 ---
 title: Static Page
 date: 2018-06-27 14:58:56
-categories: lnmp
+categories: php
 tags:
     - nginx
     - static
+    - php
     - rewrite
 ---
 

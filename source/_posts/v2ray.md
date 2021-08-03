@@ -1,9 +1,10 @@
 ---
 title: v2ray
 date: 2020-03-06 17:25:50
-categories: Tools
+categories: other
 tags:
     - v2ray
+    - software
     - vmess 
 ---
 
