@@ -1,7 +1,7 @@
 ---
-title: url美化
+title: yii2-url美化
 date: 2020-07-29 16:48:38
-categories: yii2
+categories: php
 tags:
     - yii2
     - urlmanager

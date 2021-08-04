@@ -1,5 +1,5 @@
 ---
-title: OptimizerMySQL_06_索引
+title: OptimizerMySQL 06 索引
 date: 2018-06-24 14:27:11
 categories: mysql
 tags:

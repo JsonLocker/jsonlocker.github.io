@@ -1,7 +1,7 @@
 ---
 title: composer境内镜像
 date: 2019-11-16 10:34:19
-categories:
+categories: php
 tags:
     - composer
 ---

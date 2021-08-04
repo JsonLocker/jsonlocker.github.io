@@ -1,7 +1,7 @@
 ---
 title: encrypt
 date: 2019-09-09 08:54:06
-categories:
+categories: linux
 tags:
     - ssl
     - encrypt

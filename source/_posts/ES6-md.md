@@ -1,7 +1,7 @@
 ---
 title: ES6.md
 date: 2019-09-09 08:28:46
-categories: 
+categories: js
 tags: 
 	- javascript  
 	- ES6

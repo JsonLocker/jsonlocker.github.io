@@ -1,7 +1,7 @@
 ---
 title: shadowsocks
 date: 2019-09-14 17:06:07
-categories:
+categories: other
 tags:
 	- shadowsocks
 	- shadowsocks-libev

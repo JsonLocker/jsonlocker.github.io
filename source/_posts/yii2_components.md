@@ -1,7 +1,7 @@
 ------
-title: components
+title: yii2 components
 date: 2018-06-14 22:15:49
-categories: yii2
+categories: php
 tags:
     - components
 ------

@@ -1,7 +1,7 @@
 ---
-title: advanced_init
+title: yii2 advanced install
 date: 2019-10-11 15:49:19
-categories: yii2 
+categories: php 
 tags:
     - yii2 
     - mailer 
