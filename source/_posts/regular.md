@@ -3,7 +3,6 @@ title: regular
 date: 2021-08-07 15:16:00
 categories: Javascript
 tags:
-    - javascript
     - regular
 ---
 
