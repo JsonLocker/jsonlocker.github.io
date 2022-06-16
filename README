@@ -107,3 +107,5 @@ Hi JsonLocker! You've successfully authenticated, but GitHub does not provide sh
    `hexo d`  
 - 推送文件到git分支
    `git push origin hexo`
+
+
