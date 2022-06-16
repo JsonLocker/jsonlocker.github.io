@@ -1,5 +1,5 @@
 ---
-title: decorator
+title: 装饰器模式
 date: 2021-05-28 18:50:04
 categories: patterns 
 tags:
@@ -8,7 +8,7 @@ tags:
     - decorator
 ---
 
-##  装饰器模式
+## 装饰器模式
 
 又名包装(Wrapper)模式，该模式向一个已有的对象添加新的功能，而不改变其结构。
 

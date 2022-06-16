@@ -1,5 +1,5 @@
 ---
-title: patter-simple-factory.php
+title: 简单工厂
 date: 2021-06-16 17:06:31
 categories: patterns 
 tags:

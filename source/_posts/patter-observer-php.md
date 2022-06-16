@@ -1,5 +1,5 @@
 ---
-title: observer
+title: 观察者模式
 date: 2021-06-16 17:13:55
 categories: patterns 
 tags:

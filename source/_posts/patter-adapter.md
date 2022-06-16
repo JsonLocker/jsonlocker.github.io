@@ -1,5 +1,5 @@
 ---
-title: adapter 
+title: 适配器模式
 date: 2021-05-28 18:50:04
 categories: patterns 
 tags:
