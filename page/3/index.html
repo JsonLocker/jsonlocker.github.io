@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="referrer" content="never">
+  
+
+  
+  <title>Jsonlocker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Jsonlocker">
+<meta property="og:url" content="https://jsonlocker.github.io/page/3/index.html">
+<meta property="og:site_name" content="Jsonlocker">
+<meta property="og:locale">
+<meta property="article:author" content="Jsonlocker">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Jsonlocker" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jsonlocker</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jsonlocker.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-patter-decorator" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/28/patter-decorator/" class="article-date">
+  <time datetime="2021-05-28T10:50:04.000Z" itemprop="datePublished">2021-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/patterns/">patterns</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/28/patter-decorator/">装饰器模式</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h2><p>又名包装(Wrapper)模式，该模式向一个已有的对象添加新的功能，而不改变其结构。</p>
+          
+            <p class="article-more-link">
+              <a href="/2021/05/28/patter-decorator/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h2><p>又名包装(Wrapper)模式，该模式向一个已有的对象添加新的功能，而不改变其结构。</p>
+<p>通常给对象添加功能有3中方法：</p>
+<ol>
+<li>直接修改类，添加相应的功能</li>
+<li>派生对应的子类扩展新功能</li>
+<li>使用对象组合的方式</li>
+</ol>
+<p>直接修改类代码是一种侵入式修改，很容易对类功能造成损害。</p>
+<p>使用继承方式扩展功能，则在整个子类中添加功能，即使有的对象不需要，new出来也会有这些新功能。</p>
+<p>装饰器模式是典型的基于对象组合的方式，可以很灵活的给对象添加所需要的功能，</p>
+<p>它能动态的为一个对象增加功能，而且还能动态撤销。</p>
+<p>继承不能做到这一点，继承的功能是静态的，不能动态增删。</p>
+<h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1 问题"></a>1 问题</h3><p>假设我们有一个邮件内容模板类，如下，一般情况下我们都用这个模板发送邮件：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">emailBody</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">body</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;公司准备为您加薪50%。\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在元旦准备来了，我们想在邮件模板上加一些元旦快乐的祝福语。</p>
+<p>这时，我们可以直接修改emailBody类，但是这样实在不好。</p>
+<p>所以，选择用子类继承方式来实现：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">newYearEmail</span> <span class="keyword">extends</span> <span class="title">emailBody</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">body</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;元旦快乐！！！&#x27;</span>;</span><br><span class="line">        <span class="built_in">parent</span>::body();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$email</span> = <span class="keyword">new</span> newYearEmail();</span><br><span class="line"><span class="variable">$email</span>-&gt;body();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>再过一个多月，春节来了，我们又可以按照元旦的做法，添加一个springFestivalEmail类。</p>
+<p>可是，如果想在不修改原来类的基础上，同时祝福元旦快乐和春节快乐呢？</p>
+<p>这时我们不禁会想，这种情况继承方式是否好用。</p>
+<h3 id="2-解决"><a href="#2-解决" class="headerlink" title="2 解决"></a>2 解决</h3><p>从上面的问题中，我们看到，我们可以用子类的方式为类扩展一个功能，</p>
+<p>但是如果要同时增加多个功能时，会变得冗长而复杂，这是装饰器模式要解决的问题。</p>
+<p>首先，创建一个接口，用以规范邮件类：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 邮件内容接口，规范实现类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">EmailBody</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">body</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后是正常的邮件内容类，我们用装饰器的目的就是，在某些情况下不改变其代码，也能得到不同的结果。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 正常邮件内容类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainEmail</span> <span class="keyword">implements</span> <span class="title">EmailBody</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">body</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;公司准备为您加薪50%。\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后是主装饰器类，这个类用属性保存MainEmail类的对象，然后根据需要改变它的行为。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 邮件内容装饰器类</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">EmailBodyDecorator</span> <span class="keyword">implements</span> <span class="title">EmailBody</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 保存MainEmail类对象</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$emailBody</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 实例化这个类或者子类时，必须传入一个被修饰的对象</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">EmailBody <span class="variable">$emailBody</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;emailBody = <span class="variable">$emailBody</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用抽象方法声明EmailBody规定的方法，</span></span><br><span class="line">    <span class="comment">// 在子类中用来改变MainEmail对象的行为</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">body</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后我们定义两个装饰器的子类，在这两个子类里面我们改变原MainEmail的行为：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NewYearEmail</span> <span class="keyword">extends</span> <span class="title">EmailBodyDecorator</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">body</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;元旦快乐！&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;emailBody-&gt;body();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpringFestivalEmail</span> <span class="keyword">extends</span> <span class="title">EmailBodyDecorator</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">body</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;春节快乐！&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;emailBody-&gt;body();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>客户端使用：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 【正常】发送邮件</span></span><br><span class="line"><span class="comment"> * 输出： 公司准备为您加薪50%。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="variable">$email</span> = <span class="keyword">new</span> MainEmail();</span><br><span class="line"><span class="variable">$email</span>-&gt;body();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发送有【元旦】祝福的邮件</span></span><br><span class="line"><span class="comment"> * 输出： 元旦快乐！公司准备为您加薪50%。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="variable">$emailNewYear</span> = <span class="keyword">new</span> NewYearEmail(<span class="variable">$email</span>);</span><br><span class="line"><span class="variable">$emailNewYear</span>-&gt;body();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发送有【春节】祝福的邮件</span></span><br><span class="line"><span class="comment"> * 输出： 春节快乐！公司准备为您加薪50%。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="variable">$emailSpring</span> = <span class="keyword">new</span> SpringFestivalEmail(<span class="variable">$email</span>);</span><br><span class="line"><span class="variable">$emailSpring</span>-&gt;body();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发送同时有【元旦】和【春节】祝福的邮件</span></span><br><span class="line"><span class="comment"> * 输出： 春节快乐！元旦快乐！公司准备为您加薪50%。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="variable">$emailTwo</span> = <span class="keyword">new</span> SpringFestivalEmail(<span class="variable">$emailNewYear</span>);</span><br><span class="line"><span class="variable">$emailTwo</span>-&gt;body();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2021/05/28/patter-decorator/" data-id="cl5m5t60w004orhqw3c9384fd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/decorator/" rel="tag">decorator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/patterns/" rel="tag">patterns</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/" rel="tag">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-yii2-url美化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/29/yii2-url%E7%BE%8E%E5%8C%96/" class="article-date">
+  <time datetime="2020-07-29T08:48:38.000Z" itemprop="datePublished">2020-07-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/php/">php</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/29/yii2-url%E7%BE%8E%E5%8C%96/">yii2-url美化</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <ol>
+          
+            <p class="article-more-link">
+              <a href="/2020/07/29/yii2-url美化/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>nginx</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">  try_files $uri $uri/ index?$args</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>config</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># common/config/main.php</span><br><span class="line"></span><br><span class="line">&#x27;components&#x27; =&gt; [</span><br><span class="line">  &#x27;urlManager&#x27; =&gt; [</span><br><span class="line">    &#x27;enablePrettyUrl&#x27; =&gt; true,</span><br><span class="line">    &#x27;showScriptName&#x27; =&gt; false,</span><br><span class="line">    &#x27;rules&#x27; =&gt; [</span><br><span class="line">       &#x27;&lt;controller:(index|cart|order)&gt;&#x27; =&gt; &#x27;&lt;controller&gt;/index&#x27;,</span><br><span class="line">       &#x27;auth&#x27; =&gt; &#x27;memeber/auth&#x27;,</span><br><span class="line">       &#x27;post-&lt;postid:\d+&gt;&#x27; =&gt; &#x27;post/detail&#x27;,</span><br><span class="line">       [</span><br><span class="line">       	 &#x27;pattern&#x27; =&gt; &#x27;newurl&#x27;,</span><br><span class="line">	 &#x27;route&#x27; =&gt; &#x27;admin/default/index&#x27;,</span><br><span class="line">	 &#x27;suffix&#x27; =&gt; &#x27;.html&#x27;</span><br><span class="line">       ]</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2020/07/29/yii2-url%E7%BE%8E%E5%8C%96/" data-id="cl5m5t63c006crhqwfnovdbzk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/urlmanager/" rel="tag">urlmanager</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii2/" rel="tag">yii2</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-SEO" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/23/SEO/" class="article-date">
+  <time datetime="2020-06-23T09:31:15.000Z" itemprop="datePublished">2020-06-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/other/">other</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/23/SEO/">SEO</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="一-优化大方向"><a href="#一-优化大方向" class="headerlink" title="一. 优化大方向"></a>一. 优化大方向</h2><ul>
+          
+            <p class="article-more-link">
+              <a href="/2020/06/23/SEO/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一-优化大方向"><a href="#一-优化大方向" class="headerlink" title="一. 优化大方向"></a>一. 优化大方向</h2><ul>
+<li><strong>内容质量</strong><ul>
+<li>搜索引擎比以往任何时候都开始更加关注内容质量</li>
+</ul>
+</li>
+<li><strong>微调内容</strong><ul>
+<li>时请进入细节,好的内容既包含视频和图片质量，也包含语法错误甚至拼写错误的字符</li>
+</ul>
+</li>
+<li><strong>优化移动用户体验</strong><ul>
+<li>Google最近宣布将在其核心算法的下一次更新中优先考虑移动版本的网站。尽管百度已开始朝这个方向发展，但到目前为止，尚未正式将移动设备优先于桌面设备。 </li>
+</ul>
+</li>
+<li><strong>标题注意事项</strong><ul>
+<li>百度仍然优先与网站精确搜索关键字在网页标题中，而谷歌根据实际内容进行排列。 </li>
+<li>页面标题中加入最想要排名的确切关键字非常重要，但请记住要简洁！</li>
+<li>页面标题上任何不相关或可能引起误解的词都会危害您的排名</li>
+<li>避免关键字填充。过度重复关键字或其同义词的页面标题将被重命名为站点名称或公司名称，这对于依靠非品牌关键字带来流量的公司而言可能是灾难性的.</li>
+</ul>
+</li>
+<li><strong>保持内容更新</strong><ul>
+<li>Baiduspider在网站上爬网的频率取决于其刷新频率。</li>
+<li>Baiduspider对经常更新的网站更加敏感，甚至在内容完全更新时更新的频率也会更高。</li>
+<li>不断更新您的内容是让您的网站拥有百度佳绩的一种方法</li>
+</ul>
+</li>
+<li><strong>网站清晰层次结构</strong><ul>
+<li>您的每个网页都应该至少可以通过一个文本链接访问。</li>
+<li>将重要内容放在较高的层次结构级别上，最好放在主页上。</li>
+<li>每个页面上的导航栏都有帮助，并且可以使用面包屑。（仅使用文本链接进行导航，如果需要图像导航，请记住使用alt文本。）</li>
+<li>子网域过多通常被百度标记为作弊。</li>
+</ul>
+</li>
+<li><strong>URL层次清晰</strong><ul>
+<li>使用HTTPS网站获得更好的排名</li>
+<li>爬虫喜欢可以清楚地反映您的页面层次结构的短URL。 如:<a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/college/courseinfo?id=2797&amp;page=2">https://ziyuan.baidu.com/college/courseinfo?id=2797&amp;page=2</a></li>
+</ul>
+</li>
+<li><strong>百度内建平台</strong><ul>
+<li>百度百科  增加条目</li>
+<li>百度贴吧  增加适当反链操作</li>
+<li>百度知道  增加适当反链操作</li>
+</ul>
+</li>
+<li><strong>监视竞争对手</strong><ul>
+<li>在他们的网站上寻找这些关键字线索：<ul>
+<li>  Anchor Text links</li>
+<li>  Title Tag</li>
+<li>  Meta Description</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="二-注意规避事项"><a href="#二-注意规避事项" class="headerlink" title="二.注意规避事项"></a>二.注意规避事项</h2><ol>
+<li><p><strong>不要过度优化</strong></p>
+<p> 百度推出了其新版本的算法-雷电（Thunder），该技术严重惩罚了作弊和操纵排名。百度越来越不容忍“黑帽” SEO技术。要让百度恢复对被指控“欺诈行为”的网站的处罚是非常困难的。</p>
+</li>
+</ol>
+<ul>
+<li><strong>关键词填充</strong> <ul>
+<li>网站捕获了关键字填充（即使它们是透明的并且无法被实际用户看到），流量欺诈或链接欺诈将在排名上受到严重惩罚，并且有被百度禁止的风险。永远限制搜索结果。 </li>
+</ul>
+</li>
+<li><strong>重复内容</strong><ul>
+<li>百度对重复内容非常敏感，因此您在被指控进行关键字填充时应格外小心。因此，请注意不要过度使用网站中的关键字，尤其是在损害网站整体一致性或用户体验的情况下。  </li>
+</ul>
+</li>
+<li><strong>技术性反向链接</strong><ul>
+<li>之前百度对页外SEO技术（如反向链接构建，社交信号等）的重视程度较低。这就是导致中国出现许多“黑帽子”现场SEO技术的原因。实施新算法后，几乎所有针对中国SEO的“黑帽”做法似乎都不值得冒险。</li>
+</ul>
+</li>
+<li><strong>不相关内容</strong><ul>
+<li>如技术性网站放娱乐类内容吸引流量</li>
+</ul>
+</li>
+<li><strong>隐藏文本与隐藏链接</strong><ul>
+<li>很容易被搜索引擎判定作弊，这也是一些无经验站长，经常发现，明明与高PR的网站换链接，而被惩罚，却找不出任何原因。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>注意移动广告限制</strong><ol>
+<li>广告类型：<br> 移动设备上没有浮动广告或弹出广告。允许在移动目标网页上使用全屏广告</li>
+<li>广告空间：<br> 不允许文字广告。</li>
+<li>广告尺寸<br> 第一个屏幕：不能超过屏幕尺寸的20％<br>  列表页和索引页：小于屏幕尺寸的1/3</li>
+<li>广告格式<br> 广告的位置和尺寸均应为静态。<br> 禁止重播广告。</li>
+</ol>
+</li>
+<li><strong>谨慎使用Flash，图片，Javascript和Ajax</strong><ul>
+<li>图片加alt说明</li>
+<li>请始终使用文本作为重要内容或链接（也不要忘记导航栏上的链接！），否则爬虫检测不到它们，也不会在搜索结果中显示它们。</li>
+<li>Ajax也是Baiduspider无法识别的，因此请确保仅将其用于用户交互目的，而不要存储您希望Baiduspider为其读取和排名的任何内容。</li>
+<li>iframe结构将被爬虫忽略…确保将放置在框架或iframe结构中的任何内容复制到网站上的某个位置，以便可以由百度蜘蛛对其进行爬网和索引。</li>
+</ul>
+</li>
+</ol>
+<h2 id="三-好慕课网站优化"><a href="#三-好慕课网站优化" class="headerlink" title="三. 好慕课网站优化"></a>三. 好慕课网站优化</h2><ol>
+<li><strong>优化着陆页</strong><ul>
+<li>页面的第一个屏幕应在1.5秒内加载<ul>
+<li>==网站速度==是非常重要的==排名因素==. 越慢排名的机会就越低。</li>
+<li>压缩css / js / img</li>
+</ul>
+</li>
+<li>为您的文本使用不小于10pt的字体大小</li>
+<li>网站的核心内容（不包括导航栏或任何广告的主要部分）应至少占据第一个屏幕的50％。</li>
+<li>对于移动搜索结果，着陆页应该是适合移动设备的，而不是PC版本</li>
+</ul>
+</li>
+<li><strong>标题(Title)</strong><ul>
+<li>不超过55个字符</li>
+<li>一个或两个关键字就可以了,确保您的标题形成连贯的句。关键字填会受到惩罚</li>
+<li>添加您的品牌名称增加点击。</li>
+<li>使用下划线（_）为单词分隔符。  </li>
+<li>格式参考<ul>
+<li> 主页标题标签：网站名称_主要产品/服务关键字</li>
+<li> 着陆页标题标签：产品/服务关键字_网站名称</li>
+<li> 文章页面标题标签：文章title_网站名称 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>描述标签(Description)</strong><ul>
+<li>不超过155字符</li>
+<li>包括您的目标关键字词组</li>
+<li>包括您的公司名称</li>
+</ul>
+</li>
+<li><strong>标题标签(H1-H6)</strong><ul>
+<li>不用多个H1</li>
+<li>标题应该像是查询或查询的答案-包括关键字,为在搜索中排名的额外机会。</li>
+<li>和标题关键词尽量保持一致</li>
+<li>保持浅层结构,抛弃H4~H6</li>
+</ul>
+</li>
+<li><strong>增加语义HTML5元素支持</strong><ul>
+<li><code>&lt;head&gt;</code></li>
+<li><code>&lt;nav&gt;</code></li>
+<li><code>&lt;main&gt;</code> </li>
+<li><code>&lt;article&gt;</code> </li>
+<li><code>&lt;footer&gt;</code></li>
+</ul>
+</li>
+<li><strong>HTML代码</strong><ul>
+<li>每个网站页面至少应包含400-500个字符</li>
+<li>元标记和锚文本均应使用简体中文字符书写</li>
+</ul>
+</li>
+</ol>
+<h2 id="四-优化建议"><a href="#四-优化建议" class="headerlink" title="四. 优化建议"></a>四. 优化建议</h2><ol>
+<li>首页&lt;慕课名站&gt;等外链增加加 nofollow 标识,减少权重流出权重</li>
+<li>后台具体课时页增加 description  content  keywords 编辑功能 和 h1 标签(隐藏)</li>
+<li>sitemap重新整理</li>
+<li>robots.txt 增加注册页面等反爬屏蔽</li>
+<li>具体内页增加精准 长尾关键词</li>
+<li>增加 360 &amp; 百度 站长认证<ul>
+<li><a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/site/">https://ziyuan.baidu.com/site/</a></li>
+<li><a target="_blank" rel="noopener" href="http://zhanzhang.so.com/">http://zhanzhang.so.com/</a></li>
+<li><a target="_blank" rel="noopener" href="http://zhanzhang.sogou.com/">http://zhanzhang.sogou.com/</a></li>
+</ul>
+</li>
+<li>投诉有好慕课app的网站,让下架好慕课app</li>
+<li>联系商城如 小米商城华为商城等进行对接,增加曝光流量</li>
+</ol>
+<h2 id="五-百度官方工具"><a href="#五-百度官方工具" class="headerlink" title="五. 百度官方工具"></a>五. 百度官方工具</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/site/index">百度网站管理员工具</a> - 日常管理</li>
+<li><a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/page/mobile">百度落地页自检</a> - 检测重要页面</li>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/">百度百科</a> - 提交网站和重要词条</li>
+<li><a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/linksubmit/url">百度链接提交</a> - 主动提供百度收录</li>
+<li><a target="_blank" rel="noopener" href="https://validator.w3.org/">validator</a> - 检查网页质量</li>
+</ul>
+<p>参考文档:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/college/documentinfo?id=2797">百度官方算法盘点</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.dragonsocial.net/blog/baidu-seo-guide-2019/">baidu-seo-guide-2019</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.velizaratellalyan.com/china-digital-marketing/seo-for-baidu/">seo-for-baidu</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.rankingbyseo.com/baidu-seo/">Everything You Need to Know Before Prepping for Baidu SEO in China for 2020</a></li>
+</ul>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2020/06/23/SEO/" data-id="cl5m5t5z5002grhqw96dogy8v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SEO/" rel="tag">SEO</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-v2ray" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/06/v2ray/" class="article-date">
+  <time datetime="2020-03-06T09:25:50.000Z" itemprop="datePublished">2020-03-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/other/">other</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/v2ray/">v2ray</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h3 id="V2Ray-ws-tls-bash-onekey"><a href="#V2Ray-ws-tls-bash-onekey" class="headerlink" title="V2Ray_ws-tls_bash_onekey"></a><code>V2Ray_ws-tls_bash_onekey</code></h3><p>基于 Nginx 的 vmess+ws+tls 一键安装脚本 （Use Path）。部署速度快，但相较之multi-v2ray缺少了定制以及用户组等功能。 增加不同的配置需要手动更改配置文件。因此适合自用。</p>
+          
+            <p class="article-more-link">
+              <a href="/2020/03/06/v2ray/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="V2Ray-ws-tls-bash-onekey"><a href="#V2Ray-ws-tls-bash-onekey" class="headerlink" title="V2Ray_ws-tls_bash_onekey"></a><code>V2Ray_ws-tls_bash_onekey</code></h3><p>基于 Nginx 的 vmess+ws+tls 一键安装脚本 （Use Path）。部署速度快，但相较之multi-v2ray缺少了定制以及用户组等功能。 增加不同的配置需要手动更改配置文件。因此适合自用。</p>
+<p>如果你选择使用 V2Ray，强烈建议你关闭并删除所有的 shadowsocksR 服务端，仅使用标准的 V2Ray 三件套。</p>
+<h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><ol>
+<li>Vmess+websocket+TLS+Nginx+Website 优化版本</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate -q -O install.sh &quot;https://raw.githubusercontent.com/paniy/V2Ray_ws-tls_bash_onekey/master/install.sh&quot; &amp;&amp; chmod +x install.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
+
+<p>优化版说明（2020年2月26日）：</p>
+<ul>
+<li>可以直接输入命令：idleleo管理脚本（修复了部分反映无法使用的bug）</li>
+<li>减少直接访问，隐藏代理域名，302跳转至<a target="_blank" rel="noopener" href="http://www.idleleo.com(了解配置过程可自行修改;只支持ws协议)/">www.idleleo.com（了解配置过程可自行修改；只支持ws协议）</a></li>
+<li>阻止HTTP直接访问服务器IP，更安全（只支持ws协议）</li>
+<li>优化tls 1.3加密配置 （只支持ws协议）</li>
+<li>减少无关元素</li>
+</ul>
+<ol start="2">
+<li>Vmess + websocket + TLS + Nginx +网站（原版）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate -q -O install.sh &quot;https://raw.githubusercontent.com/wulabing/V2Ray_ws-tls_bash_onekey/master/install.sh&quot; &amp;&amp; chmod +x install.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动方式"><a href="#启动方式" class="headerlink" title="启动方式"></a>启动方式</h4><p>启动 V2Ray：<code>systemctl start v2ray</code></p>
+<p>启动 Nginx：<code>systemctl start nginx</code></p>
+<p>开机自动启动 V2Ray：<code>systemctl enable v2ray</code> （新版已集成）</p>
+<p>开机自动启动 Nginx：<code>systemctl enable nginx</code> （新版已集成）</p>
+<p>升级V2Ray core 执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -L -s https://install.direct/go.sh)</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置防火墙"><a href="#配置防火墙" class="headerlink" title="配置防火墙"></a>配置防火墙</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=443/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.idleleo.com/go?url=https://github.com/paniy/V2Ray_ws-tls_bash_onekey">Github 上的优化版</a><br><a target="_blank" rel="noopener" href="https://www.idleleo.com/go?url=https://github.com/wulabing/V2Ray_ws-tls_bash_onekey">Github 上的原版</a><br><a target="_blank" rel="noopener" href="https://www.idleleo.com/09/2148.html">参考</a></p>
+</blockquote>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2020/03/06/v2ray/" data-id="cl5m5t62n0067rhqw7fnu79uy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/software/" rel="tag">software</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/v2ray/" rel="tag">v2ray</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vmess/" rel="tag">vmess</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-composer境内镜像" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/16/composer%E5%A2%83%E5%86%85%E9%95%9C%E5%83%8F/" class="article-date">
+  <time datetime="2019-11-16T02:34:19.000Z" itemprop="datePublished">2019-11-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/php/">php</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/16/composer%E5%A2%83%E5%86%85%E9%95%9C%E5%83%8F/">composer境内镜像</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="加速原理"><a href="#加速原理" class="headerlink" title="加速原理"></a>加速原理</h2><p>Composer 安装时候会向国外的 Packagist 服务器发送请求，因为众所周知的原因，国内请求国外服务器，有时会出现不稳定甚至不可用的情况。</p>
+          
+            <p class="article-more-link">
+              <a href="/2019/11/16/composer境内镜像/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="加速原理"><a href="#加速原理" class="headerlink" title="加速原理"></a>加速原理</h2><p>Composer 安装时候会向国外的 Packagist 服务器发送请求，因为众所周知的原因，国内请求国外服务器，有时会出现不稳定甚至不可用的情况。</p>
+<p>镜像加速就是把国外的数据缓存到国内的服务器上，Composer 客户端只需配置服务器为国内的服务器，即可从国内服务器上下载，稳定性会有很高的提升。</p>
+<h2 id="调用方式"><a href="#调用方式" class="headerlink" title="调用方式"></a>调用方式</h2><p>全局模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure>
+
+<p>单独项目使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ composer config repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure>
+
+<h4 id="阿里云-Composer-全量镜像（推荐）"><a href="#阿里云-Composer-全量镜像（推荐）" class="headerlink" title="阿里云 Composer 全量镜像（推荐）"></a>阿里云 Composer 全量镜像（推荐）</h4><ul>
+<li>镜像类型：全量镜像</li>
+<li>更新时间：1 分钟</li>
+<li>镜像地址：<a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/composer/">https://mirrors.aliyun.com/composer/</a></li>
+<li>官方地址：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/composer">https://developer.aliyun.com/composer</a></li>
+<li>镜像说明：阿里云 CDN 加速，更新速度快，推荐使用</li>
+</ul>
+<h4 id="安畅网络镜像"><a href="#安畅网络镜像" class="headerlink" title="安畅网络镜像"></a>安畅网络镜像</h4><ul>
+<li>镜像类型：全量镜像</li>
+<li>更新时间：1 分钟</li>
+<li>镜像地址：<a target="_blank" rel="noopener" href="https://php.cnpkg.org/">https://php.cnpkg.org</a></li>
+<li>官方地址：<a target="_blank" rel="noopener" href="https://php.cnpkg.org/">https://php.cnpkg.org/</a></li>
+<li>镜像说明：此 Composer 镜像由安畅网络赞助，目前支持元数据、下载包全量代理。</li>
+</ul>
+<h4 id="交通大学镜像"><a href="#交通大学镜像" class="headerlink" title="交通大学镜像"></a>交通大学镜像</h4><ul>
+<li>镜像类型：非全量镜像</li>
+<li>镜像地址：<a target="_blank" rel="noopener" href="https://packagist.mirrors.sjtug.sjtu.edu.cn/">https://packagist.mirrors.sjtug.sjtu.edu.cn/</a></li>
+<li>官方地址：<a target="_blank" rel="noopener" href="https://mirrors.sjtug.sjtu.edu.cn/packagist/">https://mirrors.sjtug.sjtu.edu.cn/packagist/</a></li>
+<li>镜像说明：上海交通大学提供的 composer 镜像，稳定、快速、现代的镜像服务，推荐使用。</li>
+</ul>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2019/11/16/composer%E5%A2%83%E5%86%85%E9%95%9C%E5%83%8F/" data-id="cl5m5t5z9002orhqw73ikb8sb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/composer/" rel="tag">composer</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ssr的obfs混淆免流" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/15/ssr%E7%9A%84obfs%E6%B7%B7%E6%B7%86%E5%85%8D%E6%B5%81/" class="article-date">
+  <time datetime="2019-11-15T07:52:41.000Z" itemprop="datePublished">2019-11-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/15/ssr%E7%9A%84obfs%E6%B7%B7%E6%B7%86%E5%85%8D%E6%B5%81/">ssr的obfs混淆免流</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="服务器安装"><a href="#服务器安装" class="headerlink" title="服务器安装"></a>服务器安装</h2><ol>
+          
+            <p class="article-more-link">
+              <a href="/2019/11/15/ssr的obfs混淆免流/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="服务器安装"><a href="#服务器安装" class="headerlink" title="服务器安装"></a>服务器安装</h2><ol>
+<li> 大猫猫</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># centos7</span></span><br><span class="line">yum install wget -y &amp;&amp; wget https://raw.githubusercontent.com/SuicidalCat/Airport-toolkit/master/ssr_node_c7.sh &amp;&amp; chmod +x ssr_node_c7.sh &amp;&amp; ./ssr_node_c7.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># centos8</span></span><br><span class="line">dnf install wget -y &amp;&amp; wget https://raw.githubusercontent.com/SuicidalCat/Airport-toolkit/master/ssr_node_c8.sh &amp;&amp; chmod +x ssr_node_c8.sh &amp;&amp; ./ssr_node_c8.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># uninstall</span></span><br><span class="line">systemctl <span class="built_in">disable</span> ssr_node &amp;&amp; \rm /usr/lib/systemd/system/ssr_node.service &amp;&amp; \rm -rf /soft/shadowsocks</span><br><span class="line"></span><br><span class="line"><span class="comment"># start</span></span><br><span class="line">systemctl start ssr_node</span><br><span class="line"></span><br><span class="line"><span class="comment"># stop</span></span><br><span class="line">systemctl stop ssr_node</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>秋水大佬</li>
+</ol>
+<p>大佬被喝茶已不更新，且用且珍惜</p>
+<ul>
+<li>1.加密方式推荐 chacha20-itef-poly1305,</li>
+<li>2.端口可以尽量设置高一点,避免443, 1080等常用端口,</li>
+<li>3.安装 simple-obfs , 选择 http 模式</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</span><br><span class="line">chmod +x shadowsocks-all.sh</span><br><span class="line">./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># uninstall</span></span><br><span class="line">./shadowsocks-all.sh uninstall</span><br><span class="line"></span><br><span class="line"><span class="comment"># start</span></span><br><span class="line">etc/init.d/shadowsocks-libev start</span><br><span class="line"></span><br><span class="line"><span class="comment"># stop</span></span><br><span class="line">/etc/init.d/shadowsocks-libev stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># restart</span></span><br><span class="line">/etc/init.d/shadowsocks-libev restart</span><br><span class="line"></span><br><span class="line"><span class="comment"># status</span></span><br><span class="line">/etc/init.d/shadowsocks-libev status</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/shadowsocks/simple-obfs/releases">SS obfs-local插件下载地址</a></p>
+<h2 id="2-注意事项"><a href="#2-注意事项" class="headerlink" title="2.  注意事项"></a>2.  注意事项</h2><p>配置文档类似以上，注意如下标注参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;d&quot;: 0,</span><br><span class="line">        &quot;enable&quot;: 1,</span><br><span class="line">        &quot;forbidden_port&quot;: &quot;25,465,233-266&quot;,</span><br><span class="line">        &quot;method&quot;: &quot;aes-256-cfb&quot;,</span><br><span class="line">        &quot;obfs&quot;: &quot;http_simple&quot;,                    # 混淆方式</span><br><span class="line">        &quot;passwd&quot;: &quot;a9679I4b5S4k3e0R&quot;,             # 链接密码</span><br><span class="line">        &quot;port&quot;: 443,                              # 端口号</span><br><span class="line">        &quot;protocol&quot;: &quot;auth_aes128_md5&quot;, #协议</span><br><span class="line">        &quot;speed_limit_per_con&quot;: 0,</span><br><span class="line">        &quot;speed_limit_per_user&quot;: 0,</span><br><span class="line">        &quot;transfer_enable&quot;: 9007199254740992,</span><br><span class="line">        &quot;u&quot;: 0,</span><br><span class="line">        &quot;user&quot;: &quot;443&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>以上有两个重点，其一就是端口号。一般免流端口都建议为80或者443。如非这两个端口，就需要在混淆参数上做功夫，后文再说。</p>
+<p>混淆方式为http_simple是为了让运营商检测到你访问的网址是免流host，如果是tls那么运营商无法识别，是不会被算作免流请求的。</p>
+<h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><p>参照服务器配置，基本一致。</p>
+<p>obfs参数（混淆参数）</p>
+<p>如果是80或者443端口,混淆参数填写以下网址之一即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tx.flv.huya.com</span><br><span class="line">short.weixin.qq.com</span><br><span class="line">szextshort.weixin.qq.com</span><br><span class="line">short.weixin.qq.com</span><br></pre></td></tr></table></figure>
+
+<p>如果是非80及443，如下配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">szminorshort.weixin.qq.com#Upgrade: mmtlsnAccept: /nConnection: closenContent-Length: 533nContent-Type: application/octet-stream</span><br></pre></td></tr></table></figure>
+<p>也可自行抓包，找免流HOST，然后填写到混淆参数即可。</p>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2019/11/15/ssr%E7%9A%84obfs%E6%B7%B7%E6%B7%86%E5%85%8D%E6%B5%81/" data-id="cl5m5t62e005urhqwb0ib5ieb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssr/" rel="tag">ssr</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mindManager" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/23/mindManager/" class="article-date">
+  <time datetime="2019-10-23T01:17:48.000Z" itemprop="datePublished">2019-10-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/other/">other</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/23/mindManager/">mindManager</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h3 id="MindManger"><a href="#MindManger" class="headerlink" title="MindManger"></a>MindManger</h3><p>现在微云对于IDM已经限速，所以这边留个官网链接备用</p>
+          
+            <p class="article-more-link">
+              <a href="/2019/10/23/mindManager/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MindManger"><a href="#MindManger" class="headerlink" title="MindManger"></a>MindManger</h3><p>现在微云对于IDM已经限速，所以这边留个官网链接备用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">32位</span><br><span class="line">http://download.mindjet.com/MindManager_32bit_18.0.284.exe</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">64位</span><br><span class="line">http://download.mindjet.com/MindManager_64bit_18.0.284.exe</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://share.weiyun.com/5aFK9MU">注册机</a></p>
+<h3 id="相关优化"><a href="#相关优化" class="headerlink" title="相关优化"></a>相关优化</h3><ol>
+<li>文件- 选项-常规</li>
+</ol>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 如果文件已打开，则在退出前确认</li>
+<li><input disabled="" type="checkbox"> 更新可用时通知我</li>
+<li><input disabled="" type="checkbox"> 显示建议</li>
+</ul>
+<ol start="2">
+<li> 文件-选项- 编辑</li>
+</ol>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 自动平衡新的主要主题</li>
+<li><input checked="" disabled="" type="checkbox"> 自动插入关系标注</li>
+<li><input checked="" disabled="" type="checkbox"> 自动插入摘要边界标注</li>
+</ul>
+<ol start="3">
+<li> 文件-选项- 视觉效果</li>
+</ol>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 动态验证文件链接</li>
+</ul>
+<ol start="4">
+<li> 文件-选项- 打开/保存</li>
+</ol>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 保持aotoRecover信息的间隔时间</li>
+<li>设置默认文档位置</li>
+</ul>
+<ol start="5">
+<li> 文件-选项- 拼写</li>
+</ol>
+<ul>
+<li><input disabled="" type="checkbox"> 键入时检查拼写</li>
+</ul>
+<ol start="6">
+<li> 文件-选项- 警报/安全性</li>
+</ol>
+<ul>
+<li><input disabled="" type="checkbox"> Windows启动时启动主题警报服务</li>
+<li><input disabled="" type="checkbox"> 使用主题警报播放声音</li>
+<li><input disabled="" type="checkbox"> 使用Mindjet MindManager同步到Microsoft Outlook Appointments</li>
+</ul>
+<ol start="7">
+<li>文件-选项- 插件</li>
+</ol>
+<p>除了以下2个，其他全部取消</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 智能导图组件</li>
+<li><input checked="" disabled="" type="checkbox"> 文件浏览器</li>
+</ul>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2019/10/23/mindManager/" data-id="cl5m5t6020040rhqw2tbc6h80" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mindManger-software/" rel="tag">mindManger - software</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mobile-prevent-touch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/22/mobile-prevent-touch/" class="article-date">
+  <time datetime="2019-10-22T03:58:51.000Z" itemprop="datePublished">2019-10-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/22/mobile-prevent-touch/">手机防止滑动触发点击</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <p>CODE</p>
+          
+            <p class="article-more-link">
+              <a href="/2019/10/22/mobile-prevent-touch/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <p>CODE</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopTouchendPropagationAfterScroll</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> locked = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">window</span>.addEventListener(<span class="string">&#x27;touchmove&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">		locked || (locked = <span class="literal">true</span>, <span class="built_in">window</span>.addEventListener(<span class="string">&#x27;touchend&#x27;</span>, stopTouchendPropagation, <span class="literal">true</span>));</span><br><span class="line">	&#125;, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">stopTouchendPropagation</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">		ev.stopPropagation();</span><br><span class="line">		<span class="built_in">window</span>.removeEventListener(<span class="string">&#x27;touchend&#x27;</span>, stopTouchendPropagation, <span class="literal">true</span>);</span><br><span class="line">		locked = <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2019/10/22/mobile-prevent-touch/" data-id="cl5m5t6040044rhqw9583fm6b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-web-components" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/22/web-components/" class="article-date">
+  <time datetime="2019-10-22T03:58:51.000Z" itemprop="datePublished">2019-10-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/22/web-components/">web_components</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>谷歌公司由于掌握了 Chrome 浏览器，一直在推动浏览器的原生组件，即 <a target="_blank" rel="noopener" href="https://www.webcomponents.org/introduction">Web Components API</a>。<br>相比第三方框架，原生组件简单直接，符合直觉，不用加载任何外部模块，代码量小。目前，它还在不断发展，但已经可用于生产环境。</p>
+          
+            <p class="article-more-link">
+              <a href="/2019/10/22/web-components/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>谷歌公司由于掌握了 Chrome 浏览器，一直在推动浏览器的原生组件，即 <a target="_blank" rel="noopener" href="https://www.webcomponents.org/introduction">Web Components API</a>。<br>相比第三方框架，原生组件简单直接，符合直觉，不用加载任何外部模块，代码量小。目前，它还在不断发展，但已经可用于生产环境。</p>
+<p>下面是演示如果将一个卡片写出一个 Web Components 组件,后续通过在html代码里插入 <code>&lt;user-card&gt;&lt;/user-card&gt;</code>这一命令即可直接生成组件</p>
+<p><b>注意</b></p>
+<p>这种自定义的 HTML 标签，称为自定义元素（custom element）。根据规范，自定义元素的名称必须包含连词线，用与区别原生的 HTML 元素。所以，<user-card>不能写成<usercard>。</p>
+<h3 id="1-customElements-define"><a href="#1-customElements-define" class="headerlink" title="1. customElements.define()"></a>1. customElements.define()</h3><p>首先定义一个类,后续的<code>&lt;user-card&gt;</code>会基于这个类</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserCard</span> <span class="keyword">extends</span> <span class="title">HtmlEliment</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="built_in">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>UserCard</code>就是自定义元素的类。注意，这个类的父类是<code>HTMLElement</code>，因此继承了<code> HTML</code> 元素的特性。</p>
+<p>接着，使用浏览器原生的<code>customElements.define()</code>方法，告诉浏览器<code>&lt;user-card&gt;</code>元素与这个类关联。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.customElements.define(<span class="string">&#x27;user-card&#x27;</span>, UserCard);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-自定义元素内容"><a href="#2-自定义元素内容" class="headerlink" title="2. 自定义元素内容"></a>2. 自定义元素内容</h3><p>接下来给<code>&lt;user-card&gt;</code>这个元素里加点东西</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserCard</span> <span class="keyword">extends</span> <span class="title">HTMLElement</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> image = <span class="built_in">document</span>.createElement(<span class="string">&#x27;img&#x27;</span>);</span><br><span class="line">    image.src = <span class="string">&#x27;https://semantic-ui.com/images/avatar2/large/kristy.png&#x27;</span>;</span><br><span class="line">    image.classList.add(<span class="string">&#x27;image&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> container = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">    container.classList.add(<span class="string">&#x27;container&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> name = <span class="built_in">document</span>.createElement(<span class="string">&#x27;p&#x27;</span>);</span><br><span class="line">    name.classList.add(<span class="string">&#x27;name&#x27;</span>);</span><br><span class="line">    name.innerText = <span class="string">&#x27;User Name&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> email = <span class="built_in">document</span>.createElement(<span class="string">&#x27;p&#x27;</span>);</span><br><span class="line">    email.classList.add(<span class="string">&#x27;email&#x27;</span>);</span><br><span class="line">    email.innerText = <span class="string">&#x27;yourmail@some-email.com&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> button = <span class="built_in">document</span>.createElement(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line">    button.classList.add(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line">    button.innerText = <span class="string">&#x27;Follow&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    container.append(name, email, button);</span><br><span class="line">    <span class="built_in">this</span>.append(image, container);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上面代码最后一行，<code>this.append()</code>的<code>this</code>表示自定义元素实例。</p>
+<p>完成这一步以后，自定义元素内部的 <code>DOM</code> 结构就已经生成了。</p>
+<h3 id="3-标签"><a href="#3-标签" class="headerlink" title="3. 标签"></a>3.<template> 标签</h3><p>使用 JavaScript 写上一节的 DOM 结构很麻烦，Web Components API 提供了<template>标签，可以在它里面使用 HTML 定义 DOM。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;userCardTemplate&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://semantic-ui.com/images/avatar2/large/kristy.png&quot;</span> <span class="attr">class</span>=<span class="string">&quot;image&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;name&quot;</span>&gt;</span>User Name<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;email&quot;</span>&gt;</span>yourmail@some-email.com<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Follow<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后，改写一下自定义元素的类，为自定义元素加载<code>&lt;template&gt;</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserCard</span> <span class="keyword">extends</span> <span class="title">HTMLElement</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> templateElem = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;userCardTemplate&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> content = templateElem.content.cloneNode(<span class="literal">true</span>);</span><br><span class="line">    <span class="built_in">this</span>.appendChild(content);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>上面代码中，获取<code>&lt;template&gt;</code>节点以后，克隆了它的所有子元素，这是因为可能有多个自定义元素的实例，这个模板还要留给其他实例使用，所以不能直接移动它的子元素。</p>
+<p>到这一步为止，完整的代码如下。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">user-card</span>&gt;</span><span class="tag">&lt;/<span class="name">user-card</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- template 里写html结构内容&lt;/template--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span>&gt;</span>...<span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="class"><span class="keyword">class</span> <span class="title">UserCard</span> <span class="keyword">extends</span> <span class="title">HTMLElement</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">super</span>();</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> templateElem = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;userCardTemplate&#x27;</span>);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> content = templateElem.content.cloneNode(<span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">        <span class="built_in">this</span>.appendChild(content);</span></span><br><span class="line"><span class="javascript">      &#125;</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.customElements.define(<span class="string">&#x27;user-card&#x27;</span>, UserCard);    </span></span><br><span class="line"><span class="javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-添加样式"><a href="#4-添加样式" class="headerlink" title="4. 添加样式"></a>4. 添加样式</h3><p>自定义元素还没有样式，可以给它指定全局样式，比如下面这样。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user-card &#123;</span><br><span class="line">  <span class="comment">/* ... */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是，组件的样式应该与代码封装在一起，只对自定义元素生效，不影响外部的全局样式。所以，可以把样式写在<code>&lt;template&gt;</code>里面。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;userCardTemplate&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">   <span class="selector-pseudo">:host</span> &#123;</span></span><br><span class="line"><span class="css">     <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="css">     <span class="attribute">align-items</span>: center;</span></span><br><span class="line"><span class="css">     <span class="attribute">width</span>: <span class="number">450px</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">height</span>: <span class="number">180px</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">background-color</span>: <span class="number">#d4d4d4</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#d5d5d5</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">box-shadow</span>: <span class="number">1px</span> <span class="number">1px</span> <span class="number">5px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.1</span>);</span></span><br><span class="line"><span class="css">     <span class="attribute">border-radius</span>: <span class="number">3px</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">overflow</span>: hidden;</span></span><br><span class="line"><span class="css">     <span class="attribute">padding</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="css">     <span class="attribute">font-family</span>: <span class="string">&#x27;Poppins&#x27;</span>, sans-serif;</span></span><br><span class="line"><span class="css">   &#125;</span></span><br><span class="line"><span class="css">   <span class="selector-class">.image</span> &#123;</span></span><br><span class="line"><span class="css">     <span class="attribute">flex</span>: <span class="number">0</span> <span class="number">0</span> auto;</span></span><br><span class="line"><span class="css">     <span class="attribute">width</span>: <span class="number">160px</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">height</span>: <span class="number">160px</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">vertical-align</span>: middle;</span></span><br><span class="line"><span class="css">     <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span></span><br><span class="line"><span class="css">   &#125;</span></span><br><span class="line"><span class="css">   <span class="selector-class">.container</span> &#123;</span></span><br><span class="line"><span class="css">     <span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="css">     <span class="attribute">padding</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">height</span>: <span class="number">160px</span>;</span></span><br><span class="line"><span class="css">   &#125;</span></span><br><span class="line"><span class="css">   <span class="selector-class">.container</span> &gt; <span class="selector-class">.name</span> &#123;</span></span><br><span class="line"><span class="css">     <span class="attribute">font-size</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">font-weight</span>: <span class="number">600</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">line-height</span>: <span class="number">1</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">margin-bottom</span>: <span class="number">5px</span>;</span></span><br><span class="line"><span class="css">   &#125;</span></span><br><span class="line"><span class="css">   <span class="selector-class">.container</span> &gt; <span class="selector-class">.email</span> &#123;</span></span><br><span class="line"><span class="css">     <span class="attribute">font-size</span>: <span class="number">12px</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">opacity</span>: <span class="number">0.75</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">line-height</span>: <span class="number">1</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">margin-bottom</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="css">   &#125;</span></span><br><span class="line"><span class="css">   <span class="selector-class">.container</span> &gt; <span class="selector-class">.button</span> &#123;</span></span><br><span class="line"><span class="css">     <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">25px</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">font-size</span>: <span class="number">12px</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span></span><br><span class="line"><span class="css">     <span class="attribute">text-transform</span>: uppercase;</span></span><br><span class="line"><span class="css">   &#125;</span></span><br><span class="line"><span class="css">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://semantic-ui.com/images/avatar2/large/kristy.png&quot;</span> <span class="attr">class</span>=<span class="string">&quot;image&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;name&quot;</span>&gt;</span>User Name<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;email&quot;</span>&gt;</span>yourmail@some-email.com<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Follow<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>&lt;template&gt;</code>样式里面的<code>:host</code>伪类，指代自定义元素本身。</p>
+<h3 id="5、自定义元素的参数"><a href="#5、自定义元素的参数" class="headerlink" title="5、自定义元素的参数"></a>5、自定义元素的参数</h3><p><code>&lt;user-card&gt;</code>内容现在是在<code>&lt;template&gt;</code>里面设定的，为了方便使用，把它改成参数。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">user-card</span></span></span><br><span class="line"><span class="tag">  <span class="attr">image</span>=<span class="string">&quot;https://semantic-ui.com/images/avatar2/large/kristy.png&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">name</span>=<span class="string">&quot;User Name&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">email</span>=<span class="string">&quot;yourmail@some-email.com&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">user-card</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;template&gt;</code>代码也相应改造。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;userCardTemplate&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span>...<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;image&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;name&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;email&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Follow John<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>最后，改一下类的代码，把参数加到自定义元素里面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserCard</span> <span class="keyword">extends</span> <span class="title">HTMLElement</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> templateElem = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;userCardTemplate&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> content = templateElem.content.cloneNode(<span class="literal">true</span>);</span><br><span class="line">    content.querySelector(<span class="string">&#x27;img&#x27;</span>).setAttribute(<span class="string">&#x27;src&#x27;</span>, <span class="built_in">this</span>.getAttribute(<span class="string">&#x27;image&#x27;</span>));</span><br><span class="line">    content.querySelector(<span class="string">&#x27;.container&gt;.name&#x27;</span>).innerText = <span class="built_in">this</span>.getAttribute(<span class="string">&#x27;name&#x27;</span>);</span><br><span class="line">    content.querySelector(<span class="string">&#x27;.container&gt;.email&#x27;</span>).innerText = <span class="built_in">this</span>.getAttribute(<span class="string">&#x27;email&#x27;</span>);</span><br><span class="line">    <span class="built_in">this</span>.appendChild(content);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.customElements.define(<span class="string">&#x27;user-card&#x27;</span>, UserCard);</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-Shadow-DOM"><a href="#6-Shadow-DOM" class="headerlink" title="6. Shadow DOM"></a>6. Shadow DOM</h3><p>我们不希望用户能够看到<code>&lt;user-card&gt;</code>的内部代码，<code>Web Component</code>允许内部代码隐藏起来，这叫做 <code>Shadow DOM</code>，即这部分<code>DOM</code>默认与外部<code>DOM</code>隔离，内部任何代码都无法影响外部。</p>
+<p>自定义元素的<code>this.attachShadow()</code>方法开启 Shadow DOM，详见下面的代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserCard</span> <span class="keyword">extends</span> <span class="title">HTMLElement</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>();</span><br><span class="line">    <span class="keyword">var</span> shadow = <span class="built_in">this</span>.attachShadow( &#123; <span class="attr">mode</span>: <span class="string">&#x27;closed&#x27;</span> &#125; );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> templateElem = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;userCardTemplate&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> content = templateElem.content.cloneNode(<span class="literal">true</span>);</span><br><span class="line">    content.querySelector(<span class="string">&#x27;img&#x27;</span>).setAttribute(<span class="string">&#x27;src&#x27;</span>, <span class="built_in">this</span>.getAttribute(<span class="string">&#x27;image&#x27;</span>));</span><br><span class="line">    content.querySelector(<span class="string">&#x27;.container&gt;.name&#x27;</span>).innerText = <span class="built_in">this</span>.getAttribute(<span class="string">&#x27;name&#x27;</span>);</span><br><span class="line">    content.querySelector(<span class="string">&#x27;.container&gt;.email&#x27;</span>).innerText = <span class="built_in">this</span>.getAttribute(<span class="string">&#x27;email&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    shadow.appendChild(content);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.customElements.define(<span class="string">&#x27;user-card&#x27;</span>, UserCard);</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>this.attachShadow()</code>方法的参数<code>&#123; mode: &#39;closed&#39; &#125;</code>，表示 Shadow DOM 是封闭的，不允许外部访问。</p>
+<p>至此，这个 Web Component 组件就完成了，完整代码可以访问这里。可以看到，整个过程还是很简单的，不像第三方框架那样有复杂的 API。</p>
+<h3 id="7-组件的扩展"><a href="#7-组件的扩展" class="headerlink" title="7. 组件的扩展"></a>7. 组件的扩展</h3><p>在前面的基础上，可以对组件进行扩展。</p>
+<h4 id="1-用户的互动"><a href="#1-用户的互动" class="headerlink" title="1) 用户的互动"></a>1) 用户的互动</h4><p>用户卡片是一个静态组件，如果要与用户互动，也很简单，就是在类里面监听各种事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.$button = shadow.querySelector(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line"><span class="built_in">this</span>.$button.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-组件的封装"><a href="#2-组件的封装" class="headerlink" title="2) 组件的封装"></a>2) 组件的封装</h4><p>上面的例子中，<code>&lt;template&gt;</code>与网页代码放在一起，其实可以用脚本把<code>&lt;template&gt;</code>注入网页。<br>这样的话，JavaScript 脚本跟<code>&lt;template&gt;</code>就能封装成一个 JS 文件，成为独立的组件文件。网页只要加载这个脚本，就能使用<code>&lt;user-card&gt;</code>组件。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2019/08/web_components.html">阮一峰日志</a><br><a target="_blank" rel="noopener" href="https://www.robinwieruch.de/web-components-tutorial/">Web Components Tutorial for Beginners</a><br><a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/web-components/customelements">Custom Elements v1: Reusable Web Components</a></p>
+</blockquote>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2019/10/22/web-components/" data-id="cl5m5t63b006arhqwd47c54u5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web-components/" rel="tag">web components</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-php_pdo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/11/php_pdo/" class="article-date">
+  <time datetime="2019-10-11T07:49:19.000Z" itemprop="datePublished">2019-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/php/">php</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/11/php_pdo/">php pdo</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <p>CODE</p>
+          
+            <p class="article-more-link">
+              <a href="/2019/10/11/php_pdo/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <p>CODE</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">Class</span> <span class="title">Db</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="built_in">static</span> <span class="variable">$_db</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">self</span>::<span class="variable">$_db</span>  = <span class="keyword">new</span> PDO(<span class="string">&#x27;mysql:host=127.0.0.1;dbname=tp6&#x27;</span>, <span class="string">&#x27;root&#x27;</span>, <span class="string">&#x27;root&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">_get_db</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">self</span>::<span class="variable">$_db</span> == <span class="literal">null</span> )&#123;</span><br><span class="line">      <span class="variable">$obj</span> = <span class="keyword">new</span> <span class="built_in">self</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">self</span>::<span class="variable">$_db</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">_back_msg</span>(<span class="params"><span class="variable">$errcode</span>, <span class="variable">$errmsg</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>( json_encode([<span class="string">&#x27;code&#x27;</span>=&gt;<span class="variable">$errcode</span>,<span class="string">&#x27;errmsg&#x27;</span>=&gt;<span class="variable">$errmsg</span>]) );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">register</span>(<span class="params"><span class="variable">$uname</span>, <span class="variable">$pwd</span></span>)</span>&#123;</span><br><span class="line">    <span class="variable">$db</span> = <span class="built_in">self</span>::_get_db();</span><br><span class="line"></span><br><span class="line">    <span class="variable">$query</span> = <span class="variable">$db</span>-&gt;prepare(<span class="string">&quot;select count(*) from user where `username` = ?&quot;</span>);</span><br><span class="line">    <span class="variable">$query</span>-&gt;execute([<span class="variable">$uname</span>]);</span><br><span class="line">    <span class="variable">$count</span> = <span class="variable">$query</span>-&gt;fetchAll();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(intval( <span class="variable">$count</span>[<span class="number">0</span>][<span class="string">&#x27;count(*)&#x27;</span>]) &gt; <span class="number">0</span> )&#123;</span><br><span class="line">      <span class="built_in">self</span>::_back_msg(<span class="number">1005</span>,<span class="string">&#x27;username is exists !&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( strlen(<span class="variable">$pwd</span>) &lt; <span class="number">8</span> )&#123;</span><br><span class="line">      <span class="built_in">self</span>::_back_msg(<span class="number">1006</span>,<span class="string">&#x27;password is short than 8 !&#x27;</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="variable">$password</span> = <span class="built_in">self</span>::_password_generate(<span class="variable">$pwd</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">$query</span> = <span class="variable">$db</span>-&gt;prepare(<span class="string">&quot;insert into `user` (username,password,age) VALUES (?,?,?)&quot;</span>);</span><br><span class="line">    <span class="variable">$res</span> = <span class="variable">$query</span>-&gt;execute([<span class="variable">$uname</span>, <span class="variable">$password</span>, <span class="number">21</span>]);</span><br><span class="line">    <span class="keyword">if</span>(!<span class="variable">$res</span>)&#123;</span><br><span class="line">      <span class="built_in">self</span>::_back_msg(<span class="number">1006</span>,<span class="string">&#x27;write into db error!&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">_password_generate</span>(<span class="params"><span class="variable">$pwd</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> md5(<span class="variable">$pwd</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Db::register(<span class="string">&#x27;dd1ab&#x27;</span>,<span class="string">&#x27;ccsssssssssssssssssss&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2019/10/11/php_pdo/" data-id="cl5m5t61o0057rhqw9314a6xq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysqld/" rel="tag">mysqld</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pdo/" rel="tag">pdo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/register/" rel="tag">register</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WebSafe/">WebSafe</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/patterns/">patterns</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSRF/" style="font-size: 10px;">CSRF</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Localstorage/" style="font-size: 10px;">Localstorage</a> <a href="/tags/MD5/" style="font-size: 10px;">MD5</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/PHP/" style="font-size: 11.25px;">PHP</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SQL/" style="font-size: 11.25px;">SQL</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/adapter/" style="font-size: 10px;">adapter</a> <a href="/tags/advanced/" style="font-size: 10px;">advanced</a> <a href="/tags/apuc/" style="font-size: 10px;">apuc</a> <a href="/tags/asset/" style="font-size: 10px;">asset</a> <a href="/tags/btree%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">btree索引</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/complie/" style="font-size: 11.25px;">complie</a> <a href="/tags/components/" style="font-size: 10px;">components</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/composite/" style="font-size: 10px;">composite</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/cors/" style="font-size: 10px;">cors</a> <a href="/tags/cpu/" style="font-size: 10px;">cpu</a> <a href="/tags/curd/" style="font-size: 10px;">curd</a> <a href="/tags/decorator/" style="font-size: 10px;">decorator</a> <a href="/tags/designDB/" style="font-size: 12.5px;">designDB</a> <a href="/tags/designdb/" style="font-size: 20px;">designdb</a> <a href="/tags/encrypt/" style="font-size: 10px;">encrypt</a> <a href="/tags/engine/" style="font-size: 10px;">engine</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/final%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95/" style="font-size: 10px;">final类和方法</a> <a href="/tags/hash%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">hash索引</a> <a href="/tags/http-proxy/" style="font-size: 10px;">http proxy</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/index/" style="font-size: 11.25px;">index</a> <a href="/tags/input/" style="font-size: 10px;">input</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/javascript/" style="font-size: 16.25px;">javascript</a> <a href="/tags/laravel/" style="font-size: 13.75px;">laravel</a> <a href="/tags/linux/" style="font-size: 13.75px;">linux</a> <a href="/tags/lnmp/" style="font-size: 13.75px;">lnmp</a> <a href="/tags/locating/" style="font-size: 10px;">locating</a> <a href="/tags/mailer/" style="font-size: 10px;">mailer</a> <a href="/tags/mindManger-software/" style="font-size: 10px;">mindManger - software</a> <a href="/tags/mysql/" style="font-size: 18.75px;">mysql</a> <a href="/tags/mysql-%E4%BA%8C%E8%BF%9B%E5%88%B6/" style="font-size: 10px;">mysql 二进制</a> <a href="/tags/mysql-%E5%A4%8D%E5%88%B6/" style="font-size: 10px;">mysql 复制</a> <a href="/tags/mysqld/" style="font-size: 10px;">mysqld</a> <a href="/tags/mysqlslap/" style="font-size: 10px;">mysqlslap</a> <a href="/tags/mysql%E4%BC%98%E5%8C%96/" style="font-size: 10px;">mysql优化</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/observer/" style="font-size: 10px;">observer</a> <a href="/tags/ocr/" style="font-size: 10px;">ocr</a> <a href="/tags/opencart/" style="font-size: 11.25px;">opencart</a> <a href="/tags/optimizer/" style="font-size: 10px;">optimizer</a> <a href="/tags/patterns/" style="font-size: 15px;">patterns</a> <a href="/tags/pdo/" style="font-size: 10px;">pdo</a> <a href="/tags/php/" style="font-size: 17.5px;">php</a> <a href="/tags/php7/" style="font-size: 10px;">php7</a> <a href="/tags/predis/" style="font-size: 10px;">predis</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/python/" style="font-size: 11.25px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/register/" style="font-size: 10px;">register</a> <a href="/tags/regular/" style="font-size: 10px;">regular</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/route/" style="font-size: 11.25px;">route</a> <a href="/tags/self-parent/" style="font-size: 10px;">self & parent</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/shadowsocks-libev/" style="font-size: 10px;">shadowsocks-libev</a> <a href="/tags/simple-factory/" style="font-size: 10px;">simple factory</a> <a href="/tags/software/" style="font-size: 10px;">software</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/sysbench/" style="font-size: 10px;">sysbench</a> <a href="/tags/tesseract/" style="font-size: 10px;">tesseract</a> <a href="/tags/textarea/" style="font-size: 10px;">textarea</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/tinyproxy/" style="font-size: 10px;">tinyproxy</a> <a href="/tags/turtle/" style="font-size: 10px;">turtle</a> <a href="/tags/twig/" style="font-size: 10px;">twig</a> <a href="/tags/urlmanager/" style="font-size: 10px;">urlmanager</a> <a href="/tags/v2ray/" style="font-size: 10px;">v2ray</a> <a href="/tags/vmess/" style="font-size: 10px;">vmess</a> <a href="/tags/web-components/" style="font-size: 10px;">web components</a> <a href="/tags/yii2/" style="font-size: 13.75px;">yii2</a> <a href="/tags/%E4%B8%BB%E4%BB%8E%E6%8B%93%E6%89%91/" style="font-size: 10px;">主从拓扑</a> <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%A4%8D%E5%88%B6/" style="font-size: 10px;">二进制复制</a> <a href="/tags/%E5%86%85%E5%AD%98/" style="font-size: 10px;">内存</a> <a href="/tags/%E5%89%8D%E7%9E%BB%E5%90%8E%E9%A1%BE/" style="font-size: 10px;">前瞻后顾</a> <a href="/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">单例模式</a> <a href="/tags/%E5%8F%8D%E8%8C%83%E5%BC%8F%E5%8C%96/" style="font-size: 10px;">反范式化</a> <a href="/tags/%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/" style="font-size: 12.5px;">基准测试</a> <a href="/tags/%E5%AE%89%E8%A3%85%E6%BC%94%E7%A4%BA%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">安装演示数据库</a> <a href="/tags/%E5%AE%9A%E6%9C%9F%E5%A4%87%E4%BB%BD/" style="font-size: 10px;">定期备份</a> <a href="/tags/%E5%B0%81%E8%A3%85%E6%80%A7/" style="font-size: 10px;">封装性</a> <a href="/tags/%E5%B8%B8%E8%A7%81%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/" style="font-size: 10px;">常见安全问题</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%96%87%E5%AD%97%E8%AF%86%E5%88%AB/" style="font-size: 10px;">文字识别</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%89%A9%E7%90%86%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">物理设计</a> <a href="/tags/%E7%94%BB%E5%9B%BE/" style="font-size: 10px;">画图</a> <a href="/tags/%E7%A1%AC%E4%BB%B6%E5%BD%B1%E5%93%8D/" style="font-size: 10px;">硬件影响</a> <a href="/tags/%E7%A3%81%E7%9B%98%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">磁盘配置</a> <a href="/tags/%E7%B1%BB%E5%B8%B8%E9%87%8F/" style="font-size: 10px;">类常量</a> <a href="/tags/%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" style="font-size: 10px;">索引优化</a> <a href="/tags/%E7%BB%A7%E6%89%BF%E6%80%A7/" style="font-size: 10px;">继承性</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/" style="font-size: 10px;">自动加载</a> <a href="/tags/%E8%8C%83%E5%BC%8F%E5%8C%96/" style="font-size: 10px;">范式化</a> <a href="/tags/%E8%AF%AD%E6%B3%95%E6%95%B4%E7%90%86/" style="font-size: 10px;">语法整理</a> <a href="/tags/%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">逻辑设计</a> <a href="/tags/%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/" style="font-size: 10px;">静态属性和方法</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 12.5px;">面向对象</a> <a href="/tags/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">高可用架构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">33</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/07/15/laravel-4-customfunc-php/">laravel 自定义函数和变量</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/11/laravel-3-controller/">laravel-3-controller</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/09/laravel-2-route/">laravel-2-route</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/08/laravel-init/">laravel_init</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/08/sql-miss-index/">sql_miss_index</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Jsonlocker<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/mouse.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+if (typeof jQuery == 'undefined') {
+document.write(unescape("%3Cscript src='/js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+}
+// ]]>
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

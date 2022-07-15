@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="referrer" content="never">
+  
+
+  
+  <title>Jsonlocker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Jsonlocker">
+<meta property="og:url" content="https://jsonlocker.github.io/page/8/index.html">
+<meta property="og:site_name" content="Jsonlocker">
+<meta property="og:locale">
+<meta property="article:author" content="Jsonlocker">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Jsonlocker" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jsonlocker</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jsonlocker.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-install-php7-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/14/install-php7-2/" class="article-date">
+  <time datetime="2018-06-14T02:39:49.000Z" itemprop="datePublished">2018-06-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/14/install-php7-2/">install php7.2</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="How-to-Install-PHP-7-2-7-1-on-CentOS-RHEL-7-4-amp-6-9"><a href="#How-to-Install-PHP-7-2-7-1-on-CentOS-RHEL-7-4-amp-6-9" class="headerlink" title="How to Install PHP 7.2, 7.1 on CentOS/RHEL 7.4 &amp; 6.9"></a>How to Install PHP 7.2, 7.1 on CentOS/RHEL 7.4 &amp; 6.9</h2><h3 id="Install-Yum-Repository"><a href="#Install-Yum-Repository" class="headerlink" title="Install Yum Repository"></a>Install Yum Repository</h3><p>First of all, you need to enable Webtatic and EPEL yum repositories on your system. Use the following command to install EPEL repository on your CentOS and Red Hat 7/6 systems</p>
+          
+            <p class="article-more-link">
+              <a href="/2018/06/14/install-php7-2/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="How-to-Install-PHP-7-2-7-1-on-CentOS-RHEL-7-4-amp-6-9"><a href="#How-to-Install-PHP-7-2-7-1-on-CentOS-RHEL-7-4-amp-6-9" class="headerlink" title="How to Install PHP 7.2, 7.1 on CentOS/RHEL 7.4 &amp; 6.9"></a>How to Install PHP 7.2, 7.1 on CentOS/RHEL 7.4 &amp; 6.9</h2><h3 id="Install-Yum-Repository"><a href="#Install-Yum-Repository" class="headerlink" title="Install Yum Repository"></a>Install Yum Repository</h3><p>First of all, you need to enable Webtatic and EPEL yum repositories on your system. Use the following command to install EPEL repository on your CentOS and Red Hat 7/6 systems</p>
+<p>Use this command to install epel-release yum repository.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
+
+<p>and now execute one of the following commands as per your operating system version to install Remi repository.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### For CentOS/RHEL 7 ###</span><br><span class="line">rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm</span><br><span class="line"></span><br><span class="line">### For CentOS/RHEL 6 ###</span><br><span class="line">rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="Install-PHP-7-2"><a href="#Install-PHP-7-2" class="headerlink" title="Install PHP 7.2"></a>Install PHP 7.2</h3><p>Use the following command to install PHP 7.2 on your CentOS system. This will enable remi-php72 yum repository and install the required packages.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --enablerepo=remi-php72 install php</span><br></pre></td></tr></table></figure>
+
+<p>Now use the following command to check installed PHP version on your system.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">php -v</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PHP 7.2.0 (cli) (built: Nov 28 2017 20:22:21) ( NTS )</span><br><span class="line">Copyright (c) 1997-2017 The PHP Group</span><br><span class="line">Zend Engine v3.2.0, Copyright (c) 1998-2017 Zend Technologies</span><br></pre></td></tr></table></figure>
+
+<h3 id="Install-PHP-Modules"><a href="#Install-PHP-Modules" class="headerlink" title="Install PHP Modules"></a>Install PHP Modules</h3><p>You may also need to install additional PHP modules based on your application requirements. Below command will install some more useful PHP modules.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### For PHP 7.2 ###</span><br><span class="line">yum --enablerepo=remi-php72 install php-xml php-soap php-xmlrpc php-mbstring php-json php-gd php-mcrypt</span><br><span class="line"></span><br><span class="line">### For PHP 7.1 ###</span><br><span class="line">yum --enablerepo=remi-php71 install php-xml php-soap php-xmlrpc php-mbstring php-json php-gd php-mcrypt</span><br></pre></td></tr></table></figure>
+
+<p>To find out other available PHP modules use the following command. Change the PHP version to search packages for different PHP version.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">yum --enablerepo=remi-php72 search php | grep php72</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">php72.x86_64 : Package that installs PHP 7.2</span><br><span class="line">php72-php.x86_64 : PHP scripting language for creating dynamic web sites</span><br><span class="line">php72-php-bcmath.x86_64 : A module for PHP applications for using the bcmath</span><br><span class="line">php72-php-brotli.x86_64 : Brotli Extension for PHP</span><br><span class="line">php72-php-cli.x86_64 : Command-line interface for PHP</span><br><span class="line">php72-php-common.x86_64 : Common files for PHP</span><br><span class="line">php72-php-dba.x86_64 : A database abstraction layer module for PHP applications</span><br><span class="line">php72-php-dbg.x86_64 : The interactive PHP debugger</span><br><span class="line">php72-php-devel.x86_64 : Files needed for building PHP extensions</span><br><span class="line">php72-php-embedded.x86_64 : PHP library for embedding in applications</span><br><span class="line">php72-php-enchant.x86_64 : Enchant spelling extension for PHP applications</span><br><span class="line">php72-php-fpm.x86_64 : PHP FastCGI Process Manager</span><br><span class="line">php72-php-gd.x86_64 : A module for PHP applications for using the gd graphics</span><br><span class="line">php72-php-geos.x86_64 : PHP module for GEOS</span><br><span class="line">php72-php-gmp.x86_64 : A module for PHP applications for using the GNU MP</span><br><span class="line">php72-php-imap.x86_64 : A module for PHP applications that use IMAP</span><br><span class="line">php72-php-interbase.x86_64 : A module for PHP applications that use</span><br><span class="line">php72-php-intl.x86_64 : Internationalization extension for PHP applications</span><br><span class="line">php72-php-json.x86_64 : JavaScript Object Notation extension for PHP</span><br><span class="line">php72-php-ldap.x86_64 : A module for PHP applications that use LDAP</span><br><span class="line">php72-php-libvirt.x86_64 : PHP language binding for Libvirt</span><br><span class="line">php72-php-libvirt-doc.noarch : Document of php-libvirt</span><br><span class="line">php72-php-litespeed.x86_64 : LiteSpeed Web Server PHP support</span><br><span class="line">php72-php-lz4.x86_64 : LZ4 Extension for PHP</span><br><span class="line">php72-php-mbstring.x86_64 : A module for PHP applications which need multi-byte</span><br><span class="line">php72-php-mysqlnd.x86_64 : A module for PHP applications that use MySQL</span><br><span class="line">php72-php-oci8.x86_64 : A module for PHP applications that use OCI8 databases</span><br><span class="line">php72-php-odbc.x86_64 : A module for PHP applications that use ODBC databases</span><br><span class="line">php72-php-pdo.x86_64 : A database access abstraction module for PHP applications</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2018/06/14/install-php7-2/" data-id="cl5m5t5zl0037rhqw0rqrcnqg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/complie/" rel="tag">complie</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lnmp/" rel="tag">lnmp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php7/" rel="tag">php7</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-lnmp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/14/lnmp/" class="article-date">
+  <time datetime="2018-06-14T02:39:11.000Z" itemprop="datePublished">2018-06-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/14/lnmp/">lnmp</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="How-to-Install-PHP-7-NGINX-amp-MySQL-5-6-on-CentOS-RHEL-7-4-amp-6-9"><a href="#How-to-Install-PHP-7-NGINX-amp-MySQL-5-6-on-CentOS-RHEL-7-4-amp-6-9" class="headerlink" title="How to Install PHP 7, NGINX &amp; MySQL 5.6 on CentOS/RHEL 7.4 &amp; 6.9"></a>How to Install PHP 7, NGINX &amp; MySQL 5.6 on CentOS/RHEL 7.4 &amp; 6.9</h2><p>Few days back PHP version 7.2 has been released. Which has a number of changes and improvements over PHP version 7.X. This article will help you to install PHP 7, NGINX and MySQL 5.6 on CentOS / RHEL 7.4 &amp; 6.9 operating systems. This tutorial has been tested with CentOS 7.4, so all the services command are used with systemctl, For CentOS 6 users change all systemctl command correspondence service command.</p>
+          
+            <p class="article-more-link">
+              <a href="/2018/06/14/lnmp/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="How-to-Install-PHP-7-NGINX-amp-MySQL-5-6-on-CentOS-RHEL-7-4-amp-6-9"><a href="#How-to-Install-PHP-7-NGINX-amp-MySQL-5-6-on-CentOS-RHEL-7-4-amp-6-9" class="headerlink" title="How to Install PHP 7, NGINX &amp; MySQL 5.6 on CentOS/RHEL 7.4 &amp; 6.9"></a>How to Install PHP 7, NGINX &amp; MySQL 5.6 on CentOS/RHEL 7.4 &amp; 6.9</h2><p>Few days back PHP version 7.2 has been released. Which has a number of changes and improvements over PHP version 7.X. This article will help you to install PHP 7, NGINX and MySQL 5.6 on CentOS / RHEL 7.4 &amp; 6.9 operating systems. This tutorial has been tested with CentOS 7.4, so all the services command are used with systemctl, For CentOS 6 users change all systemctl command correspondence service command.</p>
+<h3 id="Step-1-–-Setup-Yum-Repository"><a href="#Step-1-–-Setup-Yum-Repository" class="headerlink" title="Step 1 – Setup Yum Repository"></a>Step 1 – Setup Yum Repository</h3><p>In the first step install all the required yum repositories in your system used in the remaining tutorial for various installations. You are adding REMI, EPEL, Webtatic &amp; MySQL community server repositories in your system.</p>
+<p><strong>CentOS / RHEL 7</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br><span class="line">rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm</span><br><span class="line">rpm -Uvh http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<p><strong>CentOS / RHEL 6</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br><span class="line">rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</span><br><span class="line">rpm -Uvh http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-2-–-Install-PHP-7"><a href="#Step-2-–-Install-PHP-7" class="headerlink" title="Step 2 – Install PHP 7"></a>Step 2 – Install PHP 7</h3><p>Now install PHP 7 packages from remi-php72 rpm repository using the following command.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum --enablerepo=remi-php72 install php</span><br></pre></td></tr></table></figure>
+
+<p>Now install required php modules. Use following command to list available modules in yum repositories.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum --enablerepo=remi-php72 search php</span><br></pre></td></tr></table></figure>
+
+<p>Now check all listed modules in above command and install required modules like below.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># yum --enablerepo=remi-php72 install php-mysql php-xml \</span><br><span class="line"></span><br><span class="line">php-soap php-xmlrpc php-mbstring php-json php-gd php-mcrypt</span><br></pre></td></tr></table></figure>
+<h3 id="Step-3-–-Install-NGINX"><a href="#Step-3-–-Install-NGINX" class="headerlink" title="Step 3 – Install NGINX"></a>Step 3 – Install NGINX</h3><p>NGINX is the popular web server used on Linux systems. Let’s install Nginx web server using the following command on your system.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum install nginx</span><br></pre></td></tr></table></figure>
+<p>Now start nginx service and enable to start on boot using below commands.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># systemctl enable nginx.service</span><br><span class="line"># systemctl start nginx.service</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-4-–-Install-MySQL-5-6"><a href="#Step-4-–-Install-MySQL-5-6" class="headerlink" title="Step 4 – Install MySQL 5.6"></a>Step 4 – Install MySQL 5.6</h3><p>In step 1 we already have installed required yum repository in your system. Lets use following command to install MySQL server on your system.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum install mysql-server</span><br></pre></td></tr></table></figure>
+<p>You need to execute mysql_secure_installation once after installation of MySQL server using following command. First it will prompt to set a password for root account, after that ask few questions, I suggest to say yes ( y ) for all.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># systemctl start mysqld.service</span><br><span class="line"># mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<p>Now restart MySQL service and enable to start on system boot.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># systemctl restart mysqld.service</span><br><span class="line"># systemctl enable mysqld.service</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-5-–-Setup-PHP-FPM"><a href="#Step-5-–-Setup-PHP-FPM" class="headerlink" title="Step 5 – Setup PHP-FPM"></a>Step 5 – Setup PHP-FPM</h3><p>Now use following command to install php7 fpm package using following command.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum --enablerepo=remi-php72 install php-fpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-6-–-Create-Nginx-VirtualHost"><a href="#Step-6-–-Create-Nginx-VirtualHost" class="headerlink" title="Step 6 – Create Nginx VirtualHost"></a>Step 6 – Create Nginx VirtualHost</h3><p>Finally do the configuration of Nginx VirtualHost. For this example we are editing default configuration file.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sudo vi /etc/nginx/conf.d/example.conf</span><br></pre></td></tr></table></figure>
+<p>and make changes as below.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen   80;</span><br><span class="line"></span><br><span class="line">        root /var/www;</span><br><span class="line">        index index.php index.html index.htm;</span><br><span class="line">        server_name  example.com www.example.com;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                try_files $uri $uri/ /index.html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 404 /404.html;</span><br><span class="line">        error_page 500 502 503 504 /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">              root /usr/share/nginx/www;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ .php$ &#123;</span><br><span class="line">                try_files $uri =404;</span><br><span class="line">                fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">                fastcgi_index index.php;</span><br><span class="line">                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">                include fastcgi_params;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You have to do the same changes in all Virtual Hosts configured.</p>
+<h3 id="Step-7-–-Restart-Services"><a href="#Step-7-–-Restart-Services" class="headerlink" title="Step 7 – Restart Services"></a>Step 7 – Restart Services</h3><p>After installing all services on your system, start all required services.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># systemctl restart nginx.service</span><br><span class="line"># systemctl restart php-fpm.service</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-8-Open-Port-in-Firewall"><a href="#Step-8-Open-Port-in-Firewall" class="headerlink" title="Step 8. Open Port in Firewall"></a>Step 8. Open Port in Firewall</h3><p>Finally open firewall ports for HTTP (80) and https (443) services using the following command.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># firewall-cmd --permanent --zone=public --add-service=http</span><br><span class="line"># firewall-cmd --permanent --zone=public --add-service=https</span><br><span class="line"># firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<h3 id="Step-9-Verify-Setup"><a href="#Step-9-Verify-Setup" class="headerlink" title="Step 9. Verify Setup"></a>Step 9. Verify Setup</h3><p>Let’s check the installed versions of packages on system using following commands one by one.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># php -v</span><br><span class="line"></span><br><span class="line">PHP 7.2.0 (cli) (built: Nov 28 2017 20:22:21) ( NTS )</span><br><span class="line">Copyright (c) 1997-2017 The PHP Group</span><br><span class="line">Zend Engine v3.2.0, Copyright (c) 1998-2017 Zend Technologies</span><br><span class="line"># nginx -v</span><br><span class="line"></span><br><span class="line">nginx version: nginx/1.12.2</span><br></pre></td></tr></table></figure>
+<p>Finally, verify installation of PHP 7 with NGINX. Let’s create a file index.php on website document root using following content.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">  phpinfo();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Now browse this file in web browser. It will so all the details about versions and installation.</p>
+<p><img src="https://tecadmin.net/wp-content/uploads/2016/02/php-nginx-centos.png" alt="imginfo"></p>
+<p>You have successfully configured LEMP Stack setup on your CentOS / RHEL 7.4 &amp; 6.9 system.</p>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2018/06/14/lnmp/" data-id="cl5m5t5zz003trhqwh5rr0a93" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/complie/" rel="tag">complie</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lnmp/" rel="tag">lnmp</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2-2-2-csrf" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/28/2-2-2-csrf/" class="article-date">
+  <time datetime="2018-05-28T10:56:23.000Z" itemprop="datePublished">2018-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WebSafe/">WebSafe</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/28/2-2-2-csrf/">2-2-2_csrf</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>全称 : Cross Site Request forgrey<br>中文 : 跨站请求伪造</p>
+          
+            <p class="article-more-link">
+              <a href="/2018/05/28/2-2-2-csrf/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>全称 : Cross Site Request forgrey<br>中文 : 跨站请求伪造</p>
+<p>用途 : 执行恶意操作 （“被转账”，发垃圾评论等），制造蠕虫 …。</p>
+<p>利用用户的已登陆身份，用用户的名义在用户不知情的情况下执行非法操作。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>默认流程:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Request URI: xxx/demo/csrf/transfer.php</span><br><span class="line">cookie:xxxxxxxxxxxxxxxx1</span><br><span class="line">Form:  username:json   amout:10</span><br></pre></td></tr></table></figure>
+<p>恶意代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;csrf-attack.php?t-0.3132353463&quot;</span> <span class="attr">width</span>=<span class="string">0</span> <span class="attr">height</span>=<span class="string">0</span>&gt;</span> <span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># csrf-attack.php</span></span><br><span class="line">&lt;body onload=<span class="string">&quot;submitForm();&quot;</span>&gt;</span><br><span class="line">    &lt;form id=<span class="string">&quot;tip&quot;</span> action=<span class="string">&quot;xxx/demo/csrf/transfer.php&quot;</span>  method=<span class="string">&quot;post&quot;</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">&quot;hidden&quot;</span> name=<span class="string">&quot;toUser&quot;</span> value=<span class="string">&quot;hacker&quot;</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">&quot;hidden&quot;</span> name=<span class="string">&quot;amount&quot;</span> value=<span class="string">&quot;10&quot;</span>&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">submitForm</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        document.getElementById(<span class="string">&quot;tip&quot;</span>).submit();</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2018/05/28/2-2-2-csrf/" data-id="cl5m5t5x5000brhqw5heqa7x4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSRF/" rel="tag">CSRF</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2-2-1-xss" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/28/2-2-1-xss/" class="article-date">
+  <time datetime="2018-05-28T10:55:49.000Z" itemprop="datePublished">2018-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WebSafe/">WebSafe</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/28/2-2-1-xss/">2-2-1_xss</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h3 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h3><h4 id="什么说XSS"><a href="#什么说XSS" class="headerlink" title="什么说XSS"></a>什么说XSS</h4><p>全称: Cross Site Script<br>中文: 跨站脚本<br>用途: 盗取用户信息，串改页面实现钓鱼，制造蠕虫等。</p>
+          
+            <p class="article-more-link">
+              <a href="/2018/05/28/2-2-1-xss/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h3><h4 id="什么说XSS"><a href="#什么说XSS" class="headerlink" title="什么说XSS"></a>什么说XSS</h4><p>全称: Cross Site Script<br>中文: 跨站脚本<br>用途: 盗取用户信息，串改页面实现钓鱼，制造蠕虫等。</p>
+<p>概念: 通过 HTML注入串改页面，插入恶意脚本，当用户浏览网页时，实现控制用户浏览器行为的一种攻击方式。</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>用xss盗取cookie来控制用户权限。</p>
+<ul>
+<li><p>存储型</p>
+<ul>
+<li>特点：内容说存储在数据库中</li>
+<li>随意访问网页时候被触发。如逛论坛时候被触发。渗透测试一般用alert来显示。黑客则直接提权。</li>
+<li>可用firebug插件进行查看。</li>
+<li>eg: <code>&lt;img src=&quot;#&quot; onerror=&quot;alert(&quot;error&quot;)&quot;&gt; </code></li>
+</ul>
+</li>
+<li><p>放射型</p>
+<ul>
+<li>要求用户主动访问携带xss脚本的链接，触发xss。如邮件或者聊天工具发送xss链接等。</li>
+</ul>
+</li>
+</ul>
+<p>前端代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">url: great.php?name=&lt;img src=@ onerror=alert(/xss/)&gt;</span><br><span class="line">html:</span><br><span class="line">&lt;img src=&quot;@&quot; onerror=&quot;alert(/xss/)&quot;&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>后端代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&quot;content-type:text/html;charset=utf-8&quot;);</span><br><span class="line">if( isset($_REQUEST[&quot;name&quot;] )&#123;</span><br><span class="line">    $name = $_REQUEST[&quot;name&quot;];</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    $name = &quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;welcome&quot;,$name;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>DOM型<br>需要用户主动点击访问带xss脚本的链接代码，触发xss</li>
+</ul>
+<p>前端代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 注意，不在url参数中，而是在hash中</span><br><span class="line">url:  localhost:8888/demo/admin/login.html?#Fail.&lt;img src=# onerror=(/xss/)&gt;</span><br><span class="line">html: &lt;span id=&quot;xsss&quot;&gt; Fail.&lt;img src=&quot;@&quot; onerror=&quot;alert(/xss/)&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>原理代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">var errorMsg = location.hash.substring(1);</span><br><span class="line">document.getElementById(&quot;xsss&quot;).innerHTML=decodeURIComponnent(errorMsg);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><p><strong>存储型xss</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello &lt;src=&quot;#&quot; onerror=&quot;alert(/xss/)&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>放射型xss</strong></p>
+<p>正常流程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">url: http://localhost:8080/great.php?name=test</span><br><span class="line">返回: welcome test</span><br></pre></td></tr></table></figure>
+
+<p>植入xss</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">url: http://localhost:8080/great.php/name=test&lt;img src=a onerror=alert(/xss/)&gt;</span><br><span class="line">html:  welcome test&lt;img src=a onerror=alert(/xss/)&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>DOM型xss</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">登陆失败后url返回hash  #Fail.</span><br><span class="line">url: localhost:8080/login.html?#Fail.</span><br></pre></td></tr></table></figure>
+<p>修改hash，后请按地址栏刷新按钮</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: localhost:8080/login.html?#Fail.&lt;img src=a onerror=alert(/xss/)&gt;</span><br></pre></td></tr></table></figure>
+<p>原理代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">var errorMsg = location.hash.substring(1);</span><br><span class="line">document.getElementById(&quot;xsss&quot;).innerHTML=decodeURIComponnent(errorMsg);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><table>
+<thead>
+<tr>
+<th>xss类型</th>
+<th>存储型</th>
+<th>放射型</th>
+<th>DOM型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据存储</td>
+<td>数据库</td>
+<td>URL</td>
+<td>URL</td>
+</tr>
+<tr>
+<td>触发过程</td>
+<td>1.黑客构造xss脚本 2- 用户访问污染页面</td>
+<td>正常用户访问xss脚本url</td>
+<td>正常用户访问xss脚本url</td>
+</tr>
+<tr>
+<td>输出主体</td>
+<td>后端web应用程序</td>
+<td>后端web应用程序</td>
+<td>前端Javascript</td>
+</tr>
+<tr>
+<td>输出位置</td>
+<td>HTTP响应中</td>
+<td>HTTP响应中</td>
+<td>动态构造的DOM节点</td>
+</tr>
+</tbody></table>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2018/05/28/2-2-1-xss/" data-id="cl5m5t5x4000arhqwhtoz54hz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XSS/" rel="tag">XSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2-1-1-normal-safe" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/28/2-1-1-normal-safe/" class="article-date">
+  <time datetime="2018-05-28T10:55:02.000Z" itemprop="datePublished">2018-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WebSafe/">WebSafe</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/28/2-1-1-normal-safe/">2-1-1_normal_safe</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="web安全问题"><a href="#web安全问题" class="headerlink" title="web安全问题"></a>web安全问题</h2><h3 id="钓鱼"><a href="#钓鱼" class="headerlink" title="钓鱼"></a>钓鱼</h3><ul>
+          
+            <p class="article-more-link">
+              <a href="/2018/05/28/2-1-1-normal-safe/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="web安全问题"><a href="#web安全问题" class="headerlink" title="web安全问题"></a>web安全问题</h2><h3 id="钓鱼"><a href="#钓鱼" class="headerlink" title="钓鱼"></a>钓鱼</h3><ul>
+<li>诱惑性标题</li>
+<li>仿冒真实网址</li>
+<li>用于骗取用户账户和密码</li>
+<li>骗取用户资料信息</li>
+</ul>
+<p>收到邮件要求重新修改密码<br>eg:   aq.qq.com 页面加载链接如百度短链接 用于链接钓鱼网站</p>
+<h3 id="网页串改"><a href="#网页串改" class="headerlink" title="网页串改"></a>网页串改</h3><p>黑客攻击服务器后对页面恶意修改,一半用于炫耀技术和政治行为.</p>
+<p>如百度搜索 <code>intitle hacked by</code> 可以搜索到被黑的网站。</p>
+<ul>
+<li>关键字<ul>
+<li>hacked by</li>
+</ul>
+</li>
+<li>搜索引擎语法<ul>
+<li>intitle:keyword  标题中含有关键字的网页</li>
+<li>intext:keyworda  正文中含有关键字的网页</li>
+<li>site:domain      某个域名和子域名下的网页<br>eg: site:<a target="_blank" rel="noopener" href="http://www.abc.com/">www.abc.com</a> intitle:hacked by  找到所有该站点和子域名下所有被串改的网页.</li>
+</ul>
+</li>
+</ul>
+<h3 id="暗链"><a href="#暗链" class="headerlink" title="暗链"></a>暗链</h3><p>拿到网站控制权，然后对网站进行修改，一般在网站下方植入链接。</p>
+<ul>
+<li>用于在第三方网站挂上利益相关网址链接，一般集中色情／博彩／网游／医疗。</li>
+<li>一般不能点击，用于爬虫收录。</li>
+<li>可优化搜索引擎排名 SEO。</li>
+</ul>
+<p>eg: 百度 <code>intext:www.abc.com</code> </p>
+<p>对于黑客： 风险小，收入高。</p>
+<h3 id="WebShell"><a href="#WebShell" class="headerlink" title="WebShell"></a>WebShell</h3><p>功能不同一般分大马(功能权限都比较强大)和小马(一句话木马)。</p>
+<ul>
+<li>是web后门</li>
+<li>功能强大</li>
+<li>asp/php/jsp</li>
+<li>一般和正常流量混在一起的后门程序</li>
+</ul>
+<h3 id="追根溯源"><a href="#追根溯源" class="headerlink" title="追根溯源"></a>追根溯源</h3><p>web 安全－客户端：<br>    - xss   跨站脚本注入<br>    - csrf  跨站请求伪造<br>    - 点击劫持<br>    - url跳转</p>
+<p>web 安全－服务端：<br>    - sql注入<br>    - 命令执行<br>    - 文件类操作</p>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2018/05/28/2-1-1-normal-safe/" data-id="cl5m5t5x00006rhqw6zd5fm8v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B8%B8%E8%A7%81%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/" rel="tag">常见安全问题</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-1-2-5-PHP-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/28/1-2-5-PHP-2/" class="article-date">
+  <time datetime="2018-05-28T10:54:04.000Z" itemprop="datePublished">2018-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WebSafe/">WebSafe</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/28/1-2-5-PHP-2/">1-2-5_PHP-2</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="PHP-To-SQL"><a href="#PHP-To-SQL" class="headerlink" title="PHP To SQL"></a>PHP To SQL</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment"># 连接数据库</span></span><br><span class="line"><span class="variable">$con</span> = mysql_connect(<span class="string">&quot;localhost&quot;</span>,<span class="string">&quot;root&quot;</span>,<span class="string">&quot;root&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!<span class="variable">$con</span>)&#123;</span><br><span class="line">    dir(<span class="string">&quot;Database Connect Error&quot;</span>.mysql_error());</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment"># 设定编码</span></span><br><span class="line">    mysql_query( <span class="string">&quot;set names utf8&quot;</span>  );</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 连接数据库</span></span><br><span class="line">    mysql_select_db(<span class="string">&quot;websafe&quot;</span>,<span class="variable">$con</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 操作数据库</span></span><br><span class="line">    <span class="variable">$result</span> = mysql_query(<span class="string">&quot;select * from teacher&quot;</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Show teachers in table&lt;br /&gt;&quot;</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;table border=&#x27;2&#x27; width=&#x27;300&#x27;&gt;&quot;</span></span><br><span class="line">        &lt;tr&gt;&lt;th&gt;id&lt;/th&gt;&lt;th&gt;name&lt;/th&gt;&lt;th&gt;sex&lt;/th&gt;&lt;th&gt;addr&lt;/th&gt; &lt;/tr&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">    while(<span class="subst">$row</span> = mysql_fetch_array(<span class="subst">$result</span>))&#123;</span></span><br><span class="line"><span class="string">        echo &quot;</span>&lt;tr&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">        echo &quot;</span>&lt;td&gt;<span class="string">&quot;.<span class="subst">$row</span>[&quot;</span>id<span class="string">&quot;].&quot;</span>&lt;/td&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">        echo &quot;</span>&lt;td&gt;<span class="string">&quot;.<span class="subst">$row</span>[&quot;</span>name<span class="string">&quot;].&quot;</span>&lt;/td&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">        echo &quot;</span>&lt;td&gt;<span class="string">&quot;.<span class="subst">$row</span>[&quot;</span>sex<span class="string">&quot;].&quot;</span>&lt;/td&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">        echo &quot;</span>&lt;td&gt;<span class="string">&quot;.<span class="subst">$row</span>[&quot;</span>addr<span class="string">&quot;].&quot;</span>&lt;/td&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">        echo &quot;</span>&lt;/tr&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    echo &quot;</span>&lt;/table&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 关闭数据库</span></span><br><span class="line"><span class="string">mysql_close(<span class="subst">$con</span>);</span></span><br><span class="line"><span class="string">?&gt;</span></span><br></pre></td></tr></table></figure>
+          
+            <p class="article-more-link">
+              <a href="/2018/05/28/1-2-5-PHP-2/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="PHP-To-SQL"><a href="#PHP-To-SQL" class="headerlink" title="PHP To SQL"></a>PHP To SQL</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment"># 连接数据库</span></span><br><span class="line"><span class="variable">$con</span> = mysql_connect(<span class="string">&quot;localhost&quot;</span>,<span class="string">&quot;root&quot;</span>,<span class="string">&quot;root&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!<span class="variable">$con</span>)&#123;</span><br><span class="line">    dir(<span class="string">&quot;Database Connect Error&quot;</span>.mysql_error());</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment"># 设定编码</span></span><br><span class="line">    mysql_query( <span class="string">&quot;set names utf8&quot;</span>  );</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 连接数据库</span></span><br><span class="line">    mysql_select_db(<span class="string">&quot;websafe&quot;</span>,<span class="variable">$con</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 操作数据库</span></span><br><span class="line">    <span class="variable">$result</span> = mysql_query(<span class="string">&quot;select * from teacher&quot;</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;Show teachers in table&lt;br /&gt;&quot;</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;table border=&#x27;2&#x27; width=&#x27;300&#x27;&gt;&quot;</span></span><br><span class="line">        &lt;tr&gt;&lt;th&gt;id&lt;/th&gt;&lt;th&gt;name&lt;/th&gt;&lt;th&gt;sex&lt;/th&gt;&lt;th&gt;addr&lt;/th&gt; &lt;/tr&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">    while(<span class="subst">$row</span> = mysql_fetch_array(<span class="subst">$result</span>))&#123;</span></span><br><span class="line"><span class="string">        echo &quot;</span>&lt;tr&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">        echo &quot;</span>&lt;td&gt;<span class="string">&quot;.<span class="subst">$row</span>[&quot;</span>id<span class="string">&quot;].&quot;</span>&lt;/td&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">        echo &quot;</span>&lt;td&gt;<span class="string">&quot;.<span class="subst">$row</span>[&quot;</span>name<span class="string">&quot;].&quot;</span>&lt;/td&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">        echo &quot;</span>&lt;td&gt;<span class="string">&quot;.<span class="subst">$row</span>[&quot;</span>sex<span class="string">&quot;].&quot;</span>&lt;/td&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">        echo &quot;</span>&lt;td&gt;<span class="string">&quot;.<span class="subst">$row</span>[&quot;</span>addr<span class="string">&quot;].&quot;</span>&lt;/td&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">        echo &quot;</span>&lt;/tr&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    echo &quot;</span>&lt;/table&gt;<span class="string">&quot;;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 关闭数据库</span></span><br><span class="line"><span class="string">mysql_close(<span class="subst">$con</span>);</span></span><br><span class="line"><span class="string">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="三种sql方法"><a href="#三种sql方法" class="headerlink" title="三种sql方法"></a>三种sql方法</h3><ul>
+<li>mysql扩展</li>
+<li>MYSQLi扩展</li>
+<li>PDO扩展 （PHP Data Object)</li>
+</ul>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2018/05/28/1-2-5-PHP-2/" data-id="cl5m5t5wz0005rhqw8p0x9344" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-1-2-5-PHP-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/28/1-2-5-PHP-1/" class="article-date">
+  <time datetime="2018-05-28T10:53:34.000Z" itemprop="datePublished">2018-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WebSafe/">WebSafe</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/28/1-2-5-PHP-1/">1-2-5_PHP-1</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><p>脚本范围 <code>&lt;?php ?&gt;</code></p>
+          
+            <p class="article-more-link">
+              <a href="/2018/05/28/1-2-5-PHP-1/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><p>脚本范围 <code>&lt;?php ?&gt;</code></p>
+<p>注释 <code>// # /* */</code></p>
+<p>输出</p>
+<ul>
+<li>echo 输出多个<br>－print为函数，有返回值</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="string">&quot;Welcome to&quot;</span>;</span><br><span class="line"><span class="variable">$b</span> = <span class="string">&quot;Study PHP&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// echo 可以用逗号分隔变量来显示</span></span><br><span class="line"><span class="keyword">echo</span> = <span class="string">&quot;echo输出:&quot;</span>.<span class="variable">$a</span>,<span class="variable">$b</span>.<span class="string">&quot;&lt;/br&gt;&quot;</span>;</span><br><span class="line"><span class="comment">// print 只能用点好.来分隔，不能用逗号，否则会报错</span></span><br><span class="line"><span class="keyword">print</span> = <span class="string">&quot;print函数:&quot;</span>.<span class="variable">$a</span>.<span class="variable">$b</span>.<span class="string">&quot;&lt;/br&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;echo 打印print返回1:&#x27;</span>.<span class="keyword">print</span> <span class="variable">$a</span>.<span class="variable">$b</span>.<span class="string">&#x27;&lt;br /&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="用PHP代码实现web常见功能"><a href="#用PHP代码实现web常见功能" class="headerlink" title="用PHP代码实现web常见功能"></a>用PHP代码实现web常见功能</h3><h4 id="注册功能"><a href="#注册功能" class="headerlink" title="注册功能"></a>注册功能</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;welcome.php&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">name : <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">email : <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># welcome.php</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="variable">$_POST</span>[<span class="string">&#x27;name&#x27;</span>];<span class="meta">?&gt;</span> Welcome Come! &lt;br /&gt;</span><br><span class="line">Your email is <span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="variable">$_POST</span>[<span class="string">&#x27;email&#x27;</span>];<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Tip</strong> 除了 $_POST 和$_GET 还有$_REQUEST，可接收上面2者请求</p>
+<h4 id="FILES"><a href="#FILES" class="headerlink" title="$_FILES"></a>$_FILES</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">&quot;&quot;</span> method=<span class="string">&quot;post&quot;</span> enctype=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span><br><span class="line">    &lt;label <span class="keyword">for</span>=<span class="string">&quot;file&quot;</span>&gt;Filename:&lt;/label&gt;</span><br><span class="line">    &lt;input type=<span class="string">&quot;file&quot;</span> name=<span class="string">&quot;file&quot;</span> id=<span class="string">&quot;file&quot;</span> /&gt;</span><br><span class="line">    &lt;br /&gt;</span><br><span class="line">    &lt;input type=<span class="string">&quot;submit&quot;</span> name=<span class="string">&quot;submit&quot;</span>  value=<span class="string">&quot;submit&quot;</span> /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_REQUEST</span>[<span class="string">&quot;submit&quot;</span>]))&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;error&quot;</span>] &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;Return Code:&quot;</span>.<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;error&quot;</span>].<span class="string">&quot;&lt;br /&gt;&quot;</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;Upload:&quot;</span>.<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>].<span class="string">&quot;&lt;br /&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;Type:&quot;</span>.<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;type&quot;</span>].<span class="string">&quot;&lt;br /&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;Size:&quot;</span>.(<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;size&quot;</span>] / <span class="number">1024</span>).<span class="string">&quot;Kb&lt;br /&gt;&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;Temp File:&quot;</span>.<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;tmp_name&quot;</span>].<span class="string">&quot;&lt;br /&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!file_exists(<span class="string">&quot;uploads&quot;</span>))&#123;</span><br><span class="line">        mkdir(<span class="string">&quot;uploads&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>( file_exists(<span class="string">&quot;uploads/&quot;</span>.<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>]))&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>].<span class="string">&quot;is aleady exists!&quot;</span> ;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        move_uploaded_file(<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;tmp_name&quot;</span>]),</span><br><span class="line">        <span class="string">&quot;uploads/&quot;</span>.<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>]);</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;Store in&quot;</span>a.<span class="string">&quot;uploads/&quot;</span>.<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="SERVER"><a href="#SERVER" class="headerlink" title="$_SERVER"></a>$_SERVER</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;服务器名称:&quot;.$_SERVER[&quot;SERVER_NAME&quot;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">echo &quot;网站根目录:&quot;.$_SERVER[&quot;DOCUMENT_ROOT&quot;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">echo &quot;当前网页相对路径:&quot;.$_SERVER[&quot;PHP_SELF&quot;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">echo &quot;当前页面绝对路径:&quot;.$_SERVER[&quot;SCRIPT_FILENAME&quot;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">echo &quot;当前服务器环境变量:&quot;.$_SERVER[&quot;PATH&quot;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他变量"><a href="#其他变量" class="headerlink" title="其他变量"></a>其他变量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$_GLOBALS</span><br><span class="line">$_ENV</span><br><span class="line">$_COOKIE</span><br><span class="line">$_REQUEST</span><br><span class="line">$_SESSION</span><br></pre></td></tr></table></figure>
+
+<h3 id="包含文件"><a href="#包含文件" class="headerlink" title="包含文件"></a>包含文件</h3><ul>
+<li>include “xxx.php”     # 警告，脚本继续运行</li>
+<li>require “xxx.php”     # 错误，脚本停止</li>
+</ul>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2018/05/28/1-2-5-PHP-1/" data-id="cl5m5t5wx0004rhqw896fchsb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-1-2-4-SQL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/28/1-2-4-SQL/" class="article-date">
+  <time datetime="2018-05-28T10:52:40.000Z" itemprop="datePublished">2018-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WebSafe/">WebSafe</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/28/1-2-4-SQL/">1-2-4_SQL</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database &quot;websafe&quot;;</span><br><span class="line"><span class="keyword">show</span> databasee;</span><br><span class="line">use websafe;</span><br><span class="line"><span class="keyword">drop</span> database websafe;</span><br></pre></td></tr></table></figure>
+          
+            <p class="article-more-link">
+              <a href="/2018/05/28/1-2-4-SQL/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database &quot;websafe&quot;;</span><br><span class="line"><span class="keyword">show</span> databasee;</span><br><span class="line">use websafe;</span><br><span class="line"><span class="keyword">drop</span> database websafe;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据表操作"><a href="#数据表操作" class="headerlink" title="数据表操作"></a>数据表操作</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> `teacher`(</span><br><span class="line">`id` <span class="type">int</span>(<span class="number">4</span>) <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">`name` <span class="type">varchar</span>(<span class="number">30</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">`sex` <span class="type">char</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">`addr` <span class="type">char</span>(<span class="number">50</span>) <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">default</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">)Engine<span class="operator">=</span>InnoDB charset<span class="operator">=</span>&quot;utf8&quot;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span> tables;</span><br><span class="line"><span class="keyword">desc</span> teacher;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span>  `teacher`(name,sex,addr) <span class="keyword">VALUES</span> (<span class="string">&#x27;miki&#x27;</span>,<span class="string">&#x27;female&#x27;</span>,<span class="string">&#x27;FuJian&#x27;</span>),(<span class="string">&#x27;Json&#x27;</span>,<span class="string">&#x27;Male&#x27;</span>,<span class="string">&#x27;Guangzhou&#x27;</span>);</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">from</span> `teacher`;</span><br><span class="line">UPDATE `teacher`  <span class="keyword">SET</span> name<span class="operator">=</span>&quot;Lucy&quot; <span class="keyword">WHERE</span> id<span class="operator">=</span><span class="number">1</span>;</span><br><span class="line">DELECT <span class="keyword">FROM</span> <span class="keyword">TABLE</span> `teacher` <span class="keyword">WHERE</span> id<span class="operator">=</span><span class="number">1</span>;</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> `teacher`;</span><br></pre></td></tr></table></figure>
+
+<h3 id="where"><a href="#where" class="headerlink" title="where"></a><strong>where</strong></h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">select</span> 所需信息 <span class="keyword">from</span> 数据表（或多个） <span class="keyword">where</span> 条件判断</span><br><span class="line"><span class="keyword">select</span> name <span class="keyword">from</span> teacher <span class="keyword">where</span> addr<span class="operator">=</span>&quot;Fujian&quot; <span class="keyword">and</span> sex<span class="operator">=</span>&quot;Female&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>order by</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">select</span> 所需信息 <span class="keyword">from</span> 数据表（或多个）<span class="keyword">order</span> <span class="keyword">by</span> 字段 <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span> </span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> teacher <span class="keyword">order</span> <span class="keyword">by</span> name;</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> teacher <span class="keyword">order</span> <span class="keyword">by</span> <span class="number">2</span>;    #根据第二列排序</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Tips: 可以用order by数字来判断数据表的字段长度,经常用于SQL的注射漏洞</p>
+</blockquote>
+<h3 id="union"><a href="#union" class="headerlink" title="union"></a><strong>union</strong></h3><ul>
+<li>union 不显示重复数据<br>－union all  显示重复数据<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">select</span> 所需信息 <span class="keyword">from</span> 表<span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> 所需信息 <span class="keyword">from</span> 表<span class="number">2</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> teacher ;</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student ;</span><br><span class="line"># 合并student 和teacher表并显示姓名列，注意不显示重复数据！！</span><br><span class="line"><span class="keyword">select</span> name <span class="keyword">from</span> teacher <span class="keyword">union</span> <span class="keyword">select</span> name <span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a><strong>注释</strong></h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># ... 本行注释内容</span><br><span class="line"><span class="comment">-- ...双横杆加空格注释当前行</span></span><br><span class="line"><span class="comment">/* ...注释当前包裹内容，可多行 */</span> </span><br></pre></td></tr></table></figure>
+<p><strong>Tip:</strong> 在sql注射时候绕过注入</p>
+<p>案例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 导入student表格，从teacher和student表中找出全部男性的name，并按字母排序</span><br><span class="line">source  <span class="operator">~</span><span class="operator">/</span>Desktop<span class="operator">/</span>student.sql</span><br><span class="line">表elect name <span class="keyword">from</span> teacher <span class="keyword">union</span> <span class="keyword">all</span> <span class="keyword">select</span> name <span class="keyword">from</span> student <span class="keyword">order</span> <span class="keyword">by</span> <span class="number">1</span>;</span><br><span class="line"># 导出数据</span><br><span class="line"><span class="operator">/</span>usr<span class="operator">/</span><span class="keyword">local</span><span class="operator">/</span>mysql<span class="operator">/</span>bin<span class="operator">/</span>mysqldump <span class="operator">-</span>uroot  <span class="operator">-</span>proot websafe <span class="operator">&gt;</span> <span class="operator">~</span><span class="operator">/</span>Desktop<span class="operator">/</span>a.sql</span><br></pre></td></tr></table></figure>
+
+<h3 id="SQL注射常用的内置函数"><a href="#SQL注射常用的内置函数" class="headerlink" title="SQL注射常用的内置函数"></a>SQL注射常用的内置函数</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">database()   #打印当前数据库名称 <span class="keyword">select</span> database();</span><br><span class="line"><span class="built_in">current_user</span> #打印当前用户</span><br><span class="line">load_file()  #返回文件的内容  <span class="keyword">select</span> load_file(&quot;/usr/local/nginx/conf/vhost/abc.conf&quot;);</span><br><span class="line">version()    # 获取数据库版本</span><br><span class="line"><span class="keyword">into</span>＋outfile ＃写入文件</span><br></pre></td></tr></table></figure>
+
+<p>另外找下其他数据库注射的函数</p>
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2018/05/28/1-2-4-SQL/" data-id="cl5m5t5wq0001rhqwh6kq30uc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-1-2-2-Javascript" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/28/1-2-2-Javascript/" class="article-date">
+  <time datetime="2018-05-28T10:50:04.000Z" itemprop="datePublished">2018-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WebSafe/">WebSafe</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/28/1-2-2-Javascript/">1-2-2_Javascript</a>
+    </h1>
+  
+
+      </header>
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h1 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p>加载方式</p>
+          
+            <p class="article-more-link">
+              <a href="/2018/05/28/1-2-2-Javascript/#more">Read More</a>
+            </p>
+          
+        
+      
+    </div> 
+
+    <!--div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p>加载方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">function changetext(id)&#123;</span><br><span class="line">    id.innerHTML=&quot;THANK YOU!&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1 onclick=&quot;&quot;changetext(this)&quot;&gt; Hello World&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+
+<p>获取html元素及内容及修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&quot;myid&quot;) .innerHTML=&quot;hello world&quot;</span><br></pre></td></tr></table></figure>
+
+<p>获取动态内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.write(date())</span><br><span class="line">document.write( &quot;&lt;iframe src=&#x27;http://www.baidu.com&#x27;&gt;&lt;/iframe&gt;&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>增加页面互动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 onclick=&quot;&quot;changetext(this)&quot;&gt; Hello World&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="2-DOM"><a href="#2-DOM" class="headerlink" title="2.DOM"></a>2.DOM</h2><p>连接web页面和编程语言</p>
+<h2 id="3-BOM"><a href="#3-BOM" class="headerlink" title="3.BOM"></a>3.BOM</h2><p>连接浏览器和编程语言</p>
+<p>常用的弹窗，用于调试和信息展示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alert (&quot;警告&quot;);</span><br><span class="line">confirm (&quot;确认&quot;);</span><br><span class="line">prompt (&quot;提示&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>获取用户COOKIE</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie</span><br></pre></td></tr></table></figure>
+<p>修改COOKIE</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie=&quot;test=sa&quot;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(window.)screen     # 获取浏览器屏幕信息</span><br><span class="line">(window.)location   # 获取用户的url</span><br><span class="line">    window.location.href=&quot;http://www.baidu.com&quot;  #改变url跳转</span><br><span class="line">(window.)navigator  # 获取访问者用户的浏览器信息</span><br><span class="line"></span><br><span class="line">window.open(&quot;http://www.baidu.com&quot;)   #打开链接</span><br><span class="line">window.close(&quot;http://www.baidu.com&quot;)  #关闭链接</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div-->
+
+    <footer class="article-footer">
+      <a data-url="https://jsonlocker.github.io/2018/05/28/1-2-2-Javascript/" data-id="cl5m5t5wk0000rhqw2kgodqr9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WebSafe/">WebSafe</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/patterns/">patterns</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSRF/" style="font-size: 10px;">CSRF</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/Localstorage/" style="font-size: 10px;">Localstorage</a> <a href="/tags/MD5/" style="font-size: 10px;">MD5</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/PHP/" style="font-size: 11.25px;">PHP</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/SQL/" style="font-size: 11.25px;">SQL</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/adapter/" style="font-size: 10px;">adapter</a> <a href="/tags/advanced/" style="font-size: 10px;">advanced</a> <a href="/tags/apuc/" style="font-size: 10px;">apuc</a> <a href="/tags/asset/" style="font-size: 10px;">asset</a> <a href="/tags/btree%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">btree索引</a> <a href="/tags/compile/" style="font-size: 10px;">compile</a> <a href="/tags/complie/" style="font-size: 11.25px;">complie</a> <a href="/tags/components/" style="font-size: 10px;">components</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/composite/" style="font-size: 10px;">composite</a> <a href="/tags/config/" style="font-size: 10px;">config</a> <a href="/tags/cors/" style="font-size: 10px;">cors</a> <a href="/tags/cpu/" style="font-size: 10px;">cpu</a> <a href="/tags/curd/" style="font-size: 10px;">curd</a> <a href="/tags/decorator/" style="font-size: 10px;">decorator</a> <a href="/tags/designDB/" style="font-size: 12.5px;">designDB</a> <a href="/tags/designdb/" style="font-size: 20px;">designdb</a> <a href="/tags/encrypt/" style="font-size: 10px;">encrypt</a> <a href="/tags/engine/" style="font-size: 10px;">engine</a> <a href="/tags/fetch/" style="font-size: 10px;">fetch</a> <a href="/tags/final%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95/" style="font-size: 10px;">final类和方法</a> <a href="/tags/hash%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">hash索引</a> <a href="/tags/http-proxy/" style="font-size: 10px;">http proxy</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/index/" style="font-size: 11.25px;">index</a> <a href="/tags/input/" style="font-size: 10px;">input</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/javascript/" style="font-size: 16.25px;">javascript</a> <a href="/tags/laravel/" style="font-size: 13.75px;">laravel</a> <a href="/tags/linux/" style="font-size: 13.75px;">linux</a> <a href="/tags/lnmp/" style="font-size: 13.75px;">lnmp</a> <a href="/tags/locating/" style="font-size: 10px;">locating</a> <a href="/tags/mailer/" style="font-size: 10px;">mailer</a> <a href="/tags/mindManger-software/" style="font-size: 10px;">mindManger - software</a> <a href="/tags/mysql/" style="font-size: 18.75px;">mysql</a> <a href="/tags/mysql-%E4%BA%8C%E8%BF%9B%E5%88%B6/" style="font-size: 10px;">mysql 二进制</a> <a href="/tags/mysql-%E5%A4%8D%E5%88%B6/" style="font-size: 10px;">mysql 复制</a> <a href="/tags/mysqld/" style="font-size: 10px;">mysqld</a> <a href="/tags/mysqlslap/" style="font-size: 10px;">mysqlslap</a> <a href="/tags/mysql%E4%BC%98%E5%8C%96/" style="font-size: 10px;">mysql优化</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/observer/" style="font-size: 10px;">observer</a> <a href="/tags/ocr/" style="font-size: 10px;">ocr</a> <a href="/tags/opencart/" style="font-size: 11.25px;">opencart</a> <a href="/tags/optimizer/" style="font-size: 10px;">optimizer</a> <a href="/tags/patterns/" style="font-size: 15px;">patterns</a> <a href="/tags/pdo/" style="font-size: 10px;">pdo</a> <a href="/tags/php/" style="font-size: 17.5px;">php</a> <a href="/tags/php7/" style="font-size: 10px;">php7</a> <a href="/tags/predis/" style="font-size: 10px;">predis</a> <a href="/tags/proxy/" style="font-size: 10px;">proxy</a> <a href="/tags/python/" style="font-size: 11.25px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/register/" style="font-size: 10px;">register</a> <a href="/tags/regular/" style="font-size: 10px;">regular</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/route/" style="font-size: 11.25px;">route</a> <a href="/tags/self-parent/" style="font-size: 10px;">self & parent</a> <a href="/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/tags/shadowsocks-libev/" style="font-size: 10px;">shadowsocks-libev</a> <a href="/tags/simple-factory/" style="font-size: 10px;">simple factory</a> <a href="/tags/software/" style="font-size: 10px;">software</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/ssr/" style="font-size: 10px;">ssr</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/sysbench/" style="font-size: 10px;">sysbench</a> <a href="/tags/tesseract/" style="font-size: 10px;">tesseract</a> <a href="/tags/textarea/" style="font-size: 10px;">textarea</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/tinyproxy/" style="font-size: 10px;">tinyproxy</a> <a href="/tags/turtle/" style="font-size: 10px;">turtle</a> <a href="/tags/twig/" style="font-size: 10px;">twig</a> <a href="/tags/urlmanager/" style="font-size: 10px;">urlmanager</a> <a href="/tags/v2ray/" style="font-size: 10px;">v2ray</a> <a href="/tags/vmess/" style="font-size: 10px;">vmess</a> <a href="/tags/web-components/" style="font-size: 10px;">web components</a> <a href="/tags/yii2/" style="font-size: 13.75px;">yii2</a> <a href="/tags/%E4%B8%BB%E4%BB%8E%E6%8B%93%E6%89%91/" style="font-size: 10px;">主从拓扑</a> <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%A4%8D%E5%88%B6/" style="font-size: 10px;">二进制复制</a> <a href="/tags/%E5%86%85%E5%AD%98/" style="font-size: 10px;">内存</a> <a href="/tags/%E5%89%8D%E7%9E%BB%E5%90%8E%E9%A1%BE/" style="font-size: 10px;">前瞻后顾</a> <a href="/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">单例模式</a> <a href="/tags/%E5%8F%8D%E8%8C%83%E5%BC%8F%E5%8C%96/" style="font-size: 10px;">反范式化</a> <a href="/tags/%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/" style="font-size: 12.5px;">基准测试</a> <a href="/tags/%E5%AE%89%E8%A3%85%E6%BC%94%E7%A4%BA%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">安装演示数据库</a> <a href="/tags/%E5%AE%9A%E6%9C%9F%E5%A4%87%E4%BB%BD/" style="font-size: 10px;">定期备份</a> <a href="/tags/%E5%B0%81%E8%A3%85%E6%80%A7/" style="font-size: 10px;">封装性</a> <a href="/tags/%E5%B8%B8%E8%A7%81%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/" style="font-size: 10px;">常见安全问题</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%96%87%E5%AD%97%E8%AF%86%E5%88%AB/" style="font-size: 10px;">文字识别</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%89%A9%E7%90%86%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">物理设计</a> <a href="/tags/%E7%94%BB%E5%9B%BE/" style="font-size: 10px;">画图</a> <a href="/tags/%E7%A1%AC%E4%BB%B6%E5%BD%B1%E5%93%8D/" style="font-size: 10px;">硬件影响</a> <a href="/tags/%E7%A3%81%E7%9B%98%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">磁盘配置</a> <a href="/tags/%E7%B1%BB%E5%B8%B8%E9%87%8F/" style="font-size: 10px;">类常量</a> <a href="/tags/%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/" style="font-size: 10px;">索引优化</a> <a href="/tags/%E7%BB%A7%E6%89%BF%E6%80%A7/" style="font-size: 10px;">继承性</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/" style="font-size: 10px;">自动加载</a> <a href="/tags/%E8%8C%83%E5%BC%8F%E5%8C%96/" style="font-size: 10px;">范式化</a> <a href="/tags/%E8%AF%AD%E6%B3%95%E6%95%B4%E7%90%86/" style="font-size: 10px;">语法整理</a> <a href="/tags/%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">逻辑设计</a> <a href="/tags/%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/" style="font-size: 10px;">静态属性和方法</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 12.5px;">面向对象</a> <a href="/tags/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">高可用架构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">33</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/07/15/laravel-4-customfunc-php/">laravel 自定义函数和变量</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/11/laravel-3-controller/">laravel-3-controller</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/09/laravel-2-route/">laravel-2-route</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/08/laravel-init/">laravel_init</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/08/sql-miss-index/">sql_miss_index</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Jsonlocker<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/mouse.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+if (typeof jQuery == 'undefined') {
+document.write(unescape("%3Cscript src='/js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+}
+// ]]>
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
